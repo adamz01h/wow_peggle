@@ -2,6 +2,7 @@
 A game made by PopCap Games, Inc. 
 
 WoW Patch 7.0 Peggle Addon
+An updated Peggle addon that has long abandoned.
 
 Just download the zip and place the "Peggle" folder into the /Interface/AddOns/ folder.
 
