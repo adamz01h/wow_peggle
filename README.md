@@ -1,3 +1,6 @@
+"The Peggle Institute has opened a branch in Azeroth!"
+A game made by PopCap Games, Inc. 
+
 WoW Patch 7.0 Peggle Addon
 
 Just download the zip and place the "Peggle" folder into the /Interface/AddOns/ folder.
