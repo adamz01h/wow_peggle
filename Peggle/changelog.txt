@@ -1,4 +1,6 @@
 Changelog
+v1.03
+- Unofficial Port
 
 v1.02
 - Added a new feature that will display a chat notification when the user recieves game data from another user with the original version of Peggle (1.0). This notification will let you know that they are using a very outdated version, and to let them know so they can update, otherwise they can't play with Peggle users with later versions.

@@ -57,8 +57,8 @@ TALENT_ARROW_TEXTURECOORDS = {
 };
 
 local e = {};
-e.versionString = "1.02a";
-e.versionID = 1.021;
+e.versionString = "1.03";
+e.versionID = 1.03;
 e.addonName = "PEGGLE";
 e.temp = {};
 e.seconds = 60;
