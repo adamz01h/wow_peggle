@@ -1,0 +1,20 @@
+Changelog
+
+v1.02
+- Added a new feature that will display a chat notification when the user recieves game data from another user with the original version of Peggle (1.0). This notification will let you know that they are using a very outdated version, and to let them know so they can update, otherwise they can't play with Peggle users with later versions.
+- Added a new option to the options screen, called "Hide Outdated Chat Notifications" which will hide the Peggle 1.0 user notifications.
+- Added new code that will prevent communication from users with outdated Peggle addons. In order to Duel or Battle other players, they will need the same version of Peggle.
+- Added a new Brag window, allowing the user to select what channel to brag the results to (Guild, Party, Raid, or a player-made channel that the user is currently a member of)
+- Changed the "Publish" button to called "Brag" in order to bring the button in line with what it actually does.
+- Removed "Default Publish Channel" from the option screen. This feature is now built into the brag screen.
+
+v1.01a
+- Reactivated the free-ball bucket.
+- Added command "/peggle achievement" to view the easter egg once you've unlocked it.
+
+v1.01
+- Fixed the ColorBline error that would also cause green pegs to stick around.
+- Fixed the challenge mode error that would freak out occasionally with more than 7 participants
+- Other small fixes that would occasionally throw errors
+- Added a outdated version check that will notify you when it detects a newer version being used on the server.
+- Added the command "/peggle resetwindow"  for people who were having problems getting the game back after moving it offscreen.

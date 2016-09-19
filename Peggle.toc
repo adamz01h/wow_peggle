@@ -1,0 +1,9 @@
+## Interface: 30300
+## Title: Peggle
+## Version: 1.02c
+## Notes: The popular game Peggle, now for World of Warcraft!
+## Author: PopCap Games Inc.
+## SavedVariables: PeggleData
+## SavedVariablesPerCharacter: PeggleProfile
+
+Peggle.lua
