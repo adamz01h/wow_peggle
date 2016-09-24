@@ -2689,43 +2689,61 @@ end
 end
 return n;
 end
-local function le(l, o, n, a)ce = ce + 1;
-local t;
-if(ce > (Ke or(0)))then
-t = r.foreground:CreateTexture("polyLine"..ce, "OVERLAY");
-if(e.debugMode)then
-t:SetTexture(e.artPath.."editorLine");
-else
-t:SetTexture(e.artPath.."pathLine");
+
+-- Draws the preview line for the "Super Guide" powerup
+-- l -> startX
+-- o -> startY
+-- n -> endX
+-- a -> endY
+local function le(l, o, n, a)
+	ce = ce + 1;
+	local t;
+	if(ce > (Ke or(0)))then
+		t = r.foreground:CreateTexture("polyLine"..ce, "OVERLAY");
+		if(e.debugMode)then
+			t:SetTexture(e.artPath.."editorLine");
+		else
+			t:SetTexture(e.artPath.."pathLine");
+		end
+		t:SetVertexColor(.3, .7, 1);
+		t:SetAlpha(.8);
+		t:SetWidth(16);
+		t:SetHeight(16);
+		t:ClearAllPoints();
+		Ke = ce
+	else
+		t = getglobal("polyLine"..ce);
+	end
+	if(t)then
+		rotation = i(atan2(a-o, n-l)or(0)) + 135;
+		t:SetTexture(e.artPath.."pathLine");
+		t:SetPoint("center", r, "Bottomleft", l, o);
+
+		t:Show();
+		d:RotateTexture(t, rotation, .5, .5)
+	end
 end
-t:SetVertexColor(.3, .7, 1);
-t:SetAlpha(.8);
-Ke = ce
-else
-t = getglobal("polyLine"..ce);
+
+local function Ke(o, n, l, a)
+	q = q + 1;
+	local t;
+	if(q > (qe or(0)))then
+		t = r.foreground:CreateTexture("pathPiece"..q, "OVERLAY");
+		t:SetWidth(16);
+		t:SetHeight(16);
+		t:ClearAllPoints();
+		qe = q
+	else
+		t = getglobal("pathPiece"..q);
+	end
+	if(t)then
+		t:SetTexture(e.artPath.."path"..a);
+		t:SetPoint("center", r, "Bottomleft", o, n);
+		t:Show();
+		d:RotateTexture(t, l, .5, .5)
+	end
 end
-if(t)then
---DrawRouteLine(t, r, l, o, n, a, 32);
-t:Show();
-end
-end
-local function Ke(o, n, l, a)q = q + 1;
-local t;
-if(q > (qe or(0)))then
-t = r.foreground:CreateTexture("pathPiece"..q, "OVERLAY");
-t:SetWidth(16);
-t:SetHeight(16);
-t:ClearAllPoints();
-qe = q
-else
-t = getglobal("pathPiece"..q);
-end
-if(t)then
-t:SetTexture(e.artPath.."path"..a);
-t:SetPoint("center", r, "Bottomleft", o, n);
-t:Show();
-d:RotateTexture(t, l, .5, .5)end
-end
+
 local function He(S, u, l, h, c, o, n, t, s, g)local r = l + o;
 local o = (h - S) ^ 2 + (c - u) ^ 2;
 local f = r ^ 2;
