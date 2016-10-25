@@ -1,4 +1,4 @@
-## Interface: 70000
+## Interface: 70100
 ## Title: Peggle (Unofficial)
 ## Version: 1.03
 ## Notes: The popular game Peggle, now for World of Warcraft!
