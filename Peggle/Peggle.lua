@@ -65,14 +65,14 @@ e.seconds = 60;
 e.ping = 3;
 e.debugMode = nil;
 local t = function(...)
-if(e.debugMode)then
-print(...)
-end
+	if(e.debugMode)then
+		print(...)
+	end
 end
 local ie = {"43aa`8eo8KB`8bQ8Hf`8fe8Bs`8ck8>k`8e=88Y`8bl83K`8e`8y<`8nV8ND`8qT8Hg`8ol8B4`8rn8<L`8oe88A`8qX838`8n<8yN`8q08t<`84x8i2`86h8n``87v8u1`89o8zy`8;d851`8A985:`8Bn8zI`8Dn8uf`8Dn8nq`8Fq8iM`8Tx8uA`8VB802`8SK84e`8VA88g`8Tr8=v`8Vn8C8`8SM8Ho`8V88Oy`9dY8KL`9gn8FW`9eh8Bk`9gx8=P`9d888I`9fD83H`9dU8x5j9`z8oBNnjj8Xc8nDNnat9cC8qkNnot9fX8rENnot8Tz8nuNmVt8PH8mYNmVt8Mf8mBNmVt8I48mvNmVj8i98oVNm=j8lP8nXNmFt8fo8q4Nm8t8bV8rYNm8t8p98n>NmLt8tk8nrNmLt8wM8mVNmLt8048m?NmLt8iH8v5NmLt8iH81bNmLt8iR86lNmLt8jk8;lNmLt8jk8@lNmLt8jk8FvNmLt8jk8LvNmLt8vu8<bNmLt8va86?NmLt8uR81lNmLt8uH8vSNmLt8148vvNmLt83a8z?NmLt85u83INmLt8I98v>NmVt8GM8zHNmVt8F984kNmVt8O98wkNmVt8O981>NmVt8Op87aNmVt8O98;RNmVt9`p8N>NmVt9`f8H4NmVt9`f8B>NmVt9`f8=kNmVt8ZW88uNmVt8ZC83kNmVt8Z98xHNmV`8>a8;ua8Id8>X`G`c8``8``8s=8eGa8LO8CL`G`c8``8``8s=8eGa87l8;m`G`c8``8``8eG8eGa81z8>P`G`c8``8``8eG8eGa8yc8Dv`G`c8``8``8eG8eGa8DJ8;c`G`c8``8``8s=8eG", "03wbj8CF8pfEY=j8C28soEYGj8B?8vqEYQj8As8ygEZ`j8?680DEZjj8=q82SEZtj8C28lWFc=j8:U8qGASQj8:=8tXATbj89<8xdATnj87V8zSATzj8:=8n5AXOj8jr8tNF`Qj8m08zqF`=j8tp8q`AV3j8t=8tqAVrj8u>8wwAVfj8wo8zlAUUj8t=8mHAV?j8o?815F`3j8rl83rF`tj8k=8wCF`Gj8i48qKFa`j8ik8nBFajj8i48k9Fatt80A8hkAWEt84r8hbAWEj87w8hl1Abj8x58h51@Ej8WT8sRAWQj9bU8vuAXnj9`b8tJAXbj8TB8sBAWEj8Q18tfAW9j8XA85LAUlj8Rw84oAU9j8O<827AUE`9bA8G@`8Zu8J2`8U18KN`8SO8GX`8UE8D?`8UR8@=`8Qb8@@`8Nz8=m`8JS8;``8Hs8>E`8D28Ai`8Bv8=g`8CG88H`8FF84Q`8I:80Qj8U085wAUxj9`R85<AU``8YI80h`8VA8wZ`8UE819`8R?8y=`8Kz8xc`8LB8tP`8K28qk`8JS8mv`8Ja8it`8Gc8gm`8O@8jk`8PP8mO`8Or87v`8R38;``8Vv89S`8y:864`81P87D`84O86s`8yF8sf`82<8wN`84O8r<`8dk8wZ`8f3822`8iW851`8eo8Gr`8jh8C2`8mf8IG`8oS8Bm`8rx8G@`8t48B``8qB8=s`8ct8@X`8yF8BF`83r8F0`8618AC`89H8Au`8we8F<", "u3wc`8do8x5`8iu8yD`8mp8vm`8fT8t2`8iI8oY`8pb8pr`8pk8jz`86E830`81e83S`80C8yX`8648x=`88W8uU`86v8se`87?8nM`83J8lR`80`8oCj8n;89YNmBj8kj8;kNm9j8h`8<RNm0j8ej8?dNmrt8re895NmKt8uE89eNmKt8yu88ENmKt81U88uNmKj8iH85X9IGj8l885>9I8j8og8499Itj8qv82M9Iej8sl80tNj3j8fW85>9IVj8dx8499Jjj8bi82M9Jyj8tG8xcNjuj8uH8t?Njlj8vn8qbNjct8vg8m0Nj``9`<8IW`8YQ8E:`8ZH8@m`8Ve8?d`8U78C?`8Rv8FA`8Ni8E5`8Lm8AK`8Lj8=o`9e?8xl`9`98y0`8W>8uT`9bx8t<`8Ze8oE`8TL8p1`8TC8je`8Cj830`8I?83S`8IH8zg`8Cz8x=`8Aa8uA`8CB8rB`8B88nz`8FB8lt`8IN8tMj8Vs89ENnej8YD8:RNnnj9aN8<>Nnwj9dD8>KNn5t8RI89lNmWt8Oi88LNmWt8K9881NmWt8GT88aNmWj9`f85D9IGj8Xv85u9IVj8UG84p9Jjj8S88299Jyj8QB80`Nljj9bR85u9I8j9e784p9Itj9gF8299Iej8Pg8wJNlsj8Of8tvNl1j8N@8pINl:t8NG8mgNl=`8IS8oqt8@=8gINktt8<V8gINktt89t8gINktj85B8gINkyj8Do8g?Nkoj82g8gjNk7j8yE8f`Nk@j8GI8g`Nkfj8Kk8eQNjX`8=g83Uj8A68;Rz:jj8@P8>nz:=j8?i8?Uz;`j8<L8@;z;3j8:58?Uz;Qj88I8>nz<tj88h8;Rz<Gj88I89:z=jj8:587Nz==j8<L87mz>`j8?i87Nz>3j8@P89:z>Q`8ka8IW`8lG8E:`8kP8@m`8p88?d`8qf8C?`8tr8FA`8x48E5`8z08AK`8z38=o`8f88Jh`9ea8I5j8bC8ACNmij9gj8AzNn>`80r8ut", "t;Id`8de8?@`8hc8AV`8l18?e`8rK8Gs`8vA8@k`8xr88S`80e82u`8Be82u`8CZ89O`8H`8Ae`8L38GE`8R78<J`8V:8?R`8ZV8Ax`9ee8?x`8N?84H`8Oi80E`8NQ8vX`8Y083U`9b:8yE`8dH8z8`8hr84R`8og85r`8nY81ot8U=8uXNkot8Yn8uANkot9aO8uuNkot9e58tYNkot8U`8q0Nket8X98p4Nket9ab8o8Nket9d;8n<Nket8iG8vgNkyt8fg8uKNkyt8b58u4Nkyt8jt8q:Nk8t8fJ8p>Nk8t8cs8oBNk8`8nE8wBt8sM8q>Nket8wv8pBNket8zN8oFNket83w8nJNket8y=8tXNkjt8Cj8uNNkyt8?:8u7Nkyt8;S8ukNkyt8;F8n8Nk5t8?r8orNk5t8BN8paNk5t8Fz8pKNk5t8IV8q:Nk5t82k8tvNkjj8O@8n4x<hj8MM8lp5Ggj8978gpNmQj85S8gyNmLj82v8gLNmHj8yL8h7NmCj8vw8i5Nm?j8rW8jFNm:j8=e8gyNmUj8@B8gLNmZj8Dl8h7Nncj8GA8i5Nnhj8K`8jFNnlj8nr8n8x:lj8pf8lw5Fcj9`X89p5CPj9cB88m5C<j9eO86t5Csj8Yd89s5Dij8Vw88w5D2j8Tf8695DFj8jC8:W5CPj8my89T5C<j8gJ8:Z5Dij8ec8:c5D2j8bM88p5DFj8R68E6=Pbj8Pf8BZ=Pjj8Nd8@o=Pqj8L18=m=Pyj8Kj89Y=P5j8Jw86A=P=j8Jf83n=Sjj8Ul8G?=OUj8Ir8zP=Sbj8kJ8E6=NOj8nj8BZ=NGj8pl8@o=N@j8qO8=m=N8j8sf89Y=N1j8sT86A=Ntj8tj83n=PQj8id8G?=NWj8tY8zP=PYa86986j`G?T7Z87Z`8``8a3a86i883`G1@7Zk7Z=8``8bja8698:G`Gnw7Zk7Z38``8a3", "wi<ej8=r8mNAWGj8@88njAWSj8C?8okAXdj8F38pLAXpj8HP8rYAX1j8JJ8u@AX=j8Lf8x>AXIj8LK80LAXUj8:`8njAW;j86T8okAWzj84e8pLAWnj81C8rYAWbj8zI8u@AVQj8RT8sJJi`j8Ts8vBJiij8Um8yHJirj8U?81UJi0j8U:85hJdzj8Ql8qbJhVj8Or8n5JhRj8Mj8lcJhMj8JO8iMJhIj8Hz8gIJhDj9a:88;EYCj9aG851EY>j9aA82rFcCj9as8ziFc>j9`B8wcFc9j8ZJ8tbFc4j8Y?8qgFczj8Xn8ntFcuj8V<8k?Fcpj8TE8ieFckj8R?8fGFcft8gS8Bu=Sjt8gq8>F=Sjt8f?8;g=Sjt8eX878=Sjt8ev83T=Sjt8dD80u=Sjt8db8wF=Sjt8c08tg=Sjt8ob8I4=Slt8s587k=Smt8s`83:=Smt8r;8zT=Smt8rf8ws=Smt8qA8sB=Smt8sT8:K=Smt8tx8>0=Smt8tL8B`=Smt8n98EO=Slt8n`8Bo=Slt8m78>?=Slt8lY8:Z=Slt8l587z=Slt8kW83J=Slt8k380j=Slt8jU8w:=Slt8j18sU=Slt8iS8pu=Sl`8dA8K4`8gb8Gs`8kI8Ni`8oh8Qo`8rG8RG`8sN8Jg`8ym8Ib`8uN8F8`8yN8;4`80H8?A`8458B5`88L8D5`8E>8FJ`8Jk8JU`8MU8MR`8QX8Pt`8V:8Qp`9aF8Li`8XC8IO`8Ul8F6`8Rf8B4`8WS8?e`9`A8Dd`9d:8Gk`9eR8;G`9fE84m`9fa8w0`9cH8pM`8HY8mH`8CR8iZ`8<G8hn`86:8i;`80R8l8`8vy8nh`8xh8hH`8s`8iN`8k68k2`85>8xw`8<b8y;`8BA8vG`8HW85M`8JE8;c`8HN8>t`8DK83B`8@e84m`8;885D`87o86g`9a68le", "z;7fo8Wj8G39H3a3`c8k38k38``8``o8Wj8G39HQa3d@8k38k38``8``o8Wj8G39Ita3i68k38k38``8``o8Wj8G39IGa3nc8k38k38``8``o8Wj8G39Jja3rT8k38k38``8``o8Wj8G39J=a3wJ8k38k38``8``o8Wj8G39K`a31w8k38k38``8``o8Wj8G39K3a36m8k38k38``8``o8Wj8G39KQa3;c8k38k38``8``o8Wj8G39Lta3?@8k38k38``8``o8Wj8G39LGa3D68k38k38``8``o8Wj8G39Mja3Iw8k38k38``8``j88F82O5DSj8n;8mDJhBj8qg8o@JhFj8s78qIJhKj8uG8teJhOj8wI8v<JhTj8y=8ynJhXj80n80YJibj81>83RJifj8Hn8xa5CLj8JN8vL5C8j8LQ8tI5Coj8Ny8qYATej8El8xr5Dej8B08w95Dyj8>e8sxAVej8@a8uQ5DBj8Ob8nKASZj8Oz8k9ASTj8Oz8hrAXX`9f=82B`9bQ8yE`9f48vn`9`C8tQa8SG8j=aj`c8``8``8lQ8nta8SG8lQaj`c8``8``8lQ8nta8VG8y`aj`c8``8``8;=8nta8VG803aj`c8``8``8;=8nt`8E580W`8AE80P`8>h827`8;A8zv`8:v8wa`88E8sx`86b8o4`82Y8kh`8yL8gx`8ir8re`8mE8tC`8q:8xk`8tY80C`8w<84N`8ra841`8nN81P`8j482>`8fL840`8b>82S`8l`8:e`8lr8>e`8kQ8AR`8kG8Fd`8kG8IE`80n8IH`8x?8Gj`8ua8FI`8tR8Ck`8tM8?8`8uA8;A`8@38h``8A=8mG`8CQ8rt`8H38qG`8Jj8mj`8JG8g3`8hl8Kvj8::85h5D>j8@q875Nk2`8Ms82x`8I481j`8P980cj8;z8iWAVwj8;j8fEAV2j8;V8mkAVqj8<O8ptAVkj8=g86>5Dtj8CN87SNkxj8G288bNktj8K`87SNkoj8N=875Nkkj8QM8695CGj8tA8gEJhEj8we8iJJhIj8yy8laJhNj8058n5JhRj8278qqNnCj84z8ttNnGj86a8w7NnLj8718zMNnPj8Tu85d5C3", "zlqgw8Bq8xh1@S`G?T8``8``8``8``w8FY8zz1A=`GH68``8``8``8``w8Hj83Y1=h`G`c8``8``8``8``w8ET88b1=M`GfT8``8``8``8``w8=;87L1>O`GvT8``8``8``8``w8;>8321?9`G1@8``8``8``8``w8=L8yJ1@n`G7w8``8``8``8``w8AD8921@S`Gnw8``8``8``8```8Bl83Kb8Bl83Kbj`c8k38k38``8``b8Bl83Kbjgm8k38k38``8``b8Bl83Kbjnw8k38k38``8``b8Bl83Kbju68k38k38``8``b8Bl83Kbj1@8k38k38``8``b8Bl83Kbj8J8k38k38``8``b8Bl83Kbj?T8k38k38``8``b8Bl83KbjGc8k38k38``8```80x8AA`85c8AK`89I8AA`8Kp8Bb`8O18Bc`8Sl8Bj`8W@8E:`8r58Fn`8hL8Jz`8g=8EM`8gb8@O`8j:8>``8qh8=d`8vU8<:`8wj88y`8vS82Z`8wa8y;`8vA8tb`8q085V`8my88A`8gY87t`8c;8;4`8bH839`8gj8yN`8dh8uM`8gb8rj`8kn8vP`8l;82F`8qh8zx`8pc8vl`8la8qe`8nb8k<`8s;8kt`8ua8fv`8u38oQ`8608m=`86k8sf`8QX8sS`8Sb8x?`8Ww8xR`8Xs82P`8X`88o`8Ww8<r`8Z38?o`9cd8BF`9bq8FR`9cm8Lh`9eR8>1`9f;8:z`9aY87a`9eR82F`9b08yN`9dV8sy`8Uv8iW`8Wn8fv`8EI8ku`8FW8gq`8@x8hd`8AE8kEj85u8eU1@Sj82S8fw1@;j80Q8gF1@nj8z<8iL1?Qj8zo8ln1?9j87D8f81Apj89?8ha1A=j8:I8jl1AUj8:U8l@1=hj8QG8ml1@Sj8Ou8m>1@;j8Ms8nX1@nj8KY8qc1?Qj8Tf8mJ1Apj8Va8os1A=j8Wk8q31AUj8Ww8sR1=h", "0v8hj8@l8waJdtj8@c8sMJiyj8?C8p?Jiuj8@c8zoJdxj8?C822Jd2j8?b85<Jd6j8>k88CJd;j8=c8;DJd?j8;F8>>JdDj8:i8A0JdHj88x8DdJdMj86y8F>JdQj84m8HWJdVj81N8KhJdZj8zu8LOx8tj8wB8LFx8Vj8uz8JOJftj8s18HtJfxj8qA8E?Jf2j8pf8BKJf6j8nK8?PJf;j8mE8<OJf?j8lP89HJfDj8lq86tNl4j8kN82GNl8j8kD8zhNl=t8kN8v:NlAt8ld8rSNlAt8lu8oqNlAj89e8shNj`j88V8o9Noej88V8vFNjdj8888zsNjij87M82MNjmj86O86rNjrj85>89ANjvj8qq8rENl=j8q08ofNlBj8q08vsNl9j8qN8yPNl4j8r982zNl0j8s685ONlvj8tH89nNlrj8Ek8:7Njvj8Fz87gNjqj8Gv83ANjmj8CD8=JNjzj8b=8wsNl=j8bF8zQNl8j8ci833Nl4j8cO86XNlzj8dM8:2Nlvj8fc8=LNlqj8g<8AcNlmj8iv8DmNlhj8kv8GlNldj8m:8J`NkZj8oY8LANkVj8r@8OeNkQj8u38QuNkMj8bF8sDNlAj8ci8pgNlFj8QA8xE1=Ej8O98yU1>bj8Me8zk1>zj8JI8y21>Gj8HU8wK1?dj8Sd8vF1=xt8EN8qB1?ot8Gx8tW1?ot8SO8sI1=ot8TJ8po1=oj9`p8K2JhUj8Yp8HSJhPj8Wd8F:JhLj8T@8D4JhCj8QR8BJJh:j8NT8A:Jh1j8KL8@LJhsj9aT8NjJicj8M88:BNmZj8Qa8;xNncj8T68<vNnhj8WQ8=<Nnlj9`h8?dNnqj9cr8@NNnuj9fq8BNNnz`8VC87;`8Qt83U`8XS822`9dr802`9`08w9`9f386R`8J48pP`8MW8uE`8PK8pF`8zo8q@`8wC8vv`82u8vZ`8z781q`8vr8?I`8z58Ei`8348@kj8AX8@UNj3j8@a8CWNj8", "5LPij8728xm1A`j87y8341A`t84z8xi1@Lt8:s8yq1Aot8==8zK1Aot8@R81u1Aot8Dl82O1Aot8G684y1Aot8JK85S1Aot8Ne8721Aot8Qz88W1Aot8TD8:61Aot8WY8<`1Aot9`s8=:1Aot9c=8?d1Aot8:s84:1Aot8==86d1Aot8@R87>1Aot8Dl89h1Aot8G68:B1Aot8JK8<l1Aot8Ne8=F1Aot8Qz8?p1Aot8TD8@J1Aot8WY8Bt1Aot9`s8CN1Aot9c=8Ex1Aot80D8x21@Lt8468351@Lt80N83K1@Lt8m88lwx<vt8n`8oVx<vt8n88s:x<vt8o`8wix<vt8o88zHx<vt8p`83wx<vt8p886Vx<vt8q`8::x<vt8q88>ix<vt8r`8AHx<vt8lZ8hGx<vt8se8k@x<vt8s=8oox<vt8te8rNx<vt8t=8v2x<vt8ue8zax<vt8u=82@x<vt8ve86ox<vt8v=89Nx<vt8we8=2x<vt8w=8Aax<vt8r<8h`x<vt8xQ8FHx<gt8s68GHx7uj8EV8oq5D`j8Ce8nH5Dtj8@=8mt5D=j8>G8ke5DQj8=H8hy5Ejj8HK8nH5CGj8Ks8mt5C3j8Mi8ke5Cjj8Nh8hy5BQ`8308fL`8ze8fV`8yz8mq`80m8s5`8458rT`84Y8lJ`8<i8sA`8@48se`8?o8wr`8F78wl`8Jq8ub`8N:8vf`8Rb8tn`8Vd8rZ`8V58vK`8UV8op`8Vw8l1`8ZK8te`9cV8v7`9aM8yG`8YO812`9`Y85I`9eb83X`8Qe80s`8Lg8zI`8N083z`9dQ8L3`8Zj8IQ`8T38Gt`8NG8DG`8I`8Bj`8Ct8?=`8==8=``87Q8:3`81=89=`8gG8>i`8bR8=5`8eO88R`8b?845`8id85D`8eW81p`8c`8xo`8gv8tY`8kO8:n`8jm8zrt8zs8Jex<gt8s18Kyx7u", ":Atjj9bC8uXNmQj8H98rzNmZj8@L8?UFajj8Ae8<KFatj8AS89IFa3j8Co86SFa=j8E`84vFaGj8Go82gFaQj8IN80tFb`j8LC8yXFbjj8Js8=IFaGj8L78;:FaQj8Oe89GFb`j8QU880Fbjj8TX87=Fbtj8Xf87tFb3j9`o87=Fb=j8H58@vFa=j8Gj8CkFa3j8Cp8gKEZ=j8@m8h=EZGj8=d8hQEZQj89V8h=F``j8Fe8f4EZ3j86S8gJF`jj84c8f3F`t`8N58Fe`8R48A5`8X<8>:`9cA8>6`9eO83Qb8Vo8zO`Q`c8bj8bQ8``8``b8Vo8zO`Qnw8bj8bQ8``8``b8Vo8zO`Q1@8bj8bQ8``8``b8Vo8zO`Q?T8bj8bQ8``8```8Oo84``8Je87y`8FV8;L`8=`86j`89=82G`8@382G`8=`8rt`8BG8x``87t8x`b8nr8z5`Q`c8bj8bQ8``8``b8nr8z5`Qnw8bj8bQ8``8``b8nr8z5`Q1@8bj8bQ8``8``b8nr8z5`Q?T8bj8bQ8``8```8sp8jS`8Dh8nh`8Ja8mP`8O18ng`8Uv8n:`8ZO8o>`9eZ8qe`8Rl8jHj8Rf8r9NmZj8U=8sxNnhj9fp8vpNmZj8DV8rfNmQj8gc8uXNmQj81m8rzNmHj88V8?UEY=j88B8<KFc=j87Q89IFc3j86886SFctj84G84vFcjj82882gFc`j8zT80tFbQj8xc8yXFbGj8z58=IFcjj8xq8;:Fc`j8uB89GFbQj8rM880FbGj8oJ87=Fb=j8l@87tFb3j8i887=Fbtj81r8@vFctj82=8CkFc3`8vr8Fe`8rr8A5`8lk8>:`8ff8>6`8cT83Q`8u884``8zB87y`82L8;L`85@8nh`8zE8mO`8uv8nf`8o18n9`8iR8o>`8cH8qej8r@8r9NmHj8oj8swNm?j8c68vpNmHj84L8rfNmQ", ";@?kj8kn8B8z:=j8i78Dnz;`j8gj8DOz;3j8dM8Dnz;Qj8cg8B8z<tj8b68@kz<Gj8lq8@az=jj8mW8>uz==j8pt8=Dz>`j8rA8>uz>3j8tw8@az>Qj8uu8Bvz<tj8vL8Dqz<ej8xG8EIz;Qj8zY8FDz;Bj8208G`z;3j8Pg8>@z:=j8N08@vz;`j8Lc8@Wz;3j8IF8@vz;Qj8GI8>?9LOj8Ev8=l9L@j8BA8<29L1j8Qc8<oz=jj8RI8:8z==j8Uf89Sz>`j8WI8:`5D`j8Z>89:5CGj9bf88g5C3j9cQ85S5Cjj9dP83l5BQj9dP80t5GGj8o:8qrNj`j8oq8mDNoaj8n18jlNnSj8mb8fQNnJj8oq8tONjij80N8prNl=j81g8lDNlFj81V8ilNlOj83v8eQNlXj81g8sONl4j8@a8ihNlyj8?o8e?Nl2j8Ae8l;Nltj8B18oSNlpj8Dg8sbNlgj8Fu8uSNkYj8HT8xyNkPj8K=8zg1>Bj8MX8zB1>uj8Py8zl1=Xj8Ry8xK1=@j8Ta8vM1@oj8Vd8u91@<j8X78uf1@Tj8ZS8u41>yj9bv8uj1>aj9d28sR1=Dj9eN8qR1=wa8jr8M?bj`c8``8``8f38dta8qV8LVbji68``8``8f38dta8pQ8HJbjrT8``8``8f38dta8ut8Ibbj1w8``8``8f38dta8GN8FPbj`c7Z`7Z38f38dta8OI8DEbjfw7Z`7Z38f38dta8N18Jnbjl@7Z`7Z38f38dta8U08@VbjrT7Z`7Z38f38dta8XR8Gkbjym7YQ7Y`8f38dta9bQ8Awbj4J7Z`7Z38f38dta9eq8GKbj;c7Y37Zj8f38dt`8eX8;o`8dt86d`8mc8:0`8u38:K`8r@82Z`8rx870`8zr8:S`8yW8?3`83L8>D`8EY877`8L58:F`8MH85t`8Sv868`8XC85k`8ZQ80U`8Be8B?`8vl8sv`8uP8mF`8tZ8gP`8h;8t<`8cC8po`8gU8lba8jm8Ivbj;c8``8``8f38dta8cI8LtbjD68``8``8f38dta8T28K5bjAw7Z`7Z38f38dta8Y@8K=bjG@7Vj7X38f38dt`8B`83F`8zb86i`8>f8;h`8=C8Ad", "8ellj8Hi8nD=N=j8Fb8q1=NLj8Cu8s7=O`j8@i8tM=Ooj8<G8ur=O3j89v8tM=OBj8318q1=Pej8z082DNj`j8zg8zfNoaj8yr8v>NnSj8wS8ssNnJj8v`8poNnAj8sD8m7Nn8j8pW8kjNnzj8mS8isNnqj8j<8gTNnhj8ge8gdNmZj8HJ83DNl=j8Ic80fNlFj8IS8w>NlOj8Kr8trNlXj8Mj8qoNmfj8O68n7Nmoj8Rm8ljNmxj8Ur8jsNm6j8X>8hTNm?j9ae8hdNmHj8En8gG5BGj8DE8j<5C`j8Cq8md5Ctj8Ab8nU5C=j8>v8oT5CQj8;38oT5Djj88G8nU5D3j8688md5DGj85d8j<5E`j84<8gG5Etj8<E86zz;3j8?a85Iz;`j8@H84bz:=j8Ay81Ez:jj8:x85Iz;Qj88A84bz<tj88`81Ez<G`8RL8xk`9cB8xG`8WE820`8V@8pK`9dg8uF`8Rd81q`8QW85p`8QP8:f`8OP8>0`8M<8BR`9b281Z`9`x867`9`F8:G`9aL8>?`9c68AQ`8Sc8ty`9bW8q2`9`v8m``8rH8xa`8fR8x=`8mO82q`8nT8pA`8f28u<`8s581g`8s=85f`8sD89W`8uE8>q`8wY8BH`8hg81P`8jl86x`8iN8:=`8hH8>5`8gd8AG`8r68to`8g=8qs`8jn8lQ`80R89h`8G589j`88t8?i`8@88?;`8<881y`89J8i``8?J8i``84f8wO`8DU8xy`8oe8Ah`8pw8G``8VL8@E`8U:8F=j8zQ8k8NnKj86i8s7=OQj81u8nC=Ptj8yb8h1NnBj8vI8e@Nn9j8IA8kyNlWj8K58hrNmej8MI8e5Nmn`8<N8eI", "";
 };
 e.GetBackdrop = function()
-return{bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", tileSize = 16, edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = 1, edgeSize = 16, insets = {top = 5, right = 5, left = 5, bottom = 5, }}
+	return{bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", tileSize = 16, edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = 1, edgeSize = 16, insets = {top = 5, right = 5, left = 5, bottom = 5, }}
 end
 e.locale = {["ABOUT"] = "ABOUT", ["ABOUT_TEXT1"] = "The Peggle Institute has opened a branch in Azeroth!\n\n".."After we successfully brought the Bejeweled experience into ".."WoW, the PopCap Guild decided to tackle another of our favorite things: Peggle.\n\n".."We wanted something more competitive that we could use to settle ".."loot disputes and challenge each other while we waited for that ".."last raid member to log on. We've packed in some great touches ".."for the add-on version of Peggle, and now it's ready to be shared with the world!", ["ABOUT_TEXT2"] = "For more great games check out |cFFFF66CChttp://popcap.com|r\n".."Peggle (Unofficial) |cFFFF66CChttps://github.com/adamz01h/wow_peggle", ["ABOUT_TEXT3"] = "(C) 2007, 2009 PopCap Games, Inc. All rights reserved.", ["ABOUT_TEXT4"] = "Version ", ["_BALL_SCORE"] = "+10,000", ["BALLS_LEFT1"] = "%d BALLS LEFT", ["BALLS_LEFT2"] = "LAST BALL!", ["BEAT_THIS_LEVEL1"] = "Beat this level to earn\n+1 talent point!", ["BEAT_THIS_LEVEL2"] = "Clear all pegs to earn\n+1 talent point!", ["BEAT_THIS_LEVEL3"] = "+1 talent point earned\n(Beat level)", ["BEAT_THIS_LEVEL4"] = "+1 talent point earned\n(Full clear)", ["BRAG"] = "What channel would you like to brag to?", ["CHALLENGE"] = "BATTLE", ["CHALLENGE_DETAILS"] = "BATTLE DETAIL", ["CHALLENGE_DESC"] = "Select a battle to view its details\nor create a new battle", ["CHALLENGE_DESC1"] = "Click a name to quickly add/remove it!", ["CHALLENGE_DESC2"] = "|cFFFF8C00CHAT CHANNELS: Adding a custom chat channel will invite all in the chat channel at the time of battle creation. This will not invite offline users, nor users who do not have the addon installed.\n\nYou may only invite custom channels.", ["CHALLENGE_DESC3"] = "Note: Offline users will not receive the battle until they come online while another invitee or you are also online.", ["CHALLENGE_CAT1"] = "From:", ["CHALLENGE_CAT2"] = "Level:", ["CHALLENGE_CAT3"] = "Shots:", ["CHALLENGE_CAT4"] = "Current Standing:", ["CHALLENGE_CAT5"] = "Time Left:", ["CHALLENGE_CAT6"] = "Note to Players:", ["CHALLENGE_LIST"] = "Battle List", ["CHALLENGE_DETAILS"] = "Battle Details", ["CHALLENGE_DUR"] = "BATTLE DURATION", ["CHALLENGE_GUILD1"] = "View Offline Guild Members", ["CHALLENGE_GUILD2"] = "Sort by Online Status", ["CHALLENGE_INVITE1"] = "|cFFFF8C00FRIENDS", ["CHALLENGE_INVITE2"] = "|cFFFF8C00GUILD", ["CHALLENGE_INVITE3"] = "|cFFFF8C00CHANNEL", ["CHALLENGE_LIMIT"] = "Limit of 5 Active\nBattles at once", ["CHALLENGE_NEW"] = "NEW BATTLE", ["CHALLENGE_NONE"] = "NO BATTLE SELECTED", ["CHALLENGE_RANK"] = "%d of %d", ["CHALLENGE_SHOTS"] = "NUMBER OF SHOTS", ["CHALLENGE_SORT_ONLINE"] = "Sort by Online Status", ["CHALLENGE_REPLAYS"] = "NUMBER OF REPLAYS", ["CHALLENGE_VIEW_OFFLINE"] = "View Offline Guild Members", ["CHALLENGE_YOUR_STATUS"] = "Your Status:", ["CHAR_SELECT"] = "CHARACTER SELECT", ["CREDITS"] = "CREDITS", ["CREDITS1"] = "Programmer", ["CREDITS1a"] = "Michael Fromwiller", ["CREDITS2"] = "Producer", ["CREDITS2a"] = "T. Carl Kwoh", ["CREDITS3"] = "Artists", ["CREDITS3a"] = "Tysen Henderson\n".."Noah Maas", ["CREDITS4"] = "Level Design", ["CREDITS4a"] = "Stephen Notley", ["CREDITS5"] = "Quality Assurance", ["CREDITS5a"] = "Ed Miller\n".."Eric Olson", ["CREDITS6"] = "Peggle Credits", ["CREDITS6a"] = "Sukhbir Sidhu\n".."Brian Rothstein\n".."Eric Tams\n".."Jeremy Bilas\n".."Walter Wilson\n".."Matthew Holmberg", ["CREDITS7"] = "Special Thanks", ["CREDITS7a"] = "Jason Kapalka\n".."Dave Haas\n".."Blizzard Entertainment\n".."Jen Chess\n".."Scott Lantz\n".."Anthony Coleman", ["CREDITS8"] = "Beta Testers", ["CREDITS8a"] = "BraveOne - Aerie Peak [A]\n".."Johndoe - Executus EU [A]\n".."Kinu - Ravencrest [H]\n".."Klauen - Blackrock [H]\n".."Lothaer - Spinebreaker [A]\n".."Naiad - Dalaran [A]", ["CREDITS8b"] = "Palasadia - Doomhammer [H]\n".."Polgarra - Terokkar [A]\n".."Smashtastic - Khadgar [A]\n".."Sythalin - Thunderlord[A]\n".."Thanotos- Turalyon[A]\n".."Vodax - Dalaran [A]\n".."Zoquara - Nordrassil [A]", ["DUEL"] = "DUEL", ["DUEL_BREAKDOWN1"] = "Your Score: %s", ["DUEL_BREAKDOWN1a"] = "Opponent's Score: %s", ["DUEL_BREAKDOWN2"] = "Talent: |cFFFFFFFF%s", ["DUEL_BREAKDOWN3"] = "Style: |cFFFFFFFF%s", ["DUEL_BREAKDOWN4"] = "Fever: |cFFFFFFFF%s", ["DUEL_CHALLENGE"] = "%s has challenged you to a duel!", ["DUEL_FORFEIT1"] = "|cFFFF0000You forfeited the duel!", ["DUEL_FORFEIT2"] = "|cFFFF0000Opponent forfeited the duel!", ["_DUEL_HISTORY"] = "Last 10 opponents:", ["_DUEL_NO_HISTORY"] = "No one has been dueled!", ["DUEL_OPP_WL"] = "Win/Loss vs %s: %d - %d", ["DUEL_RESULTS"] = "DUEL RESULTS", ["DUEL_RESULT1"] = "WAITING ON\n%s", ["DUEL_RESULT2"] = "|cFF00FF00DEFEATED\n%s", ["DUEL_RESULT3"] = "|cFFFF0000DEFEATED BY\n%s", ["DUEL_RESULT4"] = "|cFFFF0000DUEL WAS\nFORFEITED", ["DUEL_SCORE1"] = "Your Score: %s", ["DUEL_SCORE2"] = "Opponent Score: %s", ["DUEL_STATUS"] = "DUEL INVITE STATUS", ["DUEL_STATUS1"] = "Sending duel invite...", ["DUEL_STATUS2"] = "Waiting for user to accept duel request...", ["DUEL_STATUS3"] = "User declined the duel request.", ["DUEL_STATUS4"] = "User does not have Peggle addon turned on.", ["DUEL_STATUS5"] = "User is currently being challenged. Try again in a few minutes.", ["DUEL_STATUS6"] = "Challenger cancelled the duel.", ["DUEL_TIME"] = "Duel time remaining: %s", ["DUEL_TOTAL_WL"] = "Total Win/Loss: %d - %d", ["DUEL_WAITING"] = "Your opponent is still playing...", ["_EXPIRED"] = "Expired", ["FORFEIT"] = "Forfeit", ["_FREE_BALL"] = "FREE BALL!", ["FREE_BALL2"] = "FREE\nBALL", ["_FREE_BALL_DUEL"] = "BUCKET BONUS\n%s", ["GENERATING_NAMES"] = "Generating name list for custom channels...", ["HOW_TO_PLAY1"] = "Basic Gameplay", ["HOW_TO_PLAY2"] = "Duel Mode", ["HOW_TO_PLAY2a"] = "Duel Mode lets you challenge another player to a 1-on-1 ten-ball ".."game of Peggle. Choose a level and type in the name of the player ".."you want to challenge, then hit Play!\n\n".."Players must be online and have the add-on in order to participate, ".."and if they are already in another duel you won't be able to challenge ".."them until they are finished.\n\n".."Duel mode stores your last ten opponents as a handy drop-down so you can ".."quickly get a rematch.", ["HOW_TO_PLAY2b"] = "After each duel, the summary screen shows how you fared vs your opponent ".."and gives a breakdown of the point scoring. It also displays which character ".."your opponent used, as well as how many levels they've beaten or gotten a ".."100% clear on.", ["HOW_TO_PLAY3"] = "Battle Mode", ["HOW_TO_PLAY3a"] = "Battle Mode lets you set up special multiplayer contests with your friends ".."and guildmates. You can pick the level, adjust how many shots each person is ".."allowed, and how long the battle will be active for. Then send out invitations ".."to your friends!\n\n".."When you click the Battle Mode tab you can either select an existing ".."Battle that you've entered, or create a new one. If you select one that ".."you've already played, you can see the current leaderboard.\n\n".."The leaderboard also shows icons to indicate which character the player used ".."as well as the number of levels they've beaten and how many 100% clears they've ".."achieved.", ["HOW_TO_PLAY3b"] = "Battles that have run out of time will eventually decay off your list.", ["HOW_TO_PLAY4"] = "Peggle Loot", ["HOW_TO_PLAY4a"] = "Peggle Loot is a fun way to distribute loot in a Master Looter party or raid. ".."When activated, all players in the party or raid with the add-on will get the ".."option to play a single shot high score challenge for the item. Whoever scores ".."the highest wins the right to the item!\n\n".."If you are the Loot Master in a party or raid, simply type |cFFFFFF00/peggleloot|r to ".."initiate the challenge. Optionally, you can also shift-click the item to add ".."an item link after the peggleloot command.", ["HOW_TO_PLAY4b"] = "The addon will pick a random level, and then send that challenge to all members ".."of the party or raid. They will have the option to play or pass. If they play, ".."they get a single shot to score as many points as possible.\n\n".."To make it fair, talents are disabled for the shot and all users are defaulted ".."to Splork. Players have 30 seconds to complete their shots from when the Peggle ".."Loot challenge is activated.\n\n".."Once all players have competed, their scores are shown and the winner declared! ".."The Loot Master should then assign the loot to the winner of the challenge.", ["INVITEES"] = "INVITEES", ["INVITED"] = "|cFFFF8C00(%d INVITED)", ["INVITE_PERSON"] = "INVITE INDIVIDUAL:", ["INVITE_NOTE"] = "NOTE TO INVITEES", ["LEGAL1"] = "(c) 2000, 2009 PopCap Games Inc. All right reserved", ["LEGAL2"] = "(c)2007, 2009 PopCap Games, Inc.  All rights reserved.  This application is ".."being made available free of charge for your personal, non-commercial entertainment "..'use, and is provided "as is", without any warranties.  PopCap Games, Inc. will have '.."no liability to you or anyone else if you choose to use it.  See readme.txt for details.", ["_LEVEL_INFO"] = "Level %d: %s", ["_LEVEL_NAME1"] = "Ironforge", ["_LEVEL_NAME2"] = "Orgrimmar", ["_LEVEL_NAME3"] = "Stormwind", ["_LEVEL_NAME4"] = "Undercity", ["_LEVEL_NAME5"] = "Darnassus", ["_LEVEL_NAME6"] = "Thunder Bluff", ["_LEVEL_NAME7"] = "Dark Portal", ["_LEVEL_NAME8"] = "Exodar", ["_LEVEL_NAME9"] = "Silvermoon City", ["_LEVEL_NAME10"] = "Shattrath City", ["_LEVEL_NAME11"] = "Dalaran", ["_LEVEL_NAME12"] = "Icecrown Citadel", ["MENU"] = "MENU", ["MOST_RECENT"] = "MOST RECENT:", ["MOUSE_OVER"] = "Mouse over a talent for more information", ["NEW"] = " |cffffff00(NEW!)", ["_NEXT"] = "NEXT ", ["NO_SCORE"] = "PLAY LEVEL TO EARN A SCORE!", ["NOT_PLAYED"] = "Not yet played", ["OPPONENT"] = "OPPONENT:", ["OPPONENT_NOTE"] = "NOTE TO OPPONENT", ["OPPONENT_NOTE2"] = "NOTE FROM OPPONENT", ["OPT_TRANS_DEFAULT"] = "Mouse-on Transparency", ["OPT_TRANS_MOUSE"] = "Mouse-off Transparency", ["OPT_MINIMAP"] = "Show Mini-map Icon", ["OPT_NEW_ON_FLIGHT"] = "New Game on Flight Start", ["OPT_SOUNDS"] = "Sounds:", ["OPT_SOUNDS_NORMAL"] = "Normal", ["OPT_SOUNDS_QUIET"] = "Quiet", ["OPT_SOUNDS_OFF"] = "Off", ["OPT_LOCK"] = "Lock Window", ["OPT_COLORBLIND"] = "Color Blind Mode", ["OPT_HIDEOUTDATED"] = "Hide Outdated Chat Notifications", ["OPT_AUTO_OPEN"] = "Auto-Open:", ["OPT_AUTO_OPEN1"] = "On Flight Start", ["OPT_AUTO_OPEN2"] = "On Death", ["OPT_AUTO_OPEN3"] = "On Log-in", ["OPT_AUTO_OPEN4"] = "Duel Invite", ["OPT_AUTO_CLOSE"] = "Auto-Close:", ["OPT_AUTO_CLOSE1"] = "On Flight End", ["OPT_AUTO_CLOSE2"] = "On Ready Check", ["OPT_AUTO_CLOSE3"] = "On Enter Combat", ["OPT_AUTO_CLOSE4"] = "Duel Complete", ["OPT_AUTO_CLOSE5"] = "Peggle Loot Complete", ["OPT_DUEL_INVITES"] = "Duel/Battle Invites:", ["OPT_DUEL_INVITES1"] = "Chatbox Text Alert", ["OPT_DUEL_INVITES2"] = "Raid Warning Text Alert", ["OPT_DUEL_INVITES3"] = "Mini-map Icon Alert", ["OPT_DUEL_INVITES4"] = "Auto-decline Duels", ["OPTIONAL"] = "|cFFFF8C00(OPTIONAL)", ["ORANGE_PEGS"] = "Orange\nPegs", ["OUT_OF_DATE"] = "|cFFFFFFFFThis version of Peggle is out-of-date! Visit |r|cFFFFFF00www.popcap.com/wow|r|cFFFFFFFF for the latest version!", ["_OUTDATED"] = "%s has invited you to a %s using an old version of this addon. Unfortunately, the versions are no longer compatible. Please ask them to upgrade to the latest version.", ["_PEGS_HIT"] = "%s x %d |4PEG:PEGS", ["_PEGGLE_ISSUE1"] = "[Peggle] We're very sorry but it appears the battle data being saved is invalid and was not saved. Please report this error to wowaddons@popcap.com with as much detail as possible so we can fix it in future versions.", ["PEGGLE_ISSUE2"] = "Part of the Peggle addon is corrupt. Please re-download the Peggle addon to fix this issue.", ["PEGGLELOOT_DESC"] = "Highest Scoring Single Shot Wins", ["_PEGGLELOOT_ISACTIVE"] = "Peggle Loot is already active! %d seconds remain in current challenge.", ["_PEGGLELOOT_NOTIFY"] = "Peggle One-Shot Loot System Initialized for %s! Results released in 40 seconds. If you do not have the Peggle Addon, you're missing out!", ["_PEGGLELOOT_CHAT_REMAINING"] = "Peggle Loot results in %d seconds!", ["_PEGGLELOOT_NOTMASTERLOOTER"] = "PeggleLoot requires you to be the Master Looter.", ["_PEGGLELOOT_NOWINNER"] = "*** No winner found! ***", ["PEGGLELOOT_REMAINING"] = "Time remaining: %d sec", ["_PEGGLELOOT_RESULTS"] = "Peggle Loot Results:", ["PEGGLELOOT_TITLE"] = "Peggle Loot Challenge", ["_PEGGLELOOT_WINNER"] = "*** Winner: %s ***", ["_PEGGLELOOT_WRONGMETHOD"] = "Peggle Loot requires the loot mode to be Master Looter.", ["PERSONAL_BEST"] = "PERSONAL BEST:", ["PERSONAL_BEST_PTS"] = "%s PTS", ["_PUBLISH_SCORE"] = "[Peggle]: %s just scored %s points on %s! Download the Peggle Addon for Wow to defeat their score! https://github.com/adamz01h/wow_peggle", ["_PUBLISH_DUEL_W"] = "[Peggle]: %s just defeated %s in a Peggle Duel! Download the Peggle Addon for Wow to pit your skills against them!", ["_PUBLISH_DUEL_L"] = "[Peggle]: %s was just defeated by %s in a Peggle Duel! Download the Peggle Addon for Wow to pit your skills against them!", ["_PUBLISH_1"] = CHAT_MSG_GUILD, ["_PUBLISH_2"] = CHAT_MSG_PARTY, ["_PUBLISH_3"] = CHAT_MSG_RAID, ["QUICK_PLAY"] = "QUICK PLAY", ["PLAYING"] = "Playing", ["_POINT_BOOST"] = "POINT BOOST!", ["_POINTS_LEFT"] = "Points left to spend", ["_RANK"] = "Rank (%d/%d)", ["_REQUIRES_5"] = "|cFFFF0000Requires 5 points in %s.\n", ["_REQUIRES_X"] = "|cFFFF0000Requires %d points in Peggle Talents.\n", ["SELECT_LEVEL"] = "SELECT A LEVEL", ["SCORE"] = "Score", ["SCORE_BEST"] = "Best", ["SCORE_TIME_LEFT"] = "Time Left: %s", ["SCORES"] = "SCORES", ["_SPECIAL_NAME1"] = "SUPER GUIDE", ["_SPECIAL_NAME2"] = "SPACE BLAST", ["_STYLE_COUNT"] = "+%s STYLE POINTS", ["_STYLESHOT_1"] = "FREE BALL SKILLS!\n+", ["_STYLESHOT_2"] = "LONG SHOT!\n+", ["_STYLESHOT_3"] = "SUPER LONG SHOT!\n+", ["_STYLESHOT_4"] = "MAD SKILLZ\n+", ["_STYLESHOT_4a"] = "CRAZY MAD SKILLZ\n+", ["_STYLESHOT_5"] = "EXTREME SLIDE!\n+", ["_STYLESHOT_6"] = "ORANGE ATTACK!\n+", ["_STYLESHOT_6a"] = "ORANGE ATTACK!\n+", ["_SUMMARY_TITLE0"] = "NO MORE SHOTS", ["_SUMMARY_TITLE1"] = "LEVEL COMPLETE", ["_SUMMARY_TITLE2"] = "LEVEL FULLY CLEARED", ["_SUMMARY_TITLE3"] = "LEVEL FINISHED", ["_SUMMARY_TITLE4"] = "BATTLE FINISHED", ["_SUMMARY_TITLE5"] = "LOOT SCORE SUBMITTED", ["SUMMARY_SCORE_BEST"] = "Best Score On This Level: |cFFFFFFFF%s", ["SUMMARY_SCORE_YOURS"] = "Score: |cFFFFFFFF%s", ["SUMMARY_STAT1"] = "Shots:", ["SUMMARY_STAT2"] = "Free Balls:", ["SUMMARY_STAT3"] = "% Cleared:", ["SUMMARY_STAT4"] = "Talent Score:", ["SUMMARY_STAT5"] = "Fever Score:", ["SUMMARY_STAT6"] = "Style Points:", ["_TALENT1_NAME"] = "TWO-SIDED COIN", ["_TALENT1_DESC"] = "Increases your chance of getting a free-ball when you don't hit any pegs by %d%%.", ["_TALENT2_NAME"] = "STYLE FOR MILES", ["_TALENT2_DESC"] = "Increases the points you receive for style shots by %d%%.", ["_TALENT3_NAME"] = "A STEP AHEAD", ["_TALENT3_DESC"] = "Your fever bonus meter starts with %d |4notch:notches; lit at the beginning of the match.", ["_TALENT4_NAME"] = "THE ONLY CURE", ["_TALENT4_DESC"] = "The points awarded by end of level Fever Buckets is increased by %d%%.", ["_TALENT5_NAME"] = "PEG MARKSMAN", ["_TALENT5_DESC"] = 'When you hit a peg, you have a %d%% chance to "crit" receiving 150%% of that peg\'s points.', ["_TALENT6_NAME"] = "MORE COWBELL", ["_TALENT6_DESC"] = "Purple pegs have a %d%% chance to increase your fever meter by 1.", ["_TALENT7_NAME"] = "MISSION CRITICAL", ["_TALENT7_DESC"] = "Your Crit pegs are worth %d%% of the original peg's value.", ["_TALENT8_NAME"] = "Unintended Awesome", ["_TALENT8_DESC"] = "When you hit a green peg, the purple peg has a %d%% chance of erupting in a small explosion, scoring itself and other nearby pegs.", ["_TALENT9_NAME"] = "Infusion of Awesome", ["_TALENT9_DESC"] = "Pegs hit with your special power have a %d%% chance to crit. (First two pegs hit with a guided ball OR all pegs hit with a space blast).", ["_TALENT10_NAME"] = "ROLLING IGNITION", ["_TALENT10_DESC"] = "When you hit a green peg and land the ball in the bucket in the same shot, one of your blue pegs is converted to a green peg.", ["_TALENT11_NAME"] = "DOUBLE FISSION", ["_TALENT11_DESC"] = "When you hit a purple peg, you score bonus points for each peg already hit in the shot as if you hit it again. These bonus points may not crit.", ["TALENTS"] = "TALENTS", ["TALENTS_DESC"] = "Talents are 'passive' abilities that affect all characters", ["_THE_ITEM"] = "the item", ["_TOOLTIP_MINIMAP"] = "Left-click to show/hide game.\nRight-click to move icon.", ["_TOTAL_MISS"] = "TOTAL MISS!", ["_TURNS"] = " TURNS", ["WIN_LOSS"] = "Win/Loss Record", ["WIN_LOSS_LEVEL"] = "(On this level)", ["WIN_LOSS_PLAYER"] = "W/L vs this opponent: %d - %d", }e.factors = {0, 10, 0, 2, 0, 1, 0, 10, 0, 5, 0, 10, 150, 10, 0, 10, 0, 20, 0, 0, 0, 0}local fe = nil;
 local ht =  - 1;
@@ -367,97 +367,97 @@ PeggleProfile.lastDuels = {};
 PeggleProfile.levelTracking = {};
 PeggleProfile.duelTracking = {};
 function o.MinuteDifference(h, u, S, a, i)
-local t, l, c, r = CalendarGetDate();
-local d, s = GetGameTime();
-local n = 0;
-if(r - i > 1)then
-n = 525600;
-elseif(r - i >= 1)and(12 - a + l >= 12)then
-n = 525600;
-else
-local o, t
-local o = 0;
-if(a < l)then
-for n = a, l - 1 do
-t = e.days[n];
-if(n == 2)and(f(i, 4) == 0)then
-t = t + 1;
-end
-o = o + t;
-end
-elseif(a > l)then
-for n = a, 12 do
-t = e.days[n];
-if(n == 2)and(f(i, 4) == 0)then
-t = t + 1;
-end
-o = o + t;
-end
-for n = 1, l - 1 do
-t = e.days[n];
-if(n == 2)and(f(r, 4) == 0)then
-t = t + 1;
-end
-o = o + t;
-end
-end
-o = o - S + c;
-n = o * 24;
-n = n - h + d;
-n = n * 60;
-n = n - u + s;
-end
-return n
+	local t, l, c, r = CalendarGetDate();
+	local d, s = GetGameTime();
+	local n = 0;
+	if(r - i > 1)then
+		n = 525600;
+	elseif(r - i >= 1)and(12 - a + l >= 12)then
+		n = 525600;
+	else
+		local o, t
+		local o = 0;
+		if(a < l)then
+			for n = a, l - 1 do
+				t = e.days[n];
+				if(n == 2)and(f(i, 4) == 0)then
+					t = t + 1;
+				end
+				o = o + t;
+			end
+		elseif(a > l)then
+			for n = a, 12 do
+				t = e.days[n];
+				if(n == 2)and(f(i, 4) == 0)then
+					t = t + 1;
+				end
+				o = o + t;
+			end
+			for n = 1, l - 1 do
+				t = e.days[n];
+				if(n == 2)and(f(r, 4) == 0)then
+					t = t + 1;
+				end
+				o = o + t;
+			end
+		end
+		o = o - S + c;
+		n = o * 24;
+		n = n - h + d;
+		n = n * 60;
+		n = n - u + s;
+	end
+	return n
 end
 function o.TimeBreakdown(e)
-local t;
-t = i(e / 60);
-e = e - (t * 60);
-return t, e;
+	local t;
+	t = i(e / 60);
+	e = e - (t * 60);
+	return t, e;
 end
 function o.TableFind(n, o)
-local t, e;
-for e = 1, #n do
-if(n[e] == o)then
-t = e;
-break;
-end
-end
-return t
+	local t, e;
+	for e = 1, #n do
+		if(n[e] == o)then
+			t = e;
+			break;
+		end
+	end
+	return t
 end
 function o.TableRemove(t, o)
-local e, e;
-local n = #t;
-local e = 1;
-for n = 1, n do
-if(t[e] == o)then
-u(t, e);
-else
-e = e + 1;
-end
-end
+	local e, e;
+	local n = #t;
+	local e = 1;
+	for n = 1, n do
+		if(t[e] == o)then
+			u(t, e);
+		else
+			e = e + 1;
+		end
+	end
 end
 function o.TableInsertOnce(e, n, l)
-local o, t
-local o = #e;
-for o = 1, o do
-if(e[o] == n)then
-t = true;
-end
-end
-if not t then
-s(e, n);
-if l then
-table.sort(e)
-end
-end
-return not t;
+	local o, t
+	local o = #e;
+	for o = 1, o do
+		if(e[o] == n)then
+			t = true;
+		end
+	end
+	if not t then
+		s(e, n);
+		if l then
+			table.sort(e)
+		end
+	end
+	return not t;
 end
 function o.TablePack(e, ...)
-local t;
-for t = 1, select('#', ...)do
-s(e, (select(t, ...)));
-end
+	local t;
+	for t = 1, select('#', ...)do
+		s(e, (select(t, ...)));
+	end
 end
 local function P(e)
 	local e = string.gsub(e, "(%d)(%d%d%d)$", "%1,%2")
