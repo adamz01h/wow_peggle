@@ -1,6 +1,6 @@
-## Interface: 70200
+## Interface: 70300
 ## Title: Peggle (Unofficial)
-## Version: 1.03
+## Version: 1.04
 ## Notes: The popular game Peggle, now for World of Warcraft!
 ## Author: PopCap Games Inc.
 ## SavedVariables: PeggleData

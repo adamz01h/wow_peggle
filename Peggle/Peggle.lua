@@ -2091,10 +2091,10 @@ function o:SkinDropdown(t, t, t, t, t, t, t)
 		o.dropdownSkinColor = {t:GetBackdropColor()};
 	end
 	local e;
-	if(type(UIDROPDOWNMENU_OPEN_MENU) == "table")then
-		e = UIDROPDOWNMENU_OPEN_MENU
-	elseif(type(UIDROPDOWNMENU_OPEN_MENU) == "string")then
-		e = getglobal(UIDROPDOWNMENU_OPEN_MENU);
+	if(type(UIDropDownMenu_GetCurrentDropDown()) == "table")then
+		e = UIDropDownMenu_GetCurrentDropDown()
+	elseif(type(UIDropDownMenu_GetCurrentDropDown()) == "string")then
+		e = getglobal(UIDropDownMenu_GetCurrentDropDown());
 	else
 		e = nil;
 	end
@@ -2112,7 +2112,7 @@ end
 local function l(n, l)
 	local o
 	if(l == 1)then
-		local e = UIDROPDOWNMENU_OPEN_MENU;
+		local e = UIDropDownMenu_GetCurrentDropDown();
 		UIDropDownMenu_SetText(e, n:GetText(), e);
 		UIDropDownMenu_SetSelectedValue(e, n.value);
 		PeggleData.settings.defaultPublish = n.value;
@@ -2121,7 +2121,7 @@ local function l(n, l)
 		e.name2:SetText(PeggleProfile.lastDuels[n.value]);
 	else
 		if not n.forced then
-			local t = UIDROPDOWNMENU_OPEN_MENU;
+			local t = UIDropDownMenu_GetCurrentDropDown();
 			UIDropDownMenu_SetText(t, n:GetText(), t);
 			UIDropDownMenu_SetSelectedName(t, n:GetText());
 			t.selectedValue = n.value;
