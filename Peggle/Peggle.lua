@@ -5737,15 +5737,15 @@ local function me()
 		a = e:GetParent():GetParent():GetParent();
 		if(a.showID ~= e:GetID())then
 			e.tex:SetAlpha(.5);
-			end
-			end
-			local S = function(e)
-			a = e:GetParent():GetParent():GetParent();
-			if(a.showID ~= e:GetID())then
-				e.tex:SetAlpha(0);
-			end
 		end
-		local h = function(e)
+	end
+	local S = function(e)
+		a = e:GetParent():GetParent():GetParent();
+		if(a.showID ~= e:GetID())then
+			e.tex:SetAlpha(0);
+		end
+	end
+	local h = function(e)
 		local t = e:GetParent():GetParent():GetParent();
 		if(t.showID ~= e:GetID())then
 			e:GetParent():GetParent()["highlight"..t.showID].tex:SetAlpha(0);
