@@ -629,7 +629,8 @@ PeggleProfile.lastDuels = {};
 PeggleProfile.levelTracking = {};
 PeggleProfile.duelTracking = {};
 function o.MinuteDifference(h, u, S, a, i)
-	local t, l, c, r = CalendarGetDate();
+	local date=C_Calendar.GetDate()
+	local t, l, c, r = date.weekday, date.month, date.monthDay, date.year;
 	local d, s = GetGameTime();
 	local n = 0;
 	if(r - i > 1)then
@@ -1126,7 +1127,7 @@ local function lt(l, n, o)
 			n.player1.value5 = l;
 			n.player1.value6 = a;
 			n.player1.value = w;
-			SendAddonMessage(t.network.prefix, e.commands[6].."+"..o, "WHISPER", n.name2:GetText());
+			C_ChatInfo.SendAddonMessage(t.network.prefix, e.commands[6].."+"..o, "WHISPER", n.name2:GetText());
 			n:UpdateWinners();
 			if(PeggleData.settings.closeDuelChallenge == true)then
 				t.duelStatus = nil;
@@ -1153,7 +1154,7 @@ local function Me(i, n)
 				a = c(l, 69 + (o - 1) * 6, 68 + o * 6)
 			end
 			if(n.serverName)then
-			SendAddonMessage(t.network.prefix, e.commands[19].."+"..n.id.."+"..a, "WHISPER", n.serverName);
+				C_ChatInfo.SendAddonMessage(t.network.prefix, e.commands[19].."+"..n.id.."+"..a, "WHISPER", n.serverName);
 			end
 		else
 			print(e.locale["_PEGGLE_ISSUE1"]);
@@ -4664,7 +4665,7 @@ local function re(n, r, f)
 					n.player1.value5 = a;
 					n.player1.value6 = l;
 					n.player1.value = w;
-					SendAddonMessage(t.network.prefix, e.commands[6].."+"..o, "WHISPER", n.name2:GetText());
+					C_ChatInfo.SendAddonMessage(t.network.prefix, e.commands[6].."+"..o, "WHISPER", n.name2:GetText());
 					n:UpdateWinners();
 					if(PeggleData.settings.closeDuelChallenge == true)then
 						t.duelStatus = nil;
@@ -4916,7 +4917,8 @@ local function pe(c, m, x, d, l, S)
 	n[t[5]] = S;
 	n[t[6]] = true;
 	n[t[7]] = d;
-	local e, b, T, P = CalendarGetDate();
+	local date=C_Calendar.GetDate()
+	local e, b, T, P = date.weekday, date.month, date.monthDay, date.year;
 	local f, S = GetGameTime();
 	Fe(ie[c]);
 	local a = #B;
@@ -4978,7 +4980,8 @@ local function ge(n)
 		local a = S(O(W(e, 10)));
 		local a = S(c(e, 11, 12));
 		local a = c(e, 69);
-		local e, e, e, e = CalendarGetDate();
+		local date=C_Calendar.GetDate()
+		local e, e, e, e = date.weekday, date.month, date.monthDay, date.year;
 		local e, e = GetGameTime();
 		t[1] = n[o[4]];
 		t[2] = d;
@@ -5046,7 +5049,7 @@ local function M(n, a, t, ...)
 							t = o[n];
 							if(e.onlineList[t] == 2)then
 								t = gsub(t, "^%l", string.upper);
-								SendAddonMessage(e.addonName, l, "WHISPER", t);
+								C_ChatInfo.SendAddonMessage(e.addonName, l, "WHISPER", t);
 							end
 						end
 					end
@@ -5738,7 +5741,7 @@ local function ce()
 	n = m(0, 0, 40, "buttonAbandonGame", true, "menuAbandon", l, function(o)
 		if(t.duelStatus == 3)then
 			local n = t.catagoryScreen.frames[2];
-			SendAddonMessage(t.network.prefix, e.commands[6], "WHISPER", n.name2:GetText());
+			C_ChatInfo.SendAddonMessage(t.network.prefix, e.commands[6], "WHISPER", n.name2:GetText());
 			n.player1.value =  - 2;
 			n:UpdateWinners();
 			if(PeggleData.settings.closeDuelChallenge == true)then
@@ -6507,7 +6510,7 @@ local function oe()
 			if(o == "")then
 				o = NONE;
 			end
-			SendAddonMessage(t.network.prefix, e.commands[1].."+"..n.showID.."+"..o.."+"..a, "WHISPER", d);
+			C_ChatInfo.SendAddonMessage(t.network.prefix, e.commands[1].."+"..n.showID.."+"..o.."+"..a, "WHISPER", d);
 		end
 	end)
 	n:ClearAllPoints();
@@ -6531,7 +6534,7 @@ local function oe()
 		n.note2a:Hide();
 		n.note3:Hide();
 		n.note3Title:Hide();
-		SendAddonMessage(t.network.prefix, e.commands[7].."+", "WHISPER", n.name2:GetText());
+		C_ChatInfo.SendAddonMessage(t.network.prefix, e.commands[7].."+", "WHISPER", n.name2:GetText());
 	end, nil, true)
 	n:ClearAllPoints();
 	n:SetPoint("Bottom", a, "Bottom", 0, 16);
@@ -6568,7 +6571,7 @@ local function oe()
 		n:Hide();
 		local n = n:GetParent():GetParent();
 		n.decline2:Hide();
-		SendAddonMessage(t.network.prefix, e.commands[4].."+", "WHISPER", n.name2:GetText());
+		C_ChatInfo.SendAddonMessage(t.network.prefix, e.commands[4].."+", "WHISPER", n.name2:GetText());
 		t.minimap.notice = nil;
 		t.levelList:Hide();
 		n.winLoss:Hide();
@@ -6628,7 +6631,7 @@ local function oe()
 		n.note3:Hide();
 		n.note3Title:Hide();
 		n.go:Show();
-		SendAddonMessage(t.network.prefix, e.commands[3].."+", "WHISPER", n.name2:GetText());
+		C_ChatInfo.SendAddonMessage(t.network.prefix, e.commands[3].."+", "WHISPER", n.name2:GetText());
 		t.duelStatus = nil;
 	end, nil, true)
 	n:ClearAllPoints();
@@ -10331,7 +10334,7 @@ local function N()
 		t.mouseOverScreen.fading = nil;
 		if(t.duelStatus == 3)then
 			local n = t.catagoryScreen.frames[2];
-			SendAddonMessage(t.network.prefix, e.commands[6], "WHISPER", n.name2:GetText());
+			C_ChatInfo.SendAddonMessage(t.network.prefix, e.commands[6], "WHISPER", n.name2:GetText());
 			n.player1.value =  - 2;
 			n:UpdateWinners();
 			t.duelStatus = nil;
@@ -10399,10 +10402,10 @@ local function k()
 				while(e.throttleCount < 10)do
 					o, t, n = strsplit(O(174), u(e.queue, 1));
 					if((t == "GUILD")and IsInGuild())then
-						SendAddonMessage(l, o, t, n);
+						C_ChatInfo.SendAddonMessage(l, o, t, n);
 						e.throttleCount = e.throttleCount + 1;
 					elseif(t == "WHISPER")and(n ~= "")then
-						SendAddonMessage(l, o, t, n);
+						C_ChatInfo.SendAddonMessage(l, o, t, n);
 						e.throttleCount = e.throttleCount + 1;
 					elseif(t == "RAID")or(t == "PARTY")then
 						SendChatMessage(o, t);
@@ -10470,7 +10473,7 @@ local function k()
 					end
 					e.outdatedText:Show();
 				end
-				SendAddonMessage(C, r[9], "WHISPER", a);
+				C_ChatInfo.SendAddonMessage(C, r[9], "WHISPER", a);
 				if(e.offlineList[a])then
 					e.offlineList[a] = nil;
 				end
@@ -10503,7 +10506,7 @@ local function k()
 					l = u[e];
 					if(l.id == i)then
 						if(l.serverName)then
-							SendAddonMessage(C, r[12].."+"..i.."+"..l.serverName, "WHISPER", a);
+							C_ChatInfo.SendAddonMessage(C, r[12].."+"..i.."+"..l.serverName, "WHISPER", a);
 							break;
 						end
 					end
@@ -10547,7 +10550,7 @@ local function k()
 							end
 						else
 							Me(nil, l);
-							SendAddonMessage(C, r[11].."+"..i, "WHISPER", d);
+							C_ChatInfo.SendAddonMessage(C, r[11].."+"..i, "WHISPER", d);
 						end
 						break;
 					end
@@ -10623,8 +10626,8 @@ local function k()
 							table.sort(l[n[2]]);
 							table.sort(l[n[3]]);
 							l[n[7]] = S(c(l[g], 3 + 5, 3 + 6));
-							SendAddonMessage(C, r[17].."+"..i, "WHISPER", a);
-							SendAddonMessage(C, r[10].."+"..i, "WHISPER", a);
+							C_ChatInfo.SendAddonMessage(C, r[17].."+"..i, "WHISPER", a);
+							C_ChatInfo.SendAddonMessage(C, r[10].."+"..i, "WHISPER", a);
 							t.challengeTimer.sElapsed = 180;
 							t.challengeTimer.sChallPing = true;
 							local e = t.catagoryScreen.frames[3];
@@ -10654,13 +10657,13 @@ local function k()
 					l = u[t];
 					if(l.id == i)then
 						e = true;
-						SendAddonMessage(C, r[17].."+"..i, "WHISPER", a);
+						C_ChatInfo.SendAddonMessage(C, r[17].."+"..i, "WHISPER", a);
 						break;
 					end
 				end
 				if not e then
 					s(u, {["id"] = i, ["elapsed"] = 60});
-					SendAddonMessage(C, r[18].."+"..i, "WHISPER", a);
+					C_ChatInfo.SendAddonMessage(C, r[18].."+"..i, "WHISPER", a);
 				end
 				return;
 			end
@@ -10758,10 +10761,10 @@ local function k()
 			local l = string.lower(n.name2:GetText());
 			if(h == r[1])then
 				if(PeggleData.settings.inviteDecline == true)then
-					SendAddonMessage(C, r[3], "WHISPER", a);
+					C_ChatInfo.SendAddonMessage(C, r[3], "WHISPER", a);
 				else
 					if(t.duelStatus)then
-						SendAddonMessage(C, r[5], "WHISPER", a);
+						C_ChatInfo.SendAddonMessage(C, r[5], "WHISPER", a);
 					else
 						t.duelTab.sparks:Show();
 						t.duelTimer.elapsed = 0;
@@ -10776,7 +10779,7 @@ local function k()
 						if(PeggleData.settings.inviteRaid == true)then
 							RaidNotice_AddMessage(RaidBossEmoteFrame, "Peggle: "..string.format(n.name1.caption2, a), ChatTypeInfo["RAID_BOSS_EMOTE"])
 						end
-						SendAddonMessage(C, r[2], "WHISPER", a);
+						C_ChatInfo.SendAddonMessage(C, r[2], "WHISPER", a);
 						n.name2:SetText(a);
 						n.name2:DisableDrawLayer("BACKGROUND");
 						n.name2:SetJustifyH("CENTER")
@@ -10952,7 +10955,7 @@ local function k()
 				t.lastIndex = next(e, t.lastIndex);
 			end
 			if(t.lastIndex)then
-				SendAddonMessage(t.prefix, t.command.."+"..t.data, "WHISPER", t.lastIndex);
+				C_ChatInfo.SendAddonMessage(t.prefix, t.command.."+"..t.data, "WHISPER", t.lastIndex);
 				t.elapsed = 0;
 			end
 		end
@@ -11029,7 +11032,7 @@ local function k()
 				if(a)then
 					t.list[t.currentID][4] = a;
 					t.list[t.currentID][5] = "";
-					SendAddonMessage(t.prefix, r[13].."+"..n[o[1]], "WHISPER", a);
+					C_ChatInfo.SendAddonMessage(t.prefix, r[13].."+"..n[o[1]], "WHISPER", a);
 				else
 					t.processing = 2;
 					t.currentIndex = 0;
