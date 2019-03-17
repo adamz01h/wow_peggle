@@ -992,10 +992,12 @@ local function Ve()
 	i.pointsLeft:SetText(e.locale["_POINTS_LEFT"]..": |cFFFFFFFF"..r);
 	local s, d, S, l, a, t, o, n, e;
 	local i = i.tree.node;
+
 	for s = 1, #i do
 		a, S, d, l = Ue(s);
 		e = i[s];
 		e.rank:SetText(a);
+
 		if(a == S)then
 			t, o, n = 1, .82, 0;
 		elseif(c >= d * 5)then
@@ -1018,12 +1020,12 @@ local function Ve()
 		end
 		if(t == .5)then
 			SetDesaturation(e.icon, true);
-			getglobal(e.rank:GetName().."Border"):Hide();
+			--getglobal(e.rank:GetName().."Border"):Hide();
 			e.rank:Hide();
 			e.border:SetVertexColor(t, o, n);
 		else
 			SetDesaturation(e.icon, false);
-			getglobal(e.rank:GetName().."Border"):Show();
+			--getglobal(e.rank:GetName().."Border"):Show();
 			e.rank:Show();
 			e.rank:SetVertexColor(t, o, n);
 			e.border:SetVertexColor(t, o, n);
@@ -8238,13 +8240,13 @@ local function G()
 	end
 	i = e.talentTex;
 	local e = function(d, a, n, t, c, r, o, l)
-		local t = CreateFrame("Button", "PeggleTalent"..n, t, "TalentButtonTemplate");
+		local t = CreateFrame("Button", "PeggleTalent"..n, t, "ActionButtonTemplate");
 		t:SetPoint("Topleft", d, a);
 		t:SetID(n);
 		t:GetNormalTexture():SetTexture(0, 0, 0, 0);
-		t.rank = getglobal(t:GetName().."Rank");
-		t.border = getglobal(t:GetName().."Slot");
-		t.icon = getglobal(t:GetName().."IconTexture");
+		t.rank = _G[t:GetName().."Count"];
+		t.border = _G[t:GetName().."Border"];
+		t.icon = _G[t:GetName().."Icon"];
 		t.icon:SetTexture(e.artPath..i[n]);
 		t:SetScript("OnClick", xt);
 		t:SetScript("OnEnter", c);
