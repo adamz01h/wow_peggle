@@ -1,3 +1,6 @@
+local AddOn, config = ...
+local LEVELS = config.LEVELS
+
 TALENT_BRANCH_TEXTURECOORDS = {
 	up = {
 		[1] = {0.12890625, 0.25390625, 0 , 0.484375},
@@ -69,8 +72,6 @@ local t = function(...)
 		print(...)
 	end
 end
-local ie = {"43aa`8eo8KB`8bQ8Hf`8fe8Bs`8ck8>k`8e=88Y`8bl83K`8e`8y<`8nV8ND`8qT8Hg`8ol8B4`8rn8<L`8oe88A`8qX838`8n<8yN`8q08t<`84x8i2`86h8n``87v8u1`89o8zy`8;d851`8A985:`8Bn8zI`8Dn8uf`8Dn8nq`8Fq8iM`8Tx8uA`8VB802`8SK84e`8VA88g`8Tr8=v`8Vn8C8`8SM8Ho`8V88Oy`9dY8KL`9gn8FW`9eh8Bk`9gx8=P`9d888I`9fD83H`9dU8x5j9`z8oBNnjj8Xc8nDNnat9cC8qkNnot9fX8rENnot8Tz8nuNmVt8PH8mYNmVt8Mf8mBNmVt8I48mvNmVj8i98oVNm=j8lP8nXNmFt8fo8q4Nm8t8bV8rYNm8t8p98n>NmLt8tk8nrNmLt8wM8mVNmLt8048m?NmLt8iH8v5NmLt8iH81bNmLt8iR86lNmLt8jk8;lNmLt8jk8@lNmLt8jk8FvNmLt8jk8LvNmLt8vu8<bNmLt8va86?NmLt8uR81lNmLt8uH8vSNmLt8148vvNmLt83a8z?NmLt85u83INmLt8I98v>NmVt8GM8zHNmVt8F984kNmVt8O98wkNmVt8O981>NmVt8Op87aNmVt8O98;RNmVt9`p8N>NmVt9`f8H4NmVt9`f8B>NmVt9`f8=kNmVt8ZW88uNmVt8ZC83kNmVt8Z98xHNmV`8>a8;ua8Id8>X`G`c8``8``8s=8eGa8LO8CL`G`c8``8``8s=8eGa87l8;m`G`c8``8``8eG8eGa81z8>P`G`c8``8``8eG8eGa8yc8Dv`G`c8``8``8eG8eGa8DJ8;c`G`c8``8``8s=8eG", "03wbj8CF8pfEY=j8C28soEYGj8B?8vqEYQj8As8ygEZ`j8?680DEZjj8=q82SEZtj8C28lWFc=j8:U8qGASQj8:=8tXATbj89<8xdATnj87V8zSATzj8:=8n5AXOj8jr8tNF`Qj8m08zqF`=j8tp8q`AV3j8t=8tqAVrj8u>8wwAVfj8wo8zlAUUj8t=8mHAV?j8o?815F`3j8rl83rF`tj8k=8wCF`Gj8i48qKFa`j8ik8nBFajj8i48k9Fatt80A8hkAWEt84r8hbAWEj87w8hl1Abj8x58h51@Ej8WT8sRAWQj9bU8vuAXnj9`b8tJAXbj8TB8sBAWEj8Q18tfAW9j8XA85LAUlj8Rw84oAU9j8O<827AUE`9bA8G@`8Zu8J2`8U18KN`8SO8GX`8UE8D?`8UR8@=`8Qb8@@`8Nz8=m`8JS8;``8Hs8>E`8D28Ai`8Bv8=g`8CG88H`8FF84Q`8I:80Qj8U085wAUxj9`R85<AU``8YI80h`8VA8wZ`8UE819`8R?8y=`8Kz8xc`8LB8tP`8K28qk`8JS8mv`8Ja8it`8Gc8gm`8O@8jk`8PP8mO`8Or87v`8R38;``8Vv89S`8y:864`81P87D`84O86s`8yF8sf`82<8wN`84O8r<`8dk8wZ`8f3822`8iW851`8eo8Gr`8jh8C2`8mf8IG`8oS8Bm`8rx8G@`8t48B``8qB8=s`8ct8@X`8yF8BF`83r8F0`8618AC`89H8Au`8we8F<", "u3wc`8do8x5`8iu8yD`8mp8vm`8fT8t2`8iI8oY`8pb8pr`8pk8jz`86E830`81e83S`80C8yX`8648x=`88W8uU`86v8se`87?8nM`83J8lR`80`8oCj8n;89YNmBj8kj8;kNm9j8h`8<RNm0j8ej8?dNmrt8re895NmKt8uE89eNmKt8yu88ENmKt81U88uNmKj8iH85X9IGj8l885>9I8j8og8499Itj8qv82M9Iej8sl80tNj3j8fW85>9IVj8dx8499Jjj8bi82M9Jyj8tG8xcNjuj8uH8t?Njlj8vn8qbNjct8vg8m0Nj``9`<8IW`8YQ8E:`8ZH8@m`8Ve8?d`8U78C?`8Rv8FA`8Ni8E5`8Lm8AK`8Lj8=o`9e?8xl`9`98y0`8W>8uT`9bx8t<`8Ze8oE`8TL8p1`8TC8je`8Cj830`8I?83S`8IH8zg`8Cz8x=`8Aa8uA`8CB8rB`8B88nz`8FB8lt`8IN8tMj8Vs89ENnej8YD8:RNnnj9aN8<>Nnwj9dD8>KNn5t8RI89lNmWt8Oi88LNmWt8K9881NmWt8GT88aNmWj9`f85D9IGj8Xv85u9IVj8UG84p9Jjj8S88299Jyj8QB80`Nljj9bR85u9I8j9e784p9Itj9gF8299Iej8Pg8wJNlsj8Of8tvNl1j8N@8pINl:t8NG8mgNl=`8IS8oqt8@=8gINktt8<V8gINktt89t8gINktj85B8gINkyj8Do8g?Nkoj82g8gjNk7j8yE8f`Nk@j8GI8g`Nkfj8Kk8eQNjX`8=g83Uj8A68;Rz:jj8@P8>nz:=j8?i8?Uz;`j8<L8@;z;3j8:58?Uz;Qj88I8>nz<tj88h8;Rz<Gj88I89:z=jj8:587Nz==j8<L87mz>`j8?i87Nz>3j8@P89:z>Q`8ka8IW`8lG8E:`8kP8@m`8p88?d`8qf8C?`8tr8FA`8x48E5`8z08AK`8z38=o`8f88Jh`9ea8I5j8bC8ACNmij9gj8AzNn>`80r8ut", "t;Id`8de8?@`8hc8AV`8l18?e`8rK8Gs`8vA8@k`8xr88S`80e82u`8Be82u`8CZ89O`8H`8Ae`8L38GE`8R78<J`8V:8?R`8ZV8Ax`9ee8?x`8N?84H`8Oi80E`8NQ8vX`8Y083U`9b:8yE`8dH8z8`8hr84R`8og85r`8nY81ot8U=8uXNkot8Yn8uANkot9aO8uuNkot9e58tYNkot8U`8q0Nket8X98p4Nket9ab8o8Nket9d;8n<Nket8iG8vgNkyt8fg8uKNkyt8b58u4Nkyt8jt8q:Nk8t8fJ8p>Nk8t8cs8oBNk8`8nE8wBt8sM8q>Nket8wv8pBNket8zN8oFNket83w8nJNket8y=8tXNkjt8Cj8uNNkyt8?:8u7Nkyt8;S8ukNkyt8;F8n8Nk5t8?r8orNk5t8BN8paNk5t8Fz8pKNk5t8IV8q:Nk5t82k8tvNkjj8O@8n4x<hj8MM8lp5Ggj8978gpNmQj85S8gyNmLj82v8gLNmHj8yL8h7NmCj8vw8i5Nm?j8rW8jFNm:j8=e8gyNmUj8@B8gLNmZj8Dl8h7Nncj8GA8i5Nnhj8K`8jFNnlj8nr8n8x:lj8pf8lw5Fcj9`X89p5CPj9cB88m5C<j9eO86t5Csj8Yd89s5Dij8Vw88w5D2j8Tf8695DFj8jC8:W5CPj8my89T5C<j8gJ8:Z5Dij8ec8:c5D2j8bM88p5DFj8R68E6=Pbj8Pf8BZ=Pjj8Nd8@o=Pqj8L18=m=Pyj8Kj89Y=P5j8Jw86A=P=j8Jf83n=Sjj8Ul8G?=OUj8Ir8zP=Sbj8kJ8E6=NOj8nj8BZ=NGj8pl8@o=N@j8qO8=m=N8j8sf89Y=N1j8sT86A=Ntj8tj83n=PQj8id8G?=NWj8tY8zP=PYa86986j`G?T7Z87Z`8``8a3a86i883`G1@7Zk7Z=8``8bja8698:G`Gnw7Zk7Z38``8a3", "wi<ej8=r8mNAWGj8@88njAWSj8C?8okAXdj8F38pLAXpj8HP8rYAX1j8JJ8u@AX=j8Lf8x>AXIj8LK80LAXUj8:`8njAW;j86T8okAWzj84e8pLAWnj81C8rYAWbj8zI8u@AVQj8RT8sJJi`j8Ts8vBJiij8Um8yHJirj8U?81UJi0j8U:85hJdzj8Ql8qbJhVj8Or8n5JhRj8Mj8lcJhMj8JO8iMJhIj8Hz8gIJhDj9a:88;EYCj9aG851EY>j9aA82rFcCj9as8ziFc>j9`B8wcFc9j8ZJ8tbFc4j8Y?8qgFczj8Xn8ntFcuj8V<8k?Fcpj8TE8ieFckj8R?8fGFcft8gS8Bu=Sjt8gq8>F=Sjt8f?8;g=Sjt8eX878=Sjt8ev83T=Sjt8dD80u=Sjt8db8wF=Sjt8c08tg=Sjt8ob8I4=Slt8s587k=Smt8s`83:=Smt8r;8zT=Smt8rf8ws=Smt8qA8sB=Smt8sT8:K=Smt8tx8>0=Smt8tL8B`=Smt8n98EO=Slt8n`8Bo=Slt8m78>?=Slt8lY8:Z=Slt8l587z=Slt8kW83J=Slt8k380j=Slt8jU8w:=Slt8j18sU=Slt8iS8pu=Sl`8dA8K4`8gb8Gs`8kI8Ni`8oh8Qo`8rG8RG`8sN8Jg`8ym8Ib`8uN8F8`8yN8;4`80H8?A`8458B5`88L8D5`8E>8FJ`8Jk8JU`8MU8MR`8QX8Pt`8V:8Qp`9aF8Li`8XC8IO`8Ul8F6`8Rf8B4`8WS8?e`9`A8Dd`9d:8Gk`9eR8;G`9fE84m`9fa8w0`9cH8pM`8HY8mH`8CR8iZ`8<G8hn`86:8i;`80R8l8`8vy8nh`8xh8hH`8s`8iN`8k68k2`85>8xw`8<b8y;`8BA8vG`8HW85M`8JE8;c`8HN8>t`8DK83B`8@e84m`8;885D`87o86g`9a68le", "z;7fo8Wj8G39H3a3`c8k38k38``8``o8Wj8G39HQa3d@8k38k38``8``o8Wj8G39Ita3i68k38k38``8``o8Wj8G39IGa3nc8k38k38``8``o8Wj8G39Jja3rT8k38k38``8``o8Wj8G39J=a3wJ8k38k38``8``o8Wj8G39K`a31w8k38k38``8``o8Wj8G39K3a36m8k38k38``8``o8Wj8G39KQa3;c8k38k38``8``o8Wj8G39Lta3?@8k38k38``8``o8Wj8G39LGa3D68k38k38``8``o8Wj8G39Mja3Iw8k38k38``8``j88F82O5DSj8n;8mDJhBj8qg8o@JhFj8s78qIJhKj8uG8teJhOj8wI8v<JhTj8y=8ynJhXj80n80YJibj81>83RJifj8Hn8xa5CLj8JN8vL5C8j8LQ8tI5Coj8Ny8qYATej8El8xr5Dej8B08w95Dyj8>e8sxAVej8@a8uQ5DBj8Ob8nKASZj8Oz8k9ASTj8Oz8hrAXX`9f=82B`9bQ8yE`9f48vn`9`C8tQa8SG8j=aj`c8``8``8lQ8nta8SG8lQaj`c8``8``8lQ8nta8VG8y`aj`c8``8``8;=8nta8VG803aj`c8``8``8;=8nt`8E580W`8AE80P`8>h827`8;A8zv`8:v8wa`88E8sx`86b8o4`82Y8kh`8yL8gx`8ir8re`8mE8tC`8q:8xk`8tY80C`8w<84N`8ra841`8nN81P`8j482>`8fL840`8b>82S`8l`8:e`8lr8>e`8kQ8AR`8kG8Fd`8kG8IE`80n8IH`8x?8Gj`8ua8FI`8tR8Ck`8tM8?8`8uA8;A`8@38h``8A=8mG`8CQ8rt`8H38qG`8Jj8mj`8JG8g3`8hl8Kvj8::85h5D>j8@q875Nk2`8Ms82x`8I481j`8P980cj8;z8iWAVwj8;j8fEAV2j8;V8mkAVqj8<O8ptAVkj8=g86>5Dtj8CN87SNkxj8G288bNktj8K`87SNkoj8N=875Nkkj8QM8695CGj8tA8gEJhEj8we8iJJhIj8yy8laJhNj8058n5JhRj8278qqNnCj84z8ttNnGj86a8w7NnLj8718zMNnPj8Tu85d5C3", "zlqgw8Bq8xh1@S`G?T8``8``8``8``w8FY8zz1A=`GH68``8``8``8``w8Hj83Y1=h`G`c8``8``8``8``w8ET88b1=M`GfT8``8``8``8``w8=;87L1>O`GvT8``8``8``8``w8;>8321?9`G1@8``8``8``8``w8=L8yJ1@n`G7w8``8``8``8``w8AD8921@S`Gnw8``8``8``8```8Bl83Kb8Bl83Kbj`c8k38k38``8``b8Bl83Kbjgm8k38k38``8``b8Bl83Kbjnw8k38k38``8``b8Bl83Kbju68k38k38``8``b8Bl83Kbj1@8k38k38``8``b8Bl83Kbj8J8k38k38``8``b8Bl83Kbj?T8k38k38``8``b8Bl83KbjGc8k38k38``8```80x8AA`85c8AK`89I8AA`8Kp8Bb`8O18Bc`8Sl8Bj`8W@8E:`8r58Fn`8hL8Jz`8g=8EM`8gb8@O`8j:8>``8qh8=d`8vU8<:`8wj88y`8vS82Z`8wa8y;`8vA8tb`8q085V`8my88A`8gY87t`8c;8;4`8bH839`8gj8yN`8dh8uM`8gb8rj`8kn8vP`8l;82F`8qh8zx`8pc8vl`8la8qe`8nb8k<`8s;8kt`8ua8fv`8u38oQ`8608m=`86k8sf`8QX8sS`8Sb8x?`8Ww8xR`8Xs82P`8X`88o`8Ww8<r`8Z38?o`9cd8BF`9bq8FR`9cm8Lh`9eR8>1`9f;8:z`9aY87a`9eR82F`9b08yN`9dV8sy`8Uv8iW`8Wn8fv`8EI8ku`8FW8gq`8@x8hd`8AE8kEj85u8eU1@Sj82S8fw1@;j80Q8gF1@nj8z<8iL1?Qj8zo8ln1?9j87D8f81Apj89?8ha1A=j8:I8jl1AUj8:U8l@1=hj8QG8ml1@Sj8Ou8m>1@;j8Ms8nX1@nj8KY8qc1?Qj8Tf8mJ1Apj8Va8os1A=j8Wk8q31AUj8Ww8sR1=h", "0v8hj8@l8waJdtj8@c8sMJiyj8?C8p?Jiuj8@c8zoJdxj8?C822Jd2j8?b85<Jd6j8>k88CJd;j8=c8;DJd?j8;F8>>JdDj8:i8A0JdHj88x8DdJdMj86y8F>JdQj84m8HWJdVj81N8KhJdZj8zu8LOx8tj8wB8LFx8Vj8uz8JOJftj8s18HtJfxj8qA8E?Jf2j8pf8BKJf6j8nK8?PJf;j8mE8<OJf?j8lP89HJfDj8lq86tNl4j8kN82GNl8j8kD8zhNl=t8kN8v:NlAt8ld8rSNlAt8lu8oqNlAj89e8shNj`j88V8o9Noej88V8vFNjdj8888zsNjij87M82MNjmj86O86rNjrj85>89ANjvj8qq8rENl=j8q08ofNlBj8q08vsNl9j8qN8yPNl4j8r982zNl0j8s685ONlvj8tH89nNlrj8Ek8:7Njvj8Fz87gNjqj8Gv83ANjmj8CD8=JNjzj8b=8wsNl=j8bF8zQNl8j8ci833Nl4j8cO86XNlzj8dM8:2Nlvj8fc8=LNlqj8g<8AcNlmj8iv8DmNlhj8kv8GlNldj8m:8J`NkZj8oY8LANkVj8r@8OeNkQj8u38QuNkMj8bF8sDNlAj8ci8pgNlFj8QA8xE1=Ej8O98yU1>bj8Me8zk1>zj8JI8y21>Gj8HU8wK1?dj8Sd8vF1=xt8EN8qB1?ot8Gx8tW1?ot8SO8sI1=ot8TJ8po1=oj9`p8K2JhUj8Yp8HSJhPj8Wd8F:JhLj8T@8D4JhCj8QR8BJJh:j8NT8A:Jh1j8KL8@LJhsj9aT8NjJicj8M88:BNmZj8Qa8;xNncj8T68<vNnhj8WQ8=<Nnlj9`h8?dNnqj9cr8@NNnuj9fq8BNNnz`8VC87;`8Qt83U`8XS822`9dr802`9`08w9`9f386R`8J48pP`8MW8uE`8PK8pF`8zo8q@`8wC8vv`82u8vZ`8z781q`8vr8?I`8z58Ei`8348@kj8AX8@UNj3j8@a8CWNj8", "5LPij8728xm1A`j87y8341A`t84z8xi1@Lt8:s8yq1Aot8==8zK1Aot8@R81u1Aot8Dl82O1Aot8G684y1Aot8JK85S1Aot8Ne8721Aot8Qz88W1Aot8TD8:61Aot8WY8<`1Aot9`s8=:1Aot9c=8?d1Aot8:s84:1Aot8==86d1Aot8@R87>1Aot8Dl89h1Aot8G68:B1Aot8JK8<l1Aot8Ne8=F1Aot8Qz8?p1Aot8TD8@J1Aot8WY8Bt1Aot9`s8CN1Aot9c=8Ex1Aot80D8x21@Lt8468351@Lt80N83K1@Lt8m88lwx<vt8n`8oVx<vt8n88s:x<vt8o`8wix<vt8o88zHx<vt8p`83wx<vt8p886Vx<vt8q`8::x<vt8q88>ix<vt8r`8AHx<vt8lZ8hGx<vt8se8k@x<vt8s=8oox<vt8te8rNx<vt8t=8v2x<vt8ue8zax<vt8u=82@x<vt8ve86ox<vt8v=89Nx<vt8we8=2x<vt8w=8Aax<vt8r<8h`x<vt8xQ8FHx<gt8s68GHx7uj8EV8oq5D`j8Ce8nH5Dtj8@=8mt5D=j8>G8ke5DQj8=H8hy5Ejj8HK8nH5CGj8Ks8mt5C3j8Mi8ke5Cjj8Nh8hy5BQ`8308fL`8ze8fV`8yz8mq`80m8s5`8458rT`84Y8lJ`8<i8sA`8@48se`8?o8wr`8F78wl`8Jq8ub`8N:8vf`8Rb8tn`8Vd8rZ`8V58vK`8UV8op`8Vw8l1`8ZK8te`9cV8v7`9aM8yG`8YO812`9`Y85I`9eb83X`8Qe80s`8Lg8zI`8N083z`9dQ8L3`8Zj8IQ`8T38Gt`8NG8DG`8I`8Bj`8Ct8?=`8==8=``87Q8:3`81=89=`8gG8>i`8bR8=5`8eO88R`8b?845`8id85D`8eW81p`8c`8xo`8gv8tY`8kO8:n`8jm8zrt8zs8Jex<gt8s18Kyx7u", ":Atjj9bC8uXNmQj8H98rzNmZj8@L8?UFajj8Ae8<KFatj8AS89IFa3j8Co86SFa=j8E`84vFaGj8Go82gFaQj8IN80tFb`j8LC8yXFbjj8Js8=IFaGj8L78;:FaQj8Oe89GFb`j8QU880Fbjj8TX87=Fbtj8Xf87tFb3j9`o87=Fb=j8H58@vFa=j8Gj8CkFa3j8Cp8gKEZ=j8@m8h=EZGj8=d8hQEZQj89V8h=F``j8Fe8f4EZ3j86S8gJF`jj84c8f3F`t`8N58Fe`8R48A5`8X<8>:`9cA8>6`9eO83Qb8Vo8zO`Q`c8bj8bQ8``8``b8Vo8zO`Qnw8bj8bQ8``8``b8Vo8zO`Q1@8bj8bQ8``8``b8Vo8zO`Q?T8bj8bQ8``8```8Oo84``8Je87y`8FV8;L`8=`86j`89=82G`8@382G`8=`8rt`8BG8x``87t8x`b8nr8z5`Q`c8bj8bQ8``8``b8nr8z5`Qnw8bj8bQ8``8``b8nr8z5`Q1@8bj8bQ8``8``b8nr8z5`Q?T8bj8bQ8``8```8sp8jS`8Dh8nh`8Ja8mP`8O18ng`8Uv8n:`8ZO8o>`9eZ8qe`8Rl8jHj8Rf8r9NmZj8U=8sxNnhj9fp8vpNmZj8DV8rfNmQj8gc8uXNmQj81m8rzNmHj88V8?UEY=j88B8<KFc=j87Q89IFc3j86886SFctj84G84vFcjj82882gFc`j8zT80tFbQj8xc8yXFbGj8z58=IFcjj8xq8;:Fc`j8uB89GFbQj8rM880FbGj8oJ87=Fb=j8l@87tFb3j8i887=Fbtj81r8@vFctj82=8CkFc3`8vr8Fe`8rr8A5`8lk8>:`8ff8>6`8cT83Q`8u884``8zB87y`82L8;L`85@8nh`8zE8mO`8uv8nf`8o18n9`8iR8o>`8cH8qej8r@8r9NmHj8oj8swNm?j8c68vpNmHj84L8rfNmQ", ";@?kj8kn8B8z:=j8i78Dnz;`j8gj8DOz;3j8dM8Dnz;Qj8cg8B8z<tj8b68@kz<Gj8lq8@az=jj8mW8>uz==j8pt8=Dz>`j8rA8>uz>3j8tw8@az>Qj8uu8Bvz<tj8vL8Dqz<ej8xG8EIz;Qj8zY8FDz;Bj8208G`z;3j8Pg8>@z:=j8N08@vz;`j8Lc8@Wz;3j8IF8@vz;Qj8GI8>?9LOj8Ev8=l9L@j8BA8<29L1j8Qc8<oz=jj8RI8:8z==j8Uf89Sz>`j8WI8:`5D`j8Z>89:5CGj9bf88g5C3j9cQ85S5Cjj9dP83l5BQj9dP80t5GGj8o:8qrNj`j8oq8mDNoaj8n18jlNnSj8mb8fQNnJj8oq8tONjij80N8prNl=j81g8lDNlFj81V8ilNlOj83v8eQNlXj81g8sONl4j8@a8ihNlyj8?o8e?Nl2j8Ae8l;Nltj8B18oSNlpj8Dg8sbNlgj8Fu8uSNkYj8HT8xyNkPj8K=8zg1>Bj8MX8zB1>uj8Py8zl1=Xj8Ry8xK1=@j8Ta8vM1@oj8Vd8u91@<j8X78uf1@Tj8ZS8u41>yj9bv8uj1>aj9d28sR1=Dj9eN8qR1=wa8jr8M?bj`c8``8``8f38dta8qV8LVbji68``8``8f38dta8pQ8HJbjrT8``8``8f38dta8ut8Ibbj1w8``8``8f38dta8GN8FPbj`c7Z`7Z38f38dta8OI8DEbjfw7Z`7Z38f38dta8N18Jnbjl@7Z`7Z38f38dta8U08@VbjrT7Z`7Z38f38dta8XR8Gkbjym7YQ7Y`8f38dta9bQ8Awbj4J7Z`7Z38f38dta9eq8GKbj;c7Y37Zj8f38dt`8eX8;o`8dt86d`8mc8:0`8u38:K`8r@82Z`8rx870`8zr8:S`8yW8?3`83L8>D`8EY877`8L58:F`8MH85t`8Sv868`8XC85k`8ZQ80U`8Be8B?`8vl8sv`8uP8mF`8tZ8gP`8h;8t<`8cC8po`8gU8lba8jm8Ivbj;c8``8``8f38dta8cI8LtbjD68``8``8f38dta8T28K5bjAw7Z`7Z38f38dta8Y@8K=bjG@7Vj7X38f38dt`8B`83F`8zb86i`8>f8;h`8=C8Ad", "8ellj8Hi8nD=N=j8Fb8q1=NLj8Cu8s7=O`j8@i8tM=Ooj8<G8ur=O3j89v8tM=OBj8318q1=Pej8z082DNj`j8zg8zfNoaj8yr8v>NnSj8wS8ssNnJj8v`8poNnAj8sD8m7Nn8j8pW8kjNnzj8mS8isNnqj8j<8gTNnhj8ge8gdNmZj8HJ83DNl=j8Ic80fNlFj8IS8w>NlOj8Kr8trNlXj8Mj8qoNmfj8O68n7Nmoj8Rm8ljNmxj8Ur8jsNm6j8X>8hTNm?j9ae8hdNmHj8En8gG5BGj8DE8j<5C`j8Cq8md5Ctj8Ab8nU5C=j8>v8oT5CQj8;38oT5Djj88G8nU5D3j8688md5DGj85d8j<5E`j84<8gG5Etj8<E86zz;3j8?a85Iz;`j8@H84bz:=j8Ay81Ez:jj8:x85Iz;Qj88A84bz<tj88`81Ez<G`8RL8xk`9cB8xG`8WE820`8V@8pK`9dg8uF`8Rd81q`8QW85p`8QP8:f`8OP8>0`8M<8BR`9b281Z`9`x867`9`F8:G`9aL8>?`9c68AQ`8Sc8ty`9bW8q2`9`v8m``8rH8xa`8fR8x=`8mO82q`8nT8pA`8f28u<`8s581g`8s=85f`8sD89W`8uE8>q`8wY8BH`8hg81P`8jl86x`8iN8:=`8hH8>5`8gd8AG`8r68to`8g=8qs`8jn8lQ`80R89h`8G589j`88t8?i`8@88?;`8<881y`89J8i``8?J8i``84f8wO`8DU8xy`8oe8Ah`8pw8G``8VL8@E`8U:8F=j8zQ8k8NnKj86i8s7=OQj81u8nC=Ptj8yb8h1NnBj8vI8e@Nn9j8IA8kyNlWj8K58hrNmej8MI8e5Nmn`8<N8eI", "";
-};
 e.GetBackdrop = function()
 	return{bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", tileSize = 16, edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = 1, edgeSize = 16, insets = {top = 5, right = 5, left = 5, bottom = 5, }}
 end
@@ -790,29 +791,27 @@ end
 local function Fe(o)
 	local t = GetTime();
 	local t, l;
-	local n = 2;
-	ee = S(c(o, 1, 1));
+	local block = 1;
+	local level = o;
+	ee = o;
 	B = {};
-	while(n < #o)do
+	while(block <= #LEVELS[level])do
 		t = {};
-		l = S(c(o, n, n));
-		t.animationType = f(l, 10);
-		t.objectType = i(l / 10);
-		t.x = S(c(o, n + 1, n + 3), true) / 10
-		t.y = S(c(o, n + 4, n + 6), true) / 10
-		n = n + 7;
-		if(t.objectType == Xe)or(t.objectType == nt)then
-			l = S(c(o, n, n + 2));
+		t.animationType = LEVELS[level][block].animationType;
+		t.objectType = LEVELS[level][block].objectType;
+		t.x = LEVELS[level][block].x
+		t.y = LEVELS[level][block].y
+		if(t.objectType == Xe) or (t.objectType == nt)then
+			l = LEVELS[level][block].rotation;
 			t.radius = i(l / 1e3) - 100;
 			t.rotation = l - ((t.radius + 100) * 1e3);
-			n = n + 3;
 		else
 			t.radius = 60;
 			t.rotation = 0;
 		end
 		if(t.animationType ~= e.ANI_NONE)then
-			t.time = S(c(o, n, n + 1)) / 10;
-			l = S(c(o, n + 2, n + 3));
+			t.time = LEVELS[level][block].animationTime;
+			l = LEVELS[level][block].anim;
 			local e = f(l, 10);
 			if(e > 1)then
 				t.reverser = true;
@@ -821,13 +820,11 @@ local function Fe(o)
 				t.active = true;
 			end
 			t.timeOffset = (l - e) / 10 / 4;
-			n = n + 4;
-			t.value1 = S(c(o, n, n + 2), true) / 10
-			t.value2 = S(c(o, n + 3, n + 5), true) / 10
-			n = n + 6;
-			t.value3 = S(c(o, n, n + 2), true) / 10
-			t.value4 = S(c(o, n + 3, n + 5), true) / 10
-			n = n + 6;
+			t.value1 = LEVELS[level][block].animValue1
+			t.value2 = LEVELS[level][block].animValue2
+			t.value3 = LEVELS[level][block].animValue3
+			t.value4 = LEVELS[level][block].animValue4
+			--tinsert(PeggleProfile,format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",date(),block,animated,t.animationType,t.objectType,t.x,t.y,rot,t.time,l,t.value1,t.value2,t.value3,t.value4))
 		else
 			t.animationType = 0;
 			t.value1 = 0;
@@ -838,7 +835,9 @@ local function Fe(o)
 			t.active = true;
 			t.time = 1;
 			t.timeOffset = 0;
+			--tinsert(PeggleProfile,format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",date(),block,animated,t.animationType,t.objectType,t.x,t.y,rot,0,0,0,0,0,0))
 		end
+		block = block + 1 
 		s(B, t);
 	end
 end
@@ -992,10 +991,12 @@ local function Ve()
 	i.pointsLeft:SetText(e.locale["_POINTS_LEFT"]..": |cFFFFFFFF"..r);
 	local s, d, S, l, a, t, o, n, e;
 	local i = i.tree.node;
+
 	for s = 1, #i do
 		a, S, d, l = Ue(s);
 		e = i[s];
 		e.rank:SetText(a);
+
 		if(a == S)then
 			t, o, n = 1, .82, 0;
 		elseif(c >= d * 5)then
@@ -1018,12 +1019,12 @@ local function Ve()
 		end
 		if(t == .5)then
 			SetDesaturation(e.icon, true);
-			getglobal(e.rank:GetName().."Border"):Hide();
+			--getglobal(e.rank:GetName().."Border"):Hide();
 			e.rank:Hide();
 			e.border:SetVertexColor(t, o, n);
 		else
 			SetDesaturation(e.icon, false);
-			getglobal(e.rank:GetName().."Border"):Show();
+			--getglobal(e.rank:GetName().."Border"):Show();
 			e.rank:Show();
 			e.rank:SetVertexColor(t, o, n);
 			e.border:SetVertexColor(t, o, n);
@@ -4920,7 +4921,7 @@ local function pe(c, m, x, d, l, S)
 	local date=C_Calendar.GetDate()
 	local e, b, T, P = date.weekday, date.month, date.monthDay, date.year;
 	local f, S = GetGameTime();
-	Fe(ie[c]);
+	Fe(c);
 	local a = #B;
 	local e = {};
 	local o, t;
@@ -6147,7 +6148,7 @@ local function me()
 	l.tex = t;
 	n = m(0, 0, 64, "buttonGo", nil, "quickPlayGo", a, function(t)
 		e.extraInfo = nil;
-		Ae(ie[t:GetParent().showID]);
+		Ae(t:GetParent().showID);
 		R(true);
 		Q = false;
 	end)
@@ -6601,7 +6602,7 @@ local function oe()
 		n.player1.value =  - 1;
 		n.player2.value =  - 1;
 		t.duelTab.sparks:Hide();
-		Ae(ie[n.showID], nil, n.levelInfo);
+		Ae(n.showID, nil, n.levelInfo);
 		R(true);
 		Q = false;
 		t.duelStatus = 3;
@@ -7421,7 +7422,7 @@ local function ee()
 		t.content1.state = 2;
 		t.content1:Hide();
 		t.content1:Show();
-		Ae(ie[n], e);
+		Ae(n, e);
 		R(true);
 		Q = false;
 	end)
@@ -8238,13 +8239,13 @@ local function G()
 	end
 	i = e.talentTex;
 	local e = function(d, a, n, t, c, r, o, l)
-		local t = CreateFrame("Button", "PeggleTalent"..n, t, "TalentButtonTemplate");
+		local t = CreateFrame("Button", "PeggleTalent"..n, t, "ActionButtonTemplate");
 		t:SetPoint("Topleft", d, a);
 		t:SetID(n);
 		t:GetNormalTexture():SetTexture(0, 0, 0, 0);
-		t.rank = getglobal(t:GetName().."Rank");
-		t.border = getglobal(t:GetName().."Slot");
-		t.icon = getglobal(t:GetName().."IconTexture");
+		t.rank = _G[t:GetName().."Count"];
+		t.border = _G[t:GetName().."Border"];
+		t.icon = _G[t:GetName().."Icon"];
 		t.icon:SetTexture(e.artPath..i[n]);
 		t:SetScript("OnClick", xt);
 		t:SetScript("OnEnter", c);
@@ -9066,13 +9067,7 @@ local function w(n, l, ...)
 	end
 	local o = p(e.addonName);
 	local n;
-	for e = 1, 12 do
-		ie[e] = L(ie[e], o);
-		if not ie[e]then
-			n = true;
-		end
-	end
-	local a = n;
+	local a;
 	t.splash:Show();
 	if not t.legal then
 		t.splash.elapsed = 0;
@@ -10339,7 +10334,7 @@ local function N()
 			n:UpdateWinners();
 			t.duelStatus = nil;
 		end
-		Ae(ie[o], nil, l, true);
+		Ae(o, nil, l, true);
 		R(true);
 		Q = false;
 	end)
@@ -10874,7 +10869,7 @@ local function k()
 						end
 						n.player1.value =  - 1;
 						n.player2.value =  - 1;
-						Ae(ie[n.showID], nil, n.levelInfo);
+						Ae(n.showID, nil, n.levelInfo);
 						R(true);
 						Q = false;
 						t.duelStatus = 3;
@@ -11222,7 +11217,7 @@ local function T()
 				end
 				local c = string.format(e.locale["_PEGGLELOOT_NOTIFY"], l)
 				local S = C(3 - 2, 5 + 7);
-				Fe(ie[S]);
+				Fe(S);
 				local r = #B;
 				local o = {};
 				local a, n;
@@ -11359,6 +11354,4 @@ local function T()
 	end
 end
 T();
-local e;
-local e;
 local e;
