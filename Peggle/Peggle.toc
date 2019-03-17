@@ -6,4 +6,5 @@
 ## SavedVariables: PeggleData
 ## SavedVariablesPerCharacter: PeggleProfile
 
+Levels.lua
 Peggle.lua
