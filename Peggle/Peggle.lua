@@ -372,6 +372,20 @@ local D = tostring;
 local u = table.remove;
 local s = table.insert;
 local B = {};
+levelDataIndex = {};
+levelDataIndex.id = 1;
+levelDataIndex.animated = 2;
+levelDataIndex.animationType = 3;
+levelDataIndex.objectType = 4;
+levelDataIndex.x = 5;
+levelDataIndex.y = 6;
+levelDataIndex.rotation = 7;
+levelDataIndex.animationTime = 8;
+levelDataIndex.anim = 9;
+levelDataIndex.animValue1 = 10;
+levelDataIndex.animValue2 = 11;
+levelDataIndex.animValue3 = 12;
+levelDataIndex.animValue4 = 13;
 e.windowWidth = 662;
 e.windowHeight = 548;
 e.boardWidth = 554;
@@ -797,12 +811,12 @@ local function Fe(o)
 	B = {};
 	while(block <= #LEVELS[level])do
 		t = {};
-		t.animationType = LEVELS[level][block].animationType;
-		t.objectType = LEVELS[level][block].objectType;
-		t.x = LEVELS[level][block].x
-		t.y = LEVELS[level][block].y
+		t.animationType = LEVELS[level][block][levelDataIndex.animationType];
+		t.objectType = LEVELS[level][block][levelDataIndex.objectType];
+		t.x = LEVELS[level][block][levelDataIndex.x]
+		t.y = LEVELS[level][block][levelDataIndex.y]
 		if(t.objectType == Xe) or (t.objectType == nt)then
-			l = LEVELS[level][block].rotation;
+			l = LEVELS[level][block][levelDataIndex.rotation];
 			t.radius = i(l / 1e3) - 100;
 			t.rotation = l - ((t.radius + 100) * 1e3);
 		else
@@ -810,8 +824,8 @@ local function Fe(o)
 			t.rotation = 0;
 		end
 		if(t.animationType ~= e.ANI_NONE)then
-			t.time = LEVELS[level][block].animationTime;
-			l = LEVELS[level][block].anim;
+			t.time = LEVELS[level][block][levelDataIndex.animationTime];
+			l = LEVELS[level][block][levelDataIndex.anim];
 			local e = f(l, 10);
 			if(e > 1)then
 				t.reverser = true;
@@ -820,10 +834,10 @@ local function Fe(o)
 				t.active = true;
 			end
 			t.timeOffset = (l - e) / 10 / 4;
-			t.value1 = LEVELS[level][block].animValue1
-			t.value2 = LEVELS[level][block].animValue2
-			t.value3 = LEVELS[level][block].animValue3
-			t.value4 = LEVELS[level][block].animValue4
+			t.value1 = LEVELS[level][block][levelDataIndex.animValue1];
+			t.value2 = LEVELS[level][block][levelDataIndex.animValue2];
+			t.value3 = LEVELS[level][block][levelDataIndex.animValue3];
+			t.value4 = LEVELS[level][block][levelDataIndex.animValue4];
 			--tinsert(PeggleProfile,format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",date(),block,animated,t.animationType,t.objectType,t.x,t.y,rot,t.time,l,t.value1,t.value2,t.value3,t.value4))
 		else
 			t.animationType = 0;
