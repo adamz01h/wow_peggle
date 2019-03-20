@@ -1,6 +1,8 @@
 local AddOn, config = ...
 local LEVELS = config.LEVELS
 
+disableSplashScreen = true
+
 TALENT_BRANCH_TEXTURECOORDS = {
 	up = {
 		[1] = {0.12890625, 0.25390625, 0 , 0.484375},
@@ -60,8 +62,8 @@ TALENT_ARROW_TEXTURECOORDS = {
 };
 
 local e = {};
-e.versionString = "1.04";
-e.versionID = 1.04;
+e.versionString = "1.1";
+e.versionID = 1.1;
 e.addonName = "PEGGLE";
 e.temp = {};
 e.seconds = 60;
@@ -9082,7 +9084,9 @@ local function w(n, l, ...)
 	local o = p(e.addonName);
 	local n;
 	local a;
-	t.splash:Show();
+	if not disableSplashScreen then
+		t.splash:Show();
+	end
 	if not t.legal then
 		t.splash.elapsed = 0;
 		t.splash.background:SetAlpha(1);
