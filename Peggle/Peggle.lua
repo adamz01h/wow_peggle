@@ -6478,7 +6478,7 @@ local function oe()
 			n.note3:SetText(n.note3.status1);
 			n.note3Title:Show();
 			n.decline1:Show();
-			Fe(ie[n.showID]);
+			Fe(n.showID);
 			local i = #B;
 			local o = {};
 			local a, l;
