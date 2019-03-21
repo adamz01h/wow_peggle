@@ -1,7 +1,7 @@
 local AddOn, config = ...
 local LEVELS = config.LEVELS
 
-disableSplashScreen = true
+disableSplashScreen = false
 
 TALENT_BRANCH_TEXTURECOORDS = {
 	up = {
@@ -77,6 +77,7 @@ end
 e.GetBackdrop = function()
 	return{bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", tileSize = 16, edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = 1, edgeSize = 16, insets = {top = 5, right = 5, left = 5, bottom = 5, }}
 end
+C_ChatInfo.RegisterAddonMessagePrefix(e.addonName);
 --holds all the string data
 e.locale = {
 	["ABOUT"] = "ABOUT",
@@ -927,6 +928,7 @@ local function L(e, t)
 	end
 end
 local function p(t)
+	t = string.match(t, "(.*)%-(.*)") or t
 	local n, e = 0, 0;
 	for n = 1, #t do
 		e = e + W(t, n);
