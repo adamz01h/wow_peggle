@@ -10434,6 +10434,7 @@ local function k()
 		end
 	end);
 	i:SetScript("OnEvent", function(m, n, C, i, l, a)
+		a = string.match(a, "(.*)%-(.*)") or a
 		if(n == "CHAT_MSG_SYSTEM")and(m.watchError)then
 			if(string.find(C, m.watchError))then
 				m.watchError = nil;
