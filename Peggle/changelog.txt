@@ -2,7 +2,7 @@ Changelog
 
 v1.04
 - Fixed the "Super Guide" powerup by Nimos 
-- Fix indentation by ZombieProtectionAgency & Toni Wilbert
+- Fix indentation by ZombieProtectionAgency
 - Added Credits for Contributors under "Options"->"Credits"
 
 v1.03

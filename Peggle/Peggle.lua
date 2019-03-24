@@ -138,7 +138,7 @@ e.locale = {
 	["CREDITS8a"] = "BraveOne - Aerie Peak [A]\n".."Johndoe - Executus EU [A]\n".."Kinu - Ravencrest [H]\n".."Klauen - Blackrock [H]\n".."Lothaer - Spinebreaker [A]\n".."Naiad - Dalaran [A]",
 	["CREDITS8b"] = "Palasadia - Doomhammer [H]\n".."Polgarra - Terokkar [A]\n".."Smashtastic - Khadgar [A]\n".."Sythalin - Thunderlord[A]\n".."Thanotos- Turalyon[A]\n".."Vodax - Dalaran [A]\n".."Zoquara - Nordrassil [A]",
 	["CREDITS9"] = "Github Contributors",
-	["CREDITS9a"]= " adamz01h\n Nimos\n ZombieProtectionAgency\n Toni Wilbert\n ",
+	["CREDITS9a"]= " adamz01h\n Nimos\n ZombieProtectionAgency\n Andy1210\n ",
 	["DUEL"] = "DUEL",
 	["DUEL_BREAKDOWN1"] = "Your Score: %s",
 	["DUEL_BREAKDOWN1a"] = "Opponent's Score: %s",
@@ -992,12 +992,10 @@ local function Ve()
 	i.pointsLeft:SetText(e.locale["_POINTS_LEFT"]..": |cFFFFFFFF"..r);
 	local s, d, S, l, a, t, o, n, e;
 	local i = i.tree.node;
-
 	for s = 1, #i do
 		a, S, d, l = Ue(s);
 		e = i[s];
 		e.rank:SetText(a);
-
 		if(a == S)then
 			t, o, n = 1, .82, 0;
 		elseif(c >= d * 5)then
