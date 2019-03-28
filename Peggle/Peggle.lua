@@ -383,7 +383,7 @@ levelDataIndex.x = 4;
 levelDataIndex.y = 5;
 levelDataIndex.rotation = 6;
 levelDataIndex.animationTime = 7;
-levelDataIndex.anim = 8;
+levelDataIndex.animationDelay = 8;
 levelDataIndex.animValue1 = 9;
 levelDataIndex.animValue2 = 10;
 levelDataIndex.animValue3 = 11;
@@ -827,7 +827,7 @@ local function Fe(o)
 		end
 		if(t.animationType ~= e.ANI_NONE)then
 			t.time = LEVELS[level][block][levelDataIndex.animationTime];
-			l = LEVELS[level][block][levelDataIndex.anim];
+			l = LEVELS[level][block][levelDataIndex.animationDelay];
 			local e = f(l, 10);
 			if(e > 1)then
 				t.reverser = true;
