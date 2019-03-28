@@ -840,7 +840,6 @@ local function Fe(o)
 			t.value2 = LEVELS[level][block][levelDataIndex.animValue2];
 			t.value3 = LEVELS[level][block][levelDataIndex.animValue3];
 			t.value4 = LEVELS[level][block][levelDataIndex.animValue4];
-			--tinsert(PeggleProfile,format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",date(),block,animated,t.animationType,t.objectType,t.x,t.y,rot,t.time,l,t.value1,t.value2,t.value3,t.value4))
 		else
 			t.animationType = 0;
 			t.value1 = 0;
@@ -851,7 +850,6 @@ local function Fe(o)
 			t.active = true;
 			t.time = 1;
 			t.timeOffset = 0;
-			--tinsert(PeggleProfile,format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",date(),block,animated,t.animationType,t.objectType,t.x,t.y,rot,0,0,0,0,0,0))
 		end
 		block = block + 1 
 		s(B, t);
