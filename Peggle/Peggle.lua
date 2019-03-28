@@ -142,7 +142,7 @@ e.locale = {
 	["CREDITS8a"] = "BraveOne - Aerie Peak [A]\n".."Johndoe - Executus EU [A]\n".."Kinu - Ravencrest [H]\n".."Klauen - Blackrock [H]\n".."Lothaer - Spinebreaker [A]\n".."Naiad - Dalaran [A]",
 	["CREDITS8b"] = "Palasadia - Doomhammer [H]\n".."Polgarra - Terokkar [A]\n".."Smashtastic - Khadgar [A]\n".."Sythalin - Thunderlord[A]\n".."Thanotos- Turalyon[A]\n".."Vodax - Dalaran [A]\n".."Zoquara - Nordrassil [A]",
 	["CREDITS9"] = "Github Contributors",
-	["CREDITS9a"]= " adamz01h\n Nimos\n ZombieProtectionAgency\n Toni Wilbert\n ",
+	["CREDITS9a"]= " adamz01h\n Nimos\n ZombieProtectionAgency\n Dracar\n Andy1210",
 	["DUEL"] = "DUEL",
 	["DUEL_BREAKDOWN1"] = "Your Score: %s",
 	["DUEL_BREAKDOWN1a"] = "Opponent's Score: %s",
@@ -246,10 +246,10 @@ e.locale = {
 	["OPT_DUEL_INVITES4"] = "Auto-decline Duels",
 	["OPTIONAL"] = "|cFFFF8C00(OPTIONAL)",
 	["ORANGE_PEGS"] = "Orange\nPegs",
-	["OUT_OF_DATE"] = "|cFFFFFFFFThis version of Peggle is out-of-date! Visit |r|cFFFFFF00www.popcap.com/wow|r|cFFFFFFFF for the latest version!",
+	["OUT_OF_DATE"] = "|cFFFFFFFFThis version of Peggle is out-of-date! Visit |r|cFFFF66CChttps://github.com/adamz01h/wow_peggle|r|cFFFFFFFF for the latest version!",
 	["_OUTDATED"] = "%s has invited you to a %s using an old version of this addon. Unfortunately, the versions are no longer compatible. Please ask them to upgrade to the latest version.",
 	["_PEGS_HIT"] = "%s x %d |4PEG:PEGS",
-	["_PEGGLE_ISSUE1"] = "[Peggle] We're very sorry but it appears the battle data being saved is invalid and was not saved. Please report this error to wowaddons@popcap.com with as much detail as possible so we can fix it in future versions.",
+	["_PEGGLE_ISSUE1"] = "[Peggle] We're very sorry but it appears the battle data being saved is invalid and was not saved. Please report this error with as much detail as possible so we can fix it in future versions. https://github.com/adamz01h/wow_peggle",
 	["PEGGLE_ISSUE2"] = "Part of the Peggle addon is corrupt. Please re-download the Peggle addon to fix this issue.",
 	["PEGGLELOOT_DESC"] = "Highest Scoring Single Shot Wins",
 	["_PEGGLELOOT_ISACTIVE"] = "Peggle Loot is already active! %d seconds remain in current challenge.",
@@ -377,18 +377,17 @@ local s = table.insert;
 local B = {};
 levelDataIndex = {};
 levelDataIndex.id = 1;
-levelDataIndex.animated = 2;
-levelDataIndex.animationType = 3;
-levelDataIndex.objectType = 4;
-levelDataIndex.x = 5;
-levelDataIndex.y = 6;
-levelDataIndex.rotation = 7;
-levelDataIndex.animationTime = 8;
-levelDataIndex.anim = 9;
-levelDataIndex.animValue1 = 10;
-levelDataIndex.animValue2 = 11;
-levelDataIndex.animValue3 = 12;
-levelDataIndex.animValue4 = 13;
+levelDataIndex.animationType = 2;
+levelDataIndex.objectType = 3;
+levelDataIndex.x = 4;
+levelDataIndex.y = 5;
+levelDataIndex.rotation = 6;
+levelDataIndex.animationTime = 7;
+levelDataIndex.anim = 8;
+levelDataIndex.animValue1 = 9;
+levelDataIndex.animValue2 = 10;
+levelDataIndex.animValue3 = 11;
+levelDataIndex.animValue4 = 12;
 e.windowWidth = 662;
 e.windowHeight = 548;
 e.boardWidth = 554;
@@ -9419,9 +9418,6 @@ local function W()
 		t.catagoryScreen:SetScale(n);
 		t.logoFrame:SetScale(n);
 		t.charPortrait:SetScale(n);
-		if(PeggleEditWindow)then
-			PeggleEditWindow:SetScale(n);
-		end
 		local e = e.windowHeight * n;
 		o:SetHeight(e);
 		t.coverUp:SetHeight(26.5 * n);
@@ -11335,44 +11331,6 @@ local function T()
 		end
 	end
 	hooksecurefunc("ToggleDropDownMenu", o.SkinDropdown);
-	if PeggleEditWindow then
-		SLASH_PEGGLEEDIT1 = "/peggleedit";
-		SlashCmdList["PEGGLEEDIT"] = function()
-			t:SetAlpha(1);
-			PeggleEditWindow.levelString = Qe;
-			PeggleEditWindow:Show();
-		end
-		t.gameBoard = r;
-		t.Generate = Ae;
-		t.extraData = ie;
-		r.updateFunc = r:GetScript("OnUpdate");
-		r.emptyFunc = function()end;
-		r.Disable = function(n, e)
-			n.disabled = e;
-			local n;
-			if(e == true)then
-				d:Hide();
-				r.foreground:Hide();
-				t.catcher:Hide();
-				r:SetScript("OnUpdate", r.emptyFunc);
-				for e = 1, 10 do
-					r.trail[e]:SetAlpha(0);
-				end
-			else
-				d:Show();
-				r.foreground:Show();
-				t.catcher:Show();
-				r:SetScript("OnUpdate", r.updateFunc);
-				for e = 1, 10 do
-					r.trail[e]:SetAlpha(.6);
-				end
-			end
-		end
-		PeggleEditWindow:SetWidth(e.boardWidth + 360);
-		PeggleEditWindow:SetHeight(e.boardHeight + 240);
-		PeggleEditWindow:ClearAllPoints();
-		PeggleEditWindow:SetPoint("Center", r);
-	end
 end
 T();
 local e;
