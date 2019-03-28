@@ -1,4 +1,4 @@
-## Interface: 80100
+## Interface: 80501
 ## Title: Peggle (Unofficial)
 ## Version: 1.1
 ## Notes: The popular game Peggle, now for World of Warcraft!
