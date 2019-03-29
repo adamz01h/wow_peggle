@@ -353,7 +353,10 @@ local Ke = 0;
 local qe = 0;
 local o = {};
 local H;
-local levelScoreData = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+local levelScoreData = {};
+for i=1, #LEVELS * 2 do
+	levelScoreData[i] = 0
+end
 local d;
 local t;
 local r;
