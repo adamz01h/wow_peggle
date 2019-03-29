@@ -1,20 +1,7 @@
 local AddOn, config = ...
 local LEVELS = config.LEVELS
 
-disableSplashScreen = true
-
-function dump(o)
-	if type(o) == 'table' then
-		local s = '{ '
-		for k,v in pairs(o) do
-			if type(k) ~= 'number' then k = '"'..k..'"' end
-			s = s .. '['..k..'] = ' .. dump(v) .. ','
-		end
-		return s .. '} '
-	else
-		return tostring(o)
-	end
-end
+disableSplashScreen = false
 
 TALENT_BRANCH_TEXTURECOORDS = {
 	up = {
@@ -155,7 +142,7 @@ e.locale = {
 	["CREDITS8a"] = "BraveOne - Aerie Peak [A]\n".."Johndoe - Executus EU [A]\n".."Kinu - Ravencrest [H]\n".."Klauen - Blackrock [H]\n".."Lothaer - Spinebreaker [A]\n".."Naiad - Dalaran [A]",
 	["CREDITS8b"] = "Palasadia - Doomhammer [H]\n".."Polgarra - Terokkar [A]\n".."Smashtastic - Khadgar [A]\n".."Sythalin - Thunderlord[A]\n".."Thanotos- Turalyon[A]\n".."Vodax - Dalaran [A]\n".."Zoquara - Nordrassil [A]",
 	["CREDITS9"] = "Github Contributors",
-	["CREDITS9a"]= " adamz01h\n Nimos\n ZombieProtectionAgency\n Dracar\n Andy1210",
+	["CREDITS9a"]= " adamz01h\n Nimos\n ZombieProtectionAgency\n Andy1210",
 	["DUEL"] = "DUEL",
 	["DUEL_BREAKDOWN1"] = "Your Score: %s",
 	["DUEL_BREAKDOWN1a"] = "Opponent's Score: %s",
