@@ -1083,7 +1083,6 @@ local function ot(t, r)
 	return n, i;
 end
 local function lt(l, n, o)
-	print('kakas', l, n, o)
 	local d
 	if(l)then
 		local r;
