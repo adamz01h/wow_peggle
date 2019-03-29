@@ -4,6 +4,7 @@ v1.04
 - Fixed the "Super Guide" powerup by Nimos 
 - Fix indentation by ZombieProtectionAgency
 - Added Credits for Contributors under "Options"->"Credits"
+- Created Development Branch for testing and new features
 
 v1.03
 - Unofficial Port
