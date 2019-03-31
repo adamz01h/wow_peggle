@@ -1,5 +1,6 @@
 local AddOn, config = ...
 local LEVELS = config.LEVELS
+local LEVEL_NAMES = config.LEVEL_NAMES
 
 disableSplashScreen = false
 
@@ -195,19 +196,6 @@ e.locale = {
 	["LEGAL1"] = "(c) 2000, 2009 PopCap Games Inc. All right reserved",
 	["LEGAL2"] = "(c)2007, 2009 PopCap Games, Inc.  All rights reserved.  This application is ".."being made available free of charge for your personal, non-commercial entertainment "..'use, and is provided "as is", without any warranties.  PopCap Games, Inc. will have '.."no liability to you or anyone else if you choose to use it.  See readme.txt for details.",
 	["_LEVEL_INFO"] = "Level %d: %s",
-	["_LEVEL_NAME1"] = "Ironforge",
-	["_LEVEL_NAME2"] = "Orgrimmar",
-	["_LEVEL_NAME3"] = "Stormwind",
-	["_LEVEL_NAME4"] = "Undercity",
-	["_LEVEL_NAME5"] = "Darnassus",
-	["_LEVEL_NAME6"] = "Thunder Bluff",
-	["_LEVEL_NAME7"] = "Dark Portal",
-	["_LEVEL_NAME8"] = "Exodar",
-	["_LEVEL_NAME9"] = "Silvermoon City",
-	["_LEVEL_NAME10"] = "Shattrath City",
-	["_LEVEL_NAME11"] = "Dalaran",
-	["_LEVEL_NAME12"] = "Icecrown Citadel",
-	["_LEVEL_NAME13"] = "Sulfuron Spire",
 	["MENU"] = "MENU",
 	["MOST_RECENT"] = "MOST RECENT:",
 	["MOUSE_OVER"] = "Mouse over a talent for more information",
@@ -2382,7 +2370,7 @@ local function l(n, l)
 		else
 			n.forced = nil;
 			o = n.selectedValue or(1);
-			local t = string.format(e.locale["_LEVEL_INFO"], o, e.locale["_LEVEL_NAME"..o]);
+			local t = string.format(e.locale["_LEVEL_INFO"], o, LEVEL_NAMES[o]);
 			UIDropDownMenu_SetText(n, t, n);
 			n.selectedValue = o;
 			if(n.updateFunc)then
@@ -2454,7 +2442,7 @@ local function We(o)
 			getglobal("DropDownList1").maxWidth = 280;
 			for o = 1, #LEVELS do
 				table.wipe(n);
-				n.text = string.format(e.locale["_LEVEL_INFO"], o, e.locale["_LEVEL_NAME"..o]);
+				n.text = string.format(e.locale["_LEVEL_INFO"], o, LEVEL_NAMES[o]);
 				n.value = o;
 				n.fontObject = t.fontObj;
 				n.icon = e.artPath.."bannerMenu";
@@ -2490,7 +2478,7 @@ local function m(t)
 		UIDropDownMenu_SetSelectedValue(t, PeggleData.settings.defaultPublish)
 		n = PeggleData.settings.defaultPublish;
 	else
-		UIDropDownMenu_SetSelectedName(t, string.format(e.locale["_LEVEL_INFO"], t.selectedValue, e.locale["_LEVEL_NAME"..t.selectedValue]));
+		UIDropDownMenu_SetSelectedName(t, string.format(e.locale["_LEVEL_INFO"], t.selectedValue, LEVEL_NAMES[t.selectedValue]));
 	end
 	t.selectedValue = n;
 	UIDropDownMenu_SetWidth(t, t.menuWidth);
@@ -5665,7 +5653,7 @@ local function he()
 		local o;
 		if not n.publishDuel then
 			n:SetHeight(n.noPublishHeight);
-			o = string.format(e.locale["_PUBLISH_SCORE"], UnitName("player"), n.publishInfo, e.locale["_LEVEL_NAME"..ee]);
+			o = string.format(e.locale["_PUBLISH_SCORE"], UnitName("player"), n.publishInfo, LEVEL_NAMES[ee]);
 		else
 			o = n.publishInfo
 		end
@@ -6012,7 +6000,7 @@ local function me()
 		l:SetWidth(32);
 		l:SetHeight(14);
 		l:SetJustifyH("LEFT")
-		l = o:CreateCaption(42, 10 + (a - 1) * 14, e.locale["_LEVEL_NAME"..a], r, 12, 1, 1, 1, 1, nil)
+		l = o:CreateCaption(42, 10 + (a - 1) * 14, LEVEL_NAMES[a], r, 12, 1, 1, 1, 1, nil)
 		l:SetWidth(300 - 42 - 42);
 		l:SetHeight(14);
 		t = r:CreateTexture(nil, "Overlay");

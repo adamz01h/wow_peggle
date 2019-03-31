@@ -1,4 +1,19 @@
 local AddOn, config = ...
+config.LEVEL_NAMES = {
+	[1] = "Ironforge",
+	[2] = "Orgrimmar",
+	[3] = "Stormwind",
+	[4] = "Undercity",
+	[5] = "Darnassus",
+	[6] = "Thunder Bluff",
+	[7] = "Dark Portal",
+	[8] = "Exodar",
+	[9] = "Silvermoon City",
+	[10] = "Shattrath City",
+	[11] = "Dalaran",
+	[12] = "Icecrown Citadel",
+	[13] = "Sulfuron Spire"
+}
 config.LEVELS = {
     [1] = {
         {1,0,0,36.5,382.5,0,0,0,0,0,0,0},
