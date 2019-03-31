@@ -1,3 +1,9 @@
+local AddOn, config = ...
+local LEVELS = config.LEVELS
+local LEVEL_NAMES = config.LEVEL_NAMES
+
+disableSplashScreen = false
+
 TALENT_BRANCH_TEXTURECOORDS = {
 	up = {
 		[1] = {0.12890625, 0.25390625, 0 , 0.484375},
@@ -57,8 +63,8 @@ TALENT_ARROW_TEXTURECOORDS = {
 };
 
 local e = {};
-e.versionString = "1.04";
-e.versionID = 1.04;
+e.versionString = "2.0";
+e.versionID = 2.0;
 e.addonName = "PEGGLE";
 e.temp = {};
 e.seconds = 60;
@@ -69,11 +75,10 @@ local t = function(...)
 		print(...)
 	end
 end
-local ie = {"43aa`8eo8KB`8bQ8Hf`8fe8Bs`8ck8>k`8e=88Y`8bl83K`8e`8y<`8nV8ND`8qT8Hg`8ol8B4`8rn8<L`8oe88A`8qX838`8n<8yN`8q08t<`84x8i2`86h8n``87v8u1`89o8zy`8;d851`8A985:`8Bn8zI`8Dn8uf`8Dn8nq`8Fq8iM`8Tx8uA`8VB802`8SK84e`8VA88g`8Tr8=v`8Vn8C8`8SM8Ho`8V88Oy`9dY8KL`9gn8FW`9eh8Bk`9gx8=P`9d888I`9fD83H`9dU8x5j9`z8oBNnjj8Xc8nDNnat9cC8qkNnot9fX8rENnot8Tz8nuNmVt8PH8mYNmVt8Mf8mBNmVt8I48mvNmVj8i98oVNm=j8lP8nXNmFt8fo8q4Nm8t8bV8rYNm8t8p98n>NmLt8tk8nrNmLt8wM8mVNmLt8048m?NmLt8iH8v5NmLt8iH81bNmLt8iR86lNmLt8jk8;lNmLt8jk8@lNmLt8jk8FvNmLt8jk8LvNmLt8vu8<bNmLt8va86?NmLt8uR81lNmLt8uH8vSNmLt8148vvNmLt83a8z?NmLt85u83INmLt8I98v>NmVt8GM8zHNmVt8F984kNmVt8O98wkNmVt8O981>NmVt8Op87aNmVt8O98;RNmVt9`p8N>NmVt9`f8H4NmVt9`f8B>NmVt9`f8=kNmVt8ZW88uNmVt8ZC83kNmVt8Z98xHNmV`8>a8;ua8Id8>X`G`c8``8``8s=8eGa8LO8CL`G`c8``8``8s=8eGa87l8;m`G`c8``8``8eG8eGa81z8>P`G`c8``8``8eG8eGa8yc8Dv`G`c8``8``8eG8eGa8DJ8;c`G`c8``8``8s=8eG", "03wbj8CF8pfEY=j8C28soEYGj8B?8vqEYQj8As8ygEZ`j8?680DEZjj8=q82SEZtj8C28lWFc=j8:U8qGASQj8:=8tXATbj89<8xdATnj87V8zSATzj8:=8n5AXOj8jr8tNF`Qj8m08zqF`=j8tp8q`AV3j8t=8tqAVrj8u>8wwAVfj8wo8zlAUUj8t=8mHAV?j8o?815F`3j8rl83rF`tj8k=8wCF`Gj8i48qKFa`j8ik8nBFajj8i48k9Fatt80A8hkAWEt84r8hbAWEj87w8hl1Abj8x58h51@Ej8WT8sRAWQj9bU8vuAXnj9`b8tJAXbj8TB8sBAWEj8Q18tfAW9j8XA85LAUlj8Rw84oAU9j8O<827AUE`9bA8G@`8Zu8J2`8U18KN`8SO8GX`8UE8D?`8UR8@=`8Qb8@@`8Nz8=m`8JS8;``8Hs8>E`8D28Ai`8Bv8=g`8CG88H`8FF84Q`8I:80Qj8U085wAUxj9`R85<AU``8YI80h`8VA8wZ`8UE819`8R?8y=`8Kz8xc`8LB8tP`8K28qk`8JS8mv`8Ja8it`8Gc8gm`8O@8jk`8PP8mO`8Or87v`8R38;``8Vv89S`8y:864`81P87D`84O86s`8yF8sf`82<8wN`84O8r<`8dk8wZ`8f3822`8iW851`8eo8Gr`8jh8C2`8mf8IG`8oS8Bm`8rx8G@`8t48B``8qB8=s`8ct8@X`8yF8BF`83r8F0`8618AC`89H8Au`8we8F<", "u3wc`8do8x5`8iu8yD`8mp8vm`8fT8t2`8iI8oY`8pb8pr`8pk8jz`86E830`81e83S`80C8yX`8648x=`88W8uU`86v8se`87?8nM`83J8lR`80`8oCj8n;89YNmBj8kj8;kNm9j8h`8<RNm0j8ej8?dNmrt8re895NmKt8uE89eNmKt8yu88ENmKt81U88uNmKj8iH85X9IGj8l885>9I8j8og8499Itj8qv82M9Iej8sl80tNj3j8fW85>9IVj8dx8499Jjj8bi82M9Jyj8tG8xcNjuj8uH8t?Njlj8vn8qbNjct8vg8m0Nj``9`<8IW`8YQ8E:`8ZH8@m`8Ve8?d`8U78C?`8Rv8FA`8Ni8E5`8Lm8AK`8Lj8=o`9e?8xl`9`98y0`8W>8uT`9bx8t<`8Ze8oE`8TL8p1`8TC8je`8Cj830`8I?83S`8IH8zg`8Cz8x=`8Aa8uA`8CB8rB`8B88nz`8FB8lt`8IN8tMj8Vs89ENnej8YD8:RNnnj9aN8<>Nnwj9dD8>KNn5t8RI89lNmWt8Oi88LNmWt8K9881NmWt8GT88aNmWj9`f85D9IGj8Xv85u9IVj8UG84p9Jjj8S88299Jyj8QB80`Nljj9bR85u9I8j9e784p9Itj9gF8299Iej8Pg8wJNlsj8Of8tvNl1j8N@8pINl:t8NG8mgNl=`8IS8oqt8@=8gINktt8<V8gINktt89t8gINktj85B8gINkyj8Do8g?Nkoj82g8gjNk7j8yE8f`Nk@j8GI8g`Nkfj8Kk8eQNjX`8=g83Uj8A68;Rz:jj8@P8>nz:=j8?i8?Uz;`j8<L8@;z;3j8:58?Uz;Qj88I8>nz<tj88h8;Rz<Gj88I89:z=jj8:587Nz==j8<L87mz>`j8?i87Nz>3j8@P89:z>Q`8ka8IW`8lG8E:`8kP8@m`8p88?d`8qf8C?`8tr8FA`8x48E5`8z08AK`8z38=o`8f88Jh`9ea8I5j8bC8ACNmij9gj8AzNn>`80r8ut", "t;Id`8de8?@`8hc8AV`8l18?e`8rK8Gs`8vA8@k`8xr88S`80e82u`8Be82u`8CZ89O`8H`8Ae`8L38GE`8R78<J`8V:8?R`8ZV8Ax`9ee8?x`8N?84H`8Oi80E`8NQ8vX`8Y083U`9b:8yE`8dH8z8`8hr84R`8og85r`8nY81ot8U=8uXNkot8Yn8uANkot9aO8uuNkot9e58tYNkot8U`8q0Nket8X98p4Nket9ab8o8Nket9d;8n<Nket8iG8vgNkyt8fg8uKNkyt8b58u4Nkyt8jt8q:Nk8t8fJ8p>Nk8t8cs8oBNk8`8nE8wBt8sM8q>Nket8wv8pBNket8zN8oFNket83w8nJNket8y=8tXNkjt8Cj8uNNkyt8?:8u7Nkyt8;S8ukNkyt8;F8n8Nk5t8?r8orNk5t8BN8paNk5t8Fz8pKNk5t8IV8q:Nk5t82k8tvNkjj8O@8n4x<hj8MM8lp5Ggj8978gpNmQj85S8gyNmLj82v8gLNmHj8yL8h7NmCj8vw8i5Nm?j8rW8jFNm:j8=e8gyNmUj8@B8gLNmZj8Dl8h7Nncj8GA8i5Nnhj8K`8jFNnlj8nr8n8x:lj8pf8lw5Fcj9`X89p5CPj9cB88m5C<j9eO86t5Csj8Yd89s5Dij8Vw88w5D2j8Tf8695DFj8jC8:W5CPj8my89T5C<j8gJ8:Z5Dij8ec8:c5D2j8bM88p5DFj8R68E6=Pbj8Pf8BZ=Pjj8Nd8@o=Pqj8L18=m=Pyj8Kj89Y=P5j8Jw86A=P=j8Jf83n=Sjj8Ul8G?=OUj8Ir8zP=Sbj8kJ8E6=NOj8nj8BZ=NGj8pl8@o=N@j8qO8=m=N8j8sf89Y=N1j8sT86A=Ntj8tj83n=PQj8id8G?=NWj8tY8zP=PYa86986j`G?T7Z87Z`8``8a3a86i883`G1@7Zk7Z=8``8bja8698:G`Gnw7Zk7Z38``8a3", "wi<ej8=r8mNAWGj8@88njAWSj8C?8okAXdj8F38pLAXpj8HP8rYAX1j8JJ8u@AX=j8Lf8x>AXIj8LK80LAXUj8:`8njAW;j86T8okAWzj84e8pLAWnj81C8rYAWbj8zI8u@AVQj8RT8sJJi`j8Ts8vBJiij8Um8yHJirj8U?81UJi0j8U:85hJdzj8Ql8qbJhVj8Or8n5JhRj8Mj8lcJhMj8JO8iMJhIj8Hz8gIJhDj9a:88;EYCj9aG851EY>j9aA82rFcCj9as8ziFc>j9`B8wcFc9j8ZJ8tbFc4j8Y?8qgFczj8Xn8ntFcuj8V<8k?Fcpj8TE8ieFckj8R?8fGFcft8gS8Bu=Sjt8gq8>F=Sjt8f?8;g=Sjt8eX878=Sjt8ev83T=Sjt8dD80u=Sjt8db8wF=Sjt8c08tg=Sjt8ob8I4=Slt8s587k=Smt8s`83:=Smt8r;8zT=Smt8rf8ws=Smt8qA8sB=Smt8sT8:K=Smt8tx8>0=Smt8tL8B`=Smt8n98EO=Slt8n`8Bo=Slt8m78>?=Slt8lY8:Z=Slt8l587z=Slt8kW83J=Slt8k380j=Slt8jU8w:=Slt8j18sU=Slt8iS8pu=Sl`8dA8K4`8gb8Gs`8kI8Ni`8oh8Qo`8rG8RG`8sN8Jg`8ym8Ib`8uN8F8`8yN8;4`80H8?A`8458B5`88L8D5`8E>8FJ`8Jk8JU`8MU8MR`8QX8Pt`8V:8Qp`9aF8Li`8XC8IO`8Ul8F6`8Rf8B4`8WS8?e`9`A8Dd`9d:8Gk`9eR8;G`9fE84m`9fa8w0`9cH8pM`8HY8mH`8CR8iZ`8<G8hn`86:8i;`80R8l8`8vy8nh`8xh8hH`8s`8iN`8k68k2`85>8xw`8<b8y;`8BA8vG`8HW85M`8JE8;c`8HN8>t`8DK83B`8@e84m`8;885D`87o86g`9a68le", "z;7fo8Wj8G39H3a3`c8k38k38``8``o8Wj8G39HQa3d@8k38k38``8``o8Wj8G39Ita3i68k38k38``8``o8Wj8G39IGa3nc8k38k38``8``o8Wj8G39Jja3rT8k38k38``8``o8Wj8G39J=a3wJ8k38k38``8``o8Wj8G39K`a31w8k38k38``8``o8Wj8G39K3a36m8k38k38``8``o8Wj8G39KQa3;c8k38k38``8``o8Wj8G39Lta3?@8k38k38``8``o8Wj8G39LGa3D68k38k38``8``o8Wj8G39Mja3Iw8k38k38``8``j88F82O5DSj8n;8mDJhBj8qg8o@JhFj8s78qIJhKj8uG8teJhOj8wI8v<JhTj8y=8ynJhXj80n80YJibj81>83RJifj8Hn8xa5CLj8JN8vL5C8j8LQ8tI5Coj8Ny8qYATej8El8xr5Dej8B08w95Dyj8>e8sxAVej8@a8uQ5DBj8Ob8nKASZj8Oz8k9ASTj8Oz8hrAXX`9f=82B`9bQ8yE`9f48vn`9`C8tQa8SG8j=aj`c8``8``8lQ8nta8SG8lQaj`c8``8``8lQ8nta8VG8y`aj`c8``8``8;=8nta8VG803aj`c8``8``8;=8nt`8E580W`8AE80P`8>h827`8;A8zv`8:v8wa`88E8sx`86b8o4`82Y8kh`8yL8gx`8ir8re`8mE8tC`8q:8xk`8tY80C`8w<84N`8ra841`8nN81P`8j482>`8fL840`8b>82S`8l`8:e`8lr8>e`8kQ8AR`8kG8Fd`8kG8IE`80n8IH`8x?8Gj`8ua8FI`8tR8Ck`8tM8?8`8uA8;A`8@38h``8A=8mG`8CQ8rt`8H38qG`8Jj8mj`8JG8g3`8hl8Kvj8::85h5D>j8@q875Nk2`8Ms82x`8I481j`8P980cj8;z8iWAVwj8;j8fEAV2j8;V8mkAVqj8<O8ptAVkj8=g86>5Dtj8CN87SNkxj8G288bNktj8K`87SNkoj8N=875Nkkj8QM8695CGj8tA8gEJhEj8we8iJJhIj8yy8laJhNj8058n5JhRj8278qqNnCj84z8ttNnGj86a8w7NnLj8718zMNnPj8Tu85d5C3", "zlqgw8Bq8xh1@S`G?T8``8``8``8``w8FY8zz1A=`GH68``8``8``8``w8Hj83Y1=h`G`c8``8``8``8``w8ET88b1=M`GfT8``8``8``8``w8=;87L1>O`GvT8``8``8``8``w8;>8321?9`G1@8``8``8``8``w8=L8yJ1@n`G7w8``8``8``8``w8AD8921@S`Gnw8``8``8``8```8Bl83Kb8Bl83Kbj`c8k38k38``8``b8Bl83Kbjgm8k38k38``8``b8Bl83Kbjnw8k38k38``8``b8Bl83Kbju68k38k38``8``b8Bl83Kbj1@8k38k38``8``b8Bl83Kbj8J8k38k38``8``b8Bl83Kbj?T8k38k38``8``b8Bl83KbjGc8k38k38``8```80x8AA`85c8AK`89I8AA`8Kp8Bb`8O18Bc`8Sl8Bj`8W@8E:`8r58Fn`8hL8Jz`8g=8EM`8gb8@O`8j:8>``8qh8=d`8vU8<:`8wj88y`8vS82Z`8wa8y;`8vA8tb`8q085V`8my88A`8gY87t`8c;8;4`8bH839`8gj8yN`8dh8uM`8gb8rj`8kn8vP`8l;82F`8qh8zx`8pc8vl`8la8qe`8nb8k<`8s;8kt`8ua8fv`8u38oQ`8608m=`86k8sf`8QX8sS`8Sb8x?`8Ww8xR`8Xs82P`8X`88o`8Ww8<r`8Z38?o`9cd8BF`9bq8FR`9cm8Lh`9eR8>1`9f;8:z`9aY87a`9eR82F`9b08yN`9dV8sy`8Uv8iW`8Wn8fv`8EI8ku`8FW8gq`8@x8hd`8AE8kEj85u8eU1@Sj82S8fw1@;j80Q8gF1@nj8z<8iL1?Qj8zo8ln1?9j87D8f81Apj89?8ha1A=j8:I8jl1AUj8:U8l@1=hj8QG8ml1@Sj8Ou8m>1@;j8Ms8nX1@nj8KY8qc1?Qj8Tf8mJ1Apj8Va8os1A=j8Wk8q31AUj8Ww8sR1=h", "0v8hj8@l8waJdtj8@c8sMJiyj8?C8p?Jiuj8@c8zoJdxj8?C822Jd2j8?b85<Jd6j8>k88CJd;j8=c8;DJd?j8;F8>>JdDj8:i8A0JdHj88x8DdJdMj86y8F>JdQj84m8HWJdVj81N8KhJdZj8zu8LOx8tj8wB8LFx8Vj8uz8JOJftj8s18HtJfxj8qA8E?Jf2j8pf8BKJf6j8nK8?PJf;j8mE8<OJf?j8lP89HJfDj8lq86tNl4j8kN82GNl8j8kD8zhNl=t8kN8v:NlAt8ld8rSNlAt8lu8oqNlAj89e8shNj`j88V8o9Noej88V8vFNjdj8888zsNjij87M82MNjmj86O86rNjrj85>89ANjvj8qq8rENl=j8q08ofNlBj8q08vsNl9j8qN8yPNl4j8r982zNl0j8s685ONlvj8tH89nNlrj8Ek8:7Njvj8Fz87gNjqj8Gv83ANjmj8CD8=JNjzj8b=8wsNl=j8bF8zQNl8j8ci833Nl4j8cO86XNlzj8dM8:2Nlvj8fc8=LNlqj8g<8AcNlmj8iv8DmNlhj8kv8GlNldj8m:8J`NkZj8oY8LANkVj8r@8OeNkQj8u38QuNkMj8bF8sDNlAj8ci8pgNlFj8QA8xE1=Ej8O98yU1>bj8Me8zk1>zj8JI8y21>Gj8HU8wK1?dj8Sd8vF1=xt8EN8qB1?ot8Gx8tW1?ot8SO8sI1=ot8TJ8po1=oj9`p8K2JhUj8Yp8HSJhPj8Wd8F:JhLj8T@8D4JhCj8QR8BJJh:j8NT8A:Jh1j8KL8@LJhsj9aT8NjJicj8M88:BNmZj8Qa8;xNncj8T68<vNnhj8WQ8=<Nnlj9`h8?dNnqj9cr8@NNnuj9fq8BNNnz`8VC87;`8Qt83U`8XS822`9dr802`9`08w9`9f386R`8J48pP`8MW8uE`8PK8pF`8zo8q@`8wC8vv`82u8vZ`8z781q`8vr8?I`8z58Ei`8348@kj8AX8@UNj3j8@a8CWNj8", "5LPij8728xm1A`j87y8341A`t84z8xi1@Lt8:s8yq1Aot8==8zK1Aot8@R81u1Aot8Dl82O1Aot8G684y1Aot8JK85S1Aot8Ne8721Aot8Qz88W1Aot8TD8:61Aot8WY8<`1Aot9`s8=:1Aot9c=8?d1Aot8:s84:1Aot8==86d1Aot8@R87>1Aot8Dl89h1Aot8G68:B1Aot8JK8<l1Aot8Ne8=F1Aot8Qz8?p1Aot8TD8@J1Aot8WY8Bt1Aot9`s8CN1Aot9c=8Ex1Aot80D8x21@Lt8468351@Lt80N83K1@Lt8m88lwx<vt8n`8oVx<vt8n88s:x<vt8o`8wix<vt8o88zHx<vt8p`83wx<vt8p886Vx<vt8q`8::x<vt8q88>ix<vt8r`8AHx<vt8lZ8hGx<vt8se8k@x<vt8s=8oox<vt8te8rNx<vt8t=8v2x<vt8ue8zax<vt8u=82@x<vt8ve86ox<vt8v=89Nx<vt8we8=2x<vt8w=8Aax<vt8r<8h`x<vt8xQ8FHx<gt8s68GHx7uj8EV8oq5D`j8Ce8nH5Dtj8@=8mt5D=j8>G8ke5DQj8=H8hy5Ejj8HK8nH5CGj8Ks8mt5C3j8Mi8ke5Cjj8Nh8hy5BQ`8308fL`8ze8fV`8yz8mq`80m8s5`8458rT`84Y8lJ`8<i8sA`8@48se`8?o8wr`8F78wl`8Jq8ub`8N:8vf`8Rb8tn`8Vd8rZ`8V58vK`8UV8op`8Vw8l1`8ZK8te`9cV8v7`9aM8yG`8YO812`9`Y85I`9eb83X`8Qe80s`8Lg8zI`8N083z`9dQ8L3`8Zj8IQ`8T38Gt`8NG8DG`8I`8Bj`8Ct8?=`8==8=``87Q8:3`81=89=`8gG8>i`8bR8=5`8eO88R`8b?845`8id85D`8eW81p`8c`8xo`8gv8tY`8kO8:n`8jm8zrt8zs8Jex<gt8s18Kyx7u", ":Atjj9bC8uXNmQj8H98rzNmZj8@L8?UFajj8Ae8<KFatj8AS89IFa3j8Co86SFa=j8E`84vFaGj8Go82gFaQj8IN80tFb`j8LC8yXFbjj8Js8=IFaGj8L78;:FaQj8Oe89GFb`j8QU880Fbjj8TX87=Fbtj8Xf87tFb3j9`o87=Fb=j8H58@vFa=j8Gj8CkFa3j8Cp8gKEZ=j8@m8h=EZGj8=d8hQEZQj89V8h=F``j8Fe8f4EZ3j86S8gJF`jj84c8f3F`t`8N58Fe`8R48A5`8X<8>:`9cA8>6`9eO83Qb8Vo8zO`Q`c8bj8bQ8``8``b8Vo8zO`Qnw8bj8bQ8``8``b8Vo8zO`Q1@8bj8bQ8``8``b8Vo8zO`Q?T8bj8bQ8``8```8Oo84``8Je87y`8FV8;L`8=`86j`89=82G`8@382G`8=`8rt`8BG8x``87t8x`b8nr8z5`Q`c8bj8bQ8``8``b8nr8z5`Qnw8bj8bQ8``8``b8nr8z5`Q1@8bj8bQ8``8``b8nr8z5`Q?T8bj8bQ8``8```8sp8jS`8Dh8nh`8Ja8mP`8O18ng`8Uv8n:`8ZO8o>`9eZ8qe`8Rl8jHj8Rf8r9NmZj8U=8sxNnhj9fp8vpNmZj8DV8rfNmQj8gc8uXNmQj81m8rzNmHj88V8?UEY=j88B8<KFc=j87Q89IFc3j86886SFctj84G84vFcjj82882gFc`j8zT80tFbQj8xc8yXFbGj8z58=IFcjj8xq8;:Fc`j8uB89GFbQj8rM880FbGj8oJ87=Fb=j8l@87tFb3j8i887=Fbtj81r8@vFctj82=8CkFc3`8vr8Fe`8rr8A5`8lk8>:`8ff8>6`8cT83Q`8u884``8zB87y`82L8;L`85@8nh`8zE8mO`8uv8nf`8o18n9`8iR8o>`8cH8qej8r@8r9NmHj8oj8swNm?j8c68vpNmHj84L8rfNmQ", ";@?kj8kn8B8z:=j8i78Dnz;`j8gj8DOz;3j8dM8Dnz;Qj8cg8B8z<tj8b68@kz<Gj8lq8@az=jj8mW8>uz==j8pt8=Dz>`j8rA8>uz>3j8tw8@az>Qj8uu8Bvz<tj8vL8Dqz<ej8xG8EIz;Qj8zY8FDz;Bj8208G`z;3j8Pg8>@z:=j8N08@vz;`j8Lc8@Wz;3j8IF8@vz;Qj8GI8>?9LOj8Ev8=l9L@j8BA8<29L1j8Qc8<oz=jj8RI8:8z==j8Uf89Sz>`j8WI8:`5D`j8Z>89:5CGj9bf88g5C3j9cQ85S5Cjj9dP83l5BQj9dP80t5GGj8o:8qrNj`j8oq8mDNoaj8n18jlNnSj8mb8fQNnJj8oq8tONjij80N8prNl=j81g8lDNlFj81V8ilNlOj83v8eQNlXj81g8sONl4j8@a8ihNlyj8?o8e?Nl2j8Ae8l;Nltj8B18oSNlpj8Dg8sbNlgj8Fu8uSNkYj8HT8xyNkPj8K=8zg1>Bj8MX8zB1>uj8Py8zl1=Xj8Ry8xK1=@j8Ta8vM1@oj8Vd8u91@<j8X78uf1@Tj8ZS8u41>yj9bv8uj1>aj9d28sR1=Dj9eN8qR1=wa8jr8M?bj`c8``8``8f38dta8qV8LVbji68``8``8f38dta8pQ8HJbjrT8``8``8f38dta8ut8Ibbj1w8``8``8f38dta8GN8FPbj`c7Z`7Z38f38dta8OI8DEbjfw7Z`7Z38f38dta8N18Jnbjl@7Z`7Z38f38dta8U08@VbjrT7Z`7Z38f38dta8XR8Gkbjym7YQ7Y`8f38dta9bQ8Awbj4J7Z`7Z38f38dta9eq8GKbj;c7Y37Zj8f38dt`8eX8;o`8dt86d`8mc8:0`8u38:K`8r@82Z`8rx870`8zr8:S`8yW8?3`83L8>D`8EY877`8L58:F`8MH85t`8Sv868`8XC85k`8ZQ80U`8Be8B?`8vl8sv`8uP8mF`8tZ8gP`8h;8t<`8cC8po`8gU8lba8jm8Ivbj;c8``8``8f38dta8cI8LtbjD68``8``8f38dta8T28K5bjAw7Z`7Z38f38dta8Y@8K=bjG@7Vj7X38f38dt`8B`83F`8zb86i`8>f8;h`8=C8Ad", "8ellj8Hi8nD=N=j8Fb8q1=NLj8Cu8s7=O`j8@i8tM=Ooj8<G8ur=O3j89v8tM=OBj8318q1=Pej8z082DNj`j8zg8zfNoaj8yr8v>NnSj8wS8ssNnJj8v`8poNnAj8sD8m7Nn8j8pW8kjNnzj8mS8isNnqj8j<8gTNnhj8ge8gdNmZj8HJ83DNl=j8Ic80fNlFj8IS8w>NlOj8Kr8trNlXj8Mj8qoNmfj8O68n7Nmoj8Rm8ljNmxj8Ur8jsNm6j8X>8hTNm?j9ae8hdNmHj8En8gG5BGj8DE8j<5C`j8Cq8md5Ctj8Ab8nU5C=j8>v8oT5CQj8;38oT5Djj88G8nU5D3j8688md5DGj85d8j<5E`j84<8gG5Etj8<E86zz;3j8?a85Iz;`j8@H84bz:=j8Ay81Ez:jj8:x85Iz;Qj88A84bz<tj88`81Ez<G`8RL8xk`9cB8xG`8WE820`8V@8pK`9dg8uF`8Rd81q`8QW85p`8QP8:f`8OP8>0`8M<8BR`9b281Z`9`x867`9`F8:G`9aL8>?`9c68AQ`8Sc8ty`9bW8q2`9`v8m``8rH8xa`8fR8x=`8mO82q`8nT8pA`8f28u<`8s581g`8s=85f`8sD89W`8uE8>q`8wY8BH`8hg81P`8jl86x`8iN8:=`8hH8>5`8gd8AG`8r68to`8g=8qs`8jn8lQ`80R89h`8G589j`88t8?i`8@88?;`8<881y`89J8i``8?J8i``84f8wO`8DU8xy`8oe8Ah`8pw8G``8VL8@E`8U:8F=j8zQ8k8NnKj86i8s7=OQj81u8nC=Ptj8yb8h1NnBj8vI8e@Nn9j8IA8kyNlWj8K58hrNmej8MI8e5Nmn`8<N8eI", "";
-};
 e.GetBackdrop = function()
 	return{bgFile = "Interface\\Tooltips\\UI-Tooltip-Background", tileSize = 16, edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = 1, edgeSize = 16, insets = {top = 5, right = 5, left = 5, bottom = 5, }}
 end
+C_ChatInfo.RegisterAddonMessagePrefix(e.addonName);
 --holds all the string data
 e.locale = {
 	["ABOUT"] = "ABOUT",
@@ -138,7 +143,7 @@ e.locale = {
 	["CREDITS8a"] = "BraveOne - Aerie Peak [A]\n".."Johndoe - Executus EU [A]\n".."Kinu - Ravencrest [H]\n".."Klauen - Blackrock [H]\n".."Lothaer - Spinebreaker [A]\n".."Naiad - Dalaran [A]",
 	["CREDITS8b"] = "Palasadia - Doomhammer [H]\n".."Polgarra - Terokkar [A]\n".."Smashtastic - Khadgar [A]\n".."Sythalin - Thunderlord[A]\n".."Thanotos- Turalyon[A]\n".."Vodax - Dalaran [A]\n".."Zoquara - Nordrassil [A]",
 	["CREDITS9"] = "Github Contributors",
-	["CREDITS9a"]= " adamz01h\n Nimos\n ZombieProtectionAgency\n Andy1210\n ",
+	["CREDITS9a"]= " adamz01h\n Nimos\n ZombieProtectionAgency\n Andy1210",
 	["DUEL"] = "DUEL",
 	["DUEL_BREAKDOWN1"] = "Your Score: %s",
 	["DUEL_BREAKDOWN1a"] = "Opponent's Score: %s",
@@ -191,18 +196,6 @@ e.locale = {
 	["LEGAL1"] = "(c) 2000, 2009 PopCap Games Inc. All right reserved",
 	["LEGAL2"] = "(c)2007, 2009 PopCap Games, Inc.  All rights reserved.  This application is ".."being made available free of charge for your personal, non-commercial entertainment "..'use, and is provided "as is", without any warranties.  PopCap Games, Inc. will have '.."no liability to you or anyone else if you choose to use it.  See readme.txt for details.",
 	["_LEVEL_INFO"] = "Level %d: %s",
-	["_LEVEL_NAME1"] = "Ironforge",
-	["_LEVEL_NAME2"] = "Orgrimmar",
-	["_LEVEL_NAME3"] = "Stormwind",
-	["_LEVEL_NAME4"] = "Undercity",
-	["_LEVEL_NAME5"] = "Darnassus",
-	["_LEVEL_NAME6"] = "Thunder Bluff",
-	["_LEVEL_NAME7"] = "Dark Portal",
-	["_LEVEL_NAME8"] = "Exodar",
-	["_LEVEL_NAME9"] = "Silvermoon City",
-	["_LEVEL_NAME10"] = "Shattrath City",
-	["_LEVEL_NAME11"] = "Dalaran",
-	["_LEVEL_NAME12"] = "Icecrown Citadel",
 	["MENU"] = "MENU",
 	["MOST_RECENT"] = "MOST RECENT:",
 	["MOUSE_OVER"] = "Mouse over a talent for more information",
@@ -242,10 +235,10 @@ e.locale = {
 	["OPT_DUEL_INVITES4"] = "Auto-decline Duels",
 	["OPTIONAL"] = "|cFFFF8C00(OPTIONAL)",
 	["ORANGE_PEGS"] = "Orange\nPegs",
-	["OUT_OF_DATE"] = "|cFFFFFFFFThis version of Peggle is out-of-date! Visit |r|cFFFFFF00www.popcap.com/wow|r|cFFFFFFFF for the latest version!",
+	["OUT_OF_DATE"] = "|cFFFFFFFFThis version of Peggle is out-of-date! Visit |r|cFFFF66CChttps://github.com/adamz01h/wow_peggle|r|cFFFFFFFF for the latest version!",
 	["_OUTDATED"] = "%s has invited you to a %s using an old version of this addon. Unfortunately, the versions are no longer compatible. Please ask them to upgrade to the latest version.",
 	["_PEGS_HIT"] = "%s x %d |4PEG:PEGS",
-	["_PEGGLE_ISSUE1"] = "[Peggle] We're very sorry but it appears the battle data being saved is invalid and was not saved. Please report this error to wowaddons@popcap.com with as much detail as possible so we can fix it in future versions.",
+	["_PEGGLE_ISSUE1"] = "[Peggle] We're very sorry but it appears the battle data being saved is invalid and was not saved. Please report this error with as much detail as possible so we can fix it in future versions. https://github.com/adamz01h/wow_peggle",
 	["PEGGLE_ISSUE2"] = "Part of the Peggle addon is corrupt. Please re-download the Peggle addon to fix this issue.",
 	["PEGGLELOOT_DESC"] = "Highest Scoring Single Shot Wins",
 	["_PEGGLELOOT_ISACTIVE"] = "Peggle Loot is already active! %d seconds remain in current challenge.",
@@ -337,7 +330,7 @@ e.locale = {
 }
 e.factors = {0, 10, 0, 2, 0, 1, 0, 10, 0, 5, 0, 10, 150, 10, 0, 10, 0, 20, 0, 0, 0, 0}
 local fe = nil;
-local ht =  - 1;
+local ht = -1;
 local St = {["x"] = 0;
 ["y"] = 0;
 ["xVel"] = 0;
@@ -348,7 +341,10 @@ local Ke = 0;
 local qe = 0;
 local o = {};
 local H;
-local Z = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+local levelScoreData = {};
+for i=1, #LEVELS * 2 do
+	levelScoreData[i] = 0
+end
 local d;
 local t;
 local r;
@@ -371,6 +367,19 @@ local D = tostring;
 local u = table.remove;
 local s = table.insert;
 local B = {};
+levelDataIndex = {};
+levelDataIndex.id = 1;
+levelDataIndex.animationType = 2;
+levelDataIndex.objectType = 3;
+levelDataIndex.x = 4;
+levelDataIndex.y = 5;
+levelDataIndex.rotation = 6;
+levelDataIndex.animationTime = 7;
+levelDataIndex.animationDelay = 8;
+levelDataIndex.animValue1 = 9;
+levelDataIndex.animValue2 = 10;
+levelDataIndex.animValue3 = 11;
+levelDataIndex.animValue4 = 12;
 e.windowWidth = 662;
 e.windowHeight = 548;
 e.boardWidth = 554;
@@ -555,7 +564,7 @@ e.newInfo = {"id", "names", "namesWithoutChallenge", "creator", "note", "new", "
 e.days = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 e.filterText = string.gsub(ERR_CHAT_PLAYER_NOT_FOUND_S, "%%s", "(.+)");
 local se = 260;
-local be =  - 248;
+local be = -248;
 local Ee = .68;
 local N = 270;
 local ue = 270;
@@ -617,7 +626,8 @@ local l = {};
 local Y;
 local V;
 PeggleData = {};
-PeggleData.data = "i4g`Z@a`````````````````````````````````````````````````P7Vmr=h7ZuSBG";
+PeggleData.newData = {};
+PeggleData.newData = {["levelScores"] = {}, ["talentData"] = { ["activated"] = {0,0,0,0,0,0,0,0,0,0,0} }}
 PeggleData.settings = {mouseOnTrans = 1, mouseOffTrans = .6, showMinimapIcon = true, openFlightStart = true, openDeath = true, openLogIn = true, openDuel = true, closeFlightEnd = false, closeReadyCheck = true, closeCombat = true, closeDuelComplete = false, closePeggleLoot = false, inviteChat = true, inviteRaid = false, inviteMinimap = true, inviteDecline = false, hideOutdated = false;
 soundVolume = 0, minimapAngle = 270, defaultPublish = "GUILD", };
 PeggleData.version = e.versionID;
@@ -790,29 +800,27 @@ end
 local function Fe(o)
 	local t = GetTime();
 	local t, l;
-	local n = 2;
-	ee = S(c(o, 1, 1));
+	local block = 1;
+	local level = o;
+	ee = o;
 	B = {};
-	while(n < #o)do
+	while(block <= #LEVELS[level])do
 		t = {};
-		l = S(c(o, n, n));
-		t.animationType = f(l, 10);
-		t.objectType = i(l / 10);
-		t.x = S(c(o, n + 1, n + 3), true) / 10
-		t.y = S(c(o, n + 4, n + 6), true) / 10
-		n = n + 7;
-		if(t.objectType == Xe)or(t.objectType == nt)then
-			l = S(c(o, n, n + 2));
+		t.animationType = LEVELS[level][block][levelDataIndex.animationType];
+		t.objectType = LEVELS[level][block][levelDataIndex.objectType];
+		t.x = LEVELS[level][block][levelDataIndex.x]
+		t.y = LEVELS[level][block][levelDataIndex.y]
+		if(t.objectType == Xe) or (t.objectType == nt)then
+			l = LEVELS[level][block][levelDataIndex.rotation];
 			t.radius = i(l / 1e3) - 100;
 			t.rotation = l - ((t.radius + 100) * 1e3);
-			n = n + 3;
 		else
 			t.radius = 60;
 			t.rotation = 0;
 		end
 		if(t.animationType ~= e.ANI_NONE)then
-			t.time = S(c(o, n, n + 1)) / 10;
-			l = S(c(o, n + 2, n + 3));
+			t.time = LEVELS[level][block][levelDataIndex.animationTime];
+			l = LEVELS[level][block][levelDataIndex.animationDelay];
 			local e = f(l, 10);
 			if(e > 1)then
 				t.reverser = true;
@@ -821,13 +829,10 @@ local function Fe(o)
 				t.active = true;
 			end
 			t.timeOffset = (l - e) / 10 / 4;
-			n = n + 4;
-			t.value1 = S(c(o, n, n + 2), true) / 10
-			t.value2 = S(c(o, n + 3, n + 5), true) / 10
-			n = n + 6;
-			t.value3 = S(c(o, n, n + 2), true) / 10
-			t.value4 = S(c(o, n + 3, n + 5), true) / 10
-			n = n + 6;
+			t.value1 = LEVELS[level][block][levelDataIndex.animValue1];
+			t.value2 = LEVELS[level][block][levelDataIndex.animValue2];
+			t.value3 = LEVELS[level][block][levelDataIndex.animValue3];
+			t.value4 = LEVELS[level][block][levelDataIndex.animValue4];
 		else
 			t.animationType = 0;
 			t.value1 = 0;
@@ -839,6 +844,7 @@ local function Fe(o)
 			t.time = 1;
 			t.timeOffset = 0;
 		end
+		block = block + 1 
 		s(B, t);
 	end
 end
@@ -902,74 +908,58 @@ local function L(e, t)
 	local h, u, f, d, r = p(n, t);
 	local i, a, t, o, l;
 	local e = D(S(s));
+
 	i = A(c(e, 6, 6));
 	a = A(c(e, 5, 5));
 	t = A(c(e, 4, 4));
 	o = A(c(e, 3, 3));
 	l = A(c(e, 2, 2));
+
 	if((i == h)and(a == u)and(t == f)and(o == d)and(l == r))then
 		return n;
 	end
 end
 local function p(t)
+	t = string.match(t, "(.*)%-(.*)") or t
 	local n, e = 0, 0;
 	for n = 1, #t do
 		e = e + W(t, n);
 	end
 	return e;
 end
-local function Be()
-	local e;
-	local e = "";
-	for t = 1, 12 do
-		e = e..O(C(48, 90))..O(C(48, 90))..O(C(48, 90))..O(C(48, 90))
-	end
-	e = h(1e12, 7)..e..h(1e11, 7)..h(1e12, 7);
-	V[g] = U(e, p(H))
-	return e;
-end
 local function _e()
-	local e = L(V[g], p(H))
-	if not e then
-		e = Be();
-	end
-	local l = D(S(c(e, 1, 7)));
 	local n = 0;
-	local e;
-	local e = 48;
-	local t;
 	local e, o = 0, 0;
-	for a = 2, #l do
-		t = W(l, a) - 49;
-		if(t > 0)and(t < 3)then
-			n = n + t;
-			if(t == 1)then
-				e = e + 1;
-			else
-				e = e + 1;
-				o = o + 1;
-			end
+	local scores = PeggleData.newData.levelScores
+	local i;
+	for i = 1, #scores do
+		if(scores[i].progress == 2)then
+			e = e + 1;
+			n = n + 1;
+		end
+
+		if(scores[i].progress == 3)then
+			e = e + 1;
+			o = o + 1;
+			n = n + 2;
 		end
 	end
 	return n, e, o;
 end
 local function et()
-	local e = L(V[g], p(H))
-	if not e then
-		e = Be();
-	end
-	local n = D(S(c(e, 7 + 12 * 4 + 1, 7 + 12 * 4 + 7)));
+	local talentCount = 11 + 1;
 	local t = 0;
-	local o = 48;
-	for e = 2, #n do
-		b[33 + e - 1] = (W(n, e) - o);
+	for e = 2, talentCount do
+		b[33 + e - 1] = PeggleData.newData.talentData["activated"][e-1];
 		t = t + b[33 + e - 1]
 	end
 	return t;
 end
 local function Ge()
+	et();
 	local o = et();
 	local e = _e();
+
 	local n = e - o;
 	local t = t.sparks;
 	if(n > 0)then
@@ -992,10 +982,13 @@ local function Ve()
 	i.pointsLeft:SetText(e.locale["_POINTS_LEFT"]..": |cFFFFFFFF"..r);
 	local s, d, S, l, a, t, o, n, e;
 	local i = i.tree.node;
+	local talentData = PeggleData.newData.talentData.activated
+
 	for s = 1, #i do
 		a, S, d, l = Ue(s);
 		e = i[s];
 		e.rank:SetText(a);
+
 		if(a == S)then
 			t, o, n = 1, .82, 0;
 		elseif(c >= d * 5)then
@@ -1041,10 +1034,6 @@ local function xt(o)
 		if(i >= (a * 5))then
 			if(t < l)then
 				if((n == 0)or(b[33 + n] > 4))then
-					local n = L(V[g], p(H))
-					if not n then
-						n = Be();
-					end
 					t = t + 1;
 					b[33 + e] = t;
 					local e = 1e11;
@@ -1052,7 +1041,14 @@ local function xt(o)
 					for t = 1, 11 do
 						e = e + (b[33 + t] * (10 ^ (11 - t)));
 					end
-					V[g] = U(string.sub(n, 1, 7 + 12 * 4)..h(e, 7)..string.sub(n, 7 + 12 * 4 + 8), p(H));
+
+					local talentCount = 11 + 1;
+					local used = 0
+					for i = 2, #tostring(e) do
+						local c = tostring(e):sub(i,i)
+						PeggleData.newData.talentData["activated"][i-1] = tonumber(c);
+						used = used + tonumber(c)
+					end
 					Ve();
 					o:GetScript("OnEnter")(o)
 				end
@@ -1075,45 +1071,24 @@ local function ot(t, r)
 	return n, i;
 end
 local function lt(l, n, o)
-	local a;
-	local i = L(V[g], p(H))
-	if not i then
-		i = Be();
-	end
 	local d
 	if(l)then
-		local a = c(i, 1, 7);
 		local r;
 		if(o ~= 0)then
-			local t = D(o);
-			local e = D(S(a));
-			local l = W(e, n + 1) - 48
+			local l = PeggleData.newData.levelScores[n]['progress'];
 			if(l == 0)then
 				r = true;
 			end
 			if(l < o)then
-				d = o - 1;
-				if(n == 1)then
-					a = h(A("1"..t..c(e, 3)), 7);
-				elseif(n == 12)then
-					a = h(A("1"..c(e, 2, n)..t), 7);
-				else
-					a = h(A("1"..c(e, 2, n)..t..c(e, n + 2)), 7)
-				end
-				Z[n + 12] = o
+				PeggleData.newData.levelScores[n]['progress'] = o
+				levelScoreData[n + #LEVELS] = o
 			end
 		end
-		local o = c(i, 8);
-		local i = S(c(o, (n - 1) * 4 + 1, n * 4));
+		local i = PeggleData.newData.levelScores[n]['score'];
 		if(l > i)or(r)then
-			if(n == 1)then
-				o = h(l, 4)..c(o, 5);
-			else
-				o = c(o, 1, (n - 1) * 4)..h(l, 4)..c(o, n * 4 + 1);
-			end
-			Z[n] = l;
+			PeggleData.newData.levelScores[n]['score'] = l
+			levelScoreData[n] = l;
 		end
-		V[g] = U(a..o, p(H));
 		if(t.duelStatus == 3)then
 			local n = t.catagoryScreen.frames[2];
 			local o, l, a = _e();
@@ -1315,7 +1290,7 @@ local function Et(o, n)
 		t.powerLabel.text:SetText(e.locale["_SPECIAL_NAME1"].." "..K);
 	end
 	local n = R - G;
-	x =  - 30;
+	x = -30;
 	for t = 1, #e.ranks, 2 do
 		if(n >= e.ranks[t])then
 			x =  - e.ranks[t + 1];
@@ -1605,7 +1580,7 @@ local function Ae(o, h, p, T)
 	Ie:SetText(We);
 	d.lastPeg = nil;
 	Q = false;
-	x:SetText(P(Z[ee]));
+	x:SetText(P(levelScoreData[ee]));
 	r:ClearAllPoints();
 	r:SetPoint("center");
 	r:SetScale(1);
@@ -1722,7 +1697,7 @@ local function Ae(o, h, p, T)
 		t.charScreen:Show();
 		t.shooter.face:SetTexture(e.artPath.."char"..(t.charScreen.focus:GetID() + 1).."Face");
 		e[e.newInfo[13]] = nil;
-		t.peggleLootTimer.remaining =  - 100;
+		t.peggleLootTimer.remaining = -100;
 	end
 	if not e[e.newInfo[13]]then
 		for e = 1, b[33 + 3]do
@@ -1777,7 +1752,7 @@ local function Oe(o, s, r)
 	elseif(o == 6)then
 		if(x >= 0)then
 		n = 50 * l;
-		x =  - 30;
+		x = -30;
 		end
 	end
 	if(n)then
@@ -1998,7 +1973,7 @@ local function Ne(n, S, o)
 		r = #d.hitPegStack;
 		if(r < 19)then
 			if(t.range == 1)then
-				local t =  - 12 + r;
+				local t = -12 + r;
 				if(t < 0)then
 					E(e.sounds[e.SOUND_PEG_HIT].."_plus4b"..D(t)..".ogg");
 				else
@@ -2011,7 +1986,7 @@ local function Ne(n, S, o)
 			end
 		else
 			if(t.range == 1)then
-				local t =  - 12 + r;
+				local t = -12 + r;
 				if(t > 9)then
 					t = 9;
 				end
@@ -2395,7 +2370,7 @@ local function l(n, l)
 		else
 			n.forced = nil;
 			o = n.selectedValue or(1);
-			local t = string.format(e.locale["_LEVEL_INFO"], o, e.locale["_LEVEL_NAME"..o]);
+			local t = string.format(e.locale["_LEVEL_INFO"], o, LEVEL_NAMES[o]);
 			UIDropDownMenu_SetText(n, t, n);
 			n.selectedValue = o;
 			if(n.updateFunc)then
@@ -2465,13 +2440,13 @@ local function We(o)
 			PeggleData.settings.defaultPublish = t;
 		else
 			getglobal("DropDownList1").maxWidth = 280;
-			for o = 1, 12 do
+			for o = 1, #LEVELS do
 				table.wipe(n);
-				n.text = string.format(e.locale["_LEVEL_INFO"], o, e.locale["_LEVEL_NAME"..o]);
+				n.text = string.format(e.locale["_LEVEL_INFO"], o, LEVEL_NAMES[o]);
 				n.value = o;
 				n.fontObject = t.fontObj;
 				n.icon = e.artPath.."bannerMenu";
-				a = Z[o + 12];
+				a = levelScoreData[o + #LEVELS];
 				if(a == 3)then
 					n.tCoordLeft = 0;
 					n.tCoordRight = .5;
@@ -2503,7 +2478,7 @@ local function m(t)
 		UIDropDownMenu_SetSelectedValue(t, PeggleData.settings.defaultPublish)
 		n = PeggleData.settings.defaultPublish;
 	else
-		UIDropDownMenu_SetSelectedName(t, string.format(e.locale["_LEVEL_INFO"], t.selectedValue, e.locale["_LEVEL_NAME"..t.selectedValue]));
+		UIDropDownMenu_SetSelectedName(t, string.format(e.locale["_LEVEL_INFO"], t.selectedValue, LEVEL_NAMES[t.selectedValue]));
 	end
 	t.selectedValue = n;
 	UIDropDownMenu_SetWidth(t, t.menuWidth);
@@ -2758,8 +2733,8 @@ local function Pt(o, p, g, h, f)
 		n = o:CreateImage(0, 0, e.ballWidth, e.ballHeight, r.foreground);
 		n.texture:SetTexture(e.artPath.."ballTrail");
 		n.texture:SetVertexColor(d, i, s);
-		n.x =  - 100;
-		n.y =  - 100;
+		n.x = -100;
+		n.y = -100;
 		d = d + c;
 		i = i + a;
 		s = s + S;
@@ -2785,8 +2760,8 @@ local function Pt(o, p, g, h, f)
 	t:Show();
 	local e;
 	for e = 1, 30 do
-		t["trail"..e].x =  - 1e3;
-		t["trail"..e].y =  - 1e3;
+		t["trail"..e].x = -1e3;
+		t["trail"..e].y = -1e3;
 		t["trail"..e]:Hide();
 	end
 	t.xVel = k(T(h)) * f;
@@ -3169,8 +3144,8 @@ local function He(S, u, l, h, c, o, n, t, s, g)
 				t.hit = true;
 				if(t == d.lastPeg)then
 					for e = 1, 30 do
-						n["trail"..e].x =  - 100;
-						n["trail"..e].y =  - 100;
+						n["trail"..e].x = -100;
+						n["trail"..e].y = -100;
 						n["trail"..e]:Hide();
 					end
 					n.trail1:SetPoint("Center",  - 1e3,  - 1e3);
@@ -3441,8 +3416,8 @@ local function qe(t, o, C, P)
 			end
 			if(n == d.lastPeg)then
 				for e = 1, 30 do
-					t["trail"..e].x =  - 100;
-					t["trail"..e].y =  - 100;
+					t["trail"..e].x = -100;
+					t["trail"..e].y = -100;
 					t["trail"..e]:Hide();
 				end
 				t.trail1:SetPoint("Center",  - 1e3,  - 1e3);
@@ -3517,7 +3492,7 @@ local function Ne(o, n)
 		if(o.feverUp >  - 1)then
 			o.feverUp = o.feverUp + o.elapsed / J;
 			if(o.feverUp >= .5)then
-				o.feverUp =  - 1;
+				o.feverUp = -1;
 				t.rainbow:SetWidth(r:GetWidth());
 				t.rainbow:SetTexCoord(0, 1, 0, 1);
 				t.feverPegScore:Show();
@@ -3649,7 +3624,7 @@ local function Ne(o, n)
 			t.rainbow:SetTexCoord(1, 1, 0, 1);
 			t.rainbow:SetWidth(1);
 		end
-		if(not o.feverUp)or(o.feverUp ==  - 1)then
+		if(not o.feverUp)or(o.feverUp == -1)then
 			if(#o.hitPegStack > 0)then
 				if not o.pegDelay then
 					o.pegDelay = o.elapsed;
@@ -3830,7 +3805,7 @@ local function Ne(o, n)
 						end
 						if(S.bestObj)then
 							p = p + 1;
-							if(S.bestDist ==  - 1)then
+							if(S.bestDist == -1)then
 								He(n.x, n.y, v, S.centerX, S.centerY, 1, n, S.bestObj, nil, true);
 								S.bestObj = nil;
 							else
@@ -3876,7 +3851,7 @@ local function Ne(o, n)
 						n.xVel =  - n.xVel - (O);
 					end
 					if(n.y < (e.boardBoundryBottom - 10))then
-						n.y =  - 100;
+						n.y = -100;
 						n.yVel = 0;
 					elseif(n.y > e.boardBoundryTop)then
 						n.y = e.boardBoundryTop - (n.y - e.boardBoundryTop);
@@ -4065,7 +4040,7 @@ local function Ne(o, n)
 											end
 										end
 										if(S.bestObj)then
-											if(S.bestDist ==  - 1)then
+											if(S.bestDist == -1)then
 												He(n.x, n.y, v, S.centerX, S.centerY, 1, n, S.bestObj, Z);
 												S.bestObj = nil;
 											else
@@ -4092,7 +4067,7 @@ local function Ne(o, n)
 				end
 				if(G >= R)then
 					if(n.y <= 50)then
-						W =  - 8;
+						W = -8;
 						for t = 1, 6 do
 							B = o.bouncer[t];
 							g = (B - n.x);
@@ -4163,12 +4138,12 @@ local function Ne(o, n)
 							if(u) < (v * v)then
 								if(u < t.bestDist)then
 									if(((i - n.x) ^ 2 + (r - n.y) ^ 2) < 25)then
-										t.bestDist =  - 1;
+										t.bestDist = -1;
 										t.centerX = i;
 										t.centerY = r;
 										S = true;
 									elseif(((l - n.x) ^ 2 + (a - n.y) ^ 2) < 25)then
-										t.bestDist =  - 1;
+										t.bestDist = -1;
 										t.centerX = l;
 										t.centerY = a;
 										S = true;
@@ -4193,7 +4168,7 @@ local function Ne(o, n)
 						end
 						if(S == true)then
 							D(e.SOUND_BUCKET_HIT);
-							if(t.bestDist ==  - 1)then
+							if(t.bestDist == -1)then
 								He(n.x, n.y, v, t.centerX, t.centerY, 1, n, t.bestObj, Z, true);
 								t.bestObj = nil;
 							else
@@ -4208,7 +4183,7 @@ local function Ne(o, n)
 					end
 				end
 				if(n.y < (e.boardBoundryBottom - 10))then
-					n.y =  - 100;
+					n.y = -100;
 					n.yVel = 0;
 				elseif(n.y > e.boardBoundryTop)then
 					n.y = e.boardBoundryTop - (n.y - e.boardBoundryTop);
@@ -4232,7 +4207,7 @@ local function Ne(o, n)
 				end
 				n.yVel = n.yVel + Be * n.gravMultiplier;
 				local l = ((oe - Ae) < n.x)and((oe + Ae) > n.x)
-				if not(n.y <=  - 100)then
+				if not(n.y <= -100)then
 					if(De)then
 						n.lastSame = (n.lastSame or(0)) + 1;
 					else
@@ -4632,7 +4607,7 @@ local function re(n, r, f)
 			local e = #n.ballStack;
 			n.ballSpring.newY = 76 - ((e - 2) * 3);
 			n.ballSpring.y = 76 - ((e - 1) * 3);
-			n.springMove =  - 1;
+			n.springMove = -1;
 			if(e < 4)then
 				t.roundBalls:Hide();
 				t.roundBalls:Show();
@@ -4649,7 +4624,7 @@ local function re(n, r, f)
 				Me(w);
 			end
 			V["r".."ece".."nt"][ee] = w;
-			if(w > Z[ee])then
+			if(w > levelScoreData[ee])then
 				lt(w, ee, 1);
 			else
 				if(t.duelStatus == 3)then
@@ -4723,7 +4698,7 @@ local function re(n, r, f)
 		local e = #n.ballStack;
 		n.ballSpring.newY = 76 - (e * 3);
 		n.ballSpring.y = 76 - ((e + 1) * 3);
-		n.springMove =  - 1;
+		n.springMove = -1;
 		n.ballDisplay:SetText(te);
 	end
 	if(c)then
@@ -4920,7 +4895,7 @@ local function pe(c, m, x, d, l, S)
 	local date=C_Calendar.GetDate()
 	local e, b, T, P = date.weekday, date.month, date.monthDay, date.year;
 	local f, S = GetGameTime();
-	Fe(ie[c]);
+	Fe(c);
 	local a = #B;
 	local e = {};
 	local o, t;
@@ -4999,7 +4974,7 @@ local function ge(n)
 			t[e] = S(c(a, (e - 1) * 6 + 1, (e - 1) * 6 + 2));
 			l[e] = S(c(a, (e - 1) * 6 + 3, e * 6));
 			if(t[e] == 1e3)then
-				l[e] =  - 1;
+				l[e] = -1;
 			end
 		end
 	end
@@ -5083,7 +5058,7 @@ local function le()
 	end
 	pinger = t.network.pinger;
 	pinger.elapsed = 0;
-	pinger.lastIndex =  - 1;
+	pinger.lastIndex = -1;
 	pinger:Show();
 end
 local function ne(r)
@@ -5195,7 +5170,7 @@ local function ne(r)
 					end
 				end
 				n.elapsed = 0;
-				n.lastIndex =  - 1;
+				n.lastIndex = -1;
 				n:Show();
 				return;
 			else
@@ -5220,7 +5195,7 @@ local function ne(r)
 						end
 					end
 					n.elapsed = 0;
-					n.lastIndex =  - 1;
+					n.lastIndex = -1;
 					n:Show();
 					return;
 				end
@@ -5548,7 +5523,7 @@ local function he()
 		end
 		local t = i(e.stats[3] / e.stats[7] * 100)
 		n.title:SetText(e.locale["_SUMMARY_TITLE"..o]);
-		n.best:SetFormattedText(n.best.caption1, P(Z[ee]))
+		n.best:SetFormattedText(n.best.caption1, P(levelScoreData[ee]))
 		n.current:SetFormattedText(n.current.caption1, P(w))
 		n.stat1:SetText(e.stats[1]);
 		n.stat2:SetText(e.stats[2]);
@@ -5678,7 +5653,7 @@ local function he()
 		local o;
 		if not n.publishDuel then
 			n:SetHeight(n.noPublishHeight);
-			o = string.format(e.locale["_PUBLISH_SCORE"], UnitName("player"), n.publishInfo, e.locale["_LEVEL_NAME"..ee]);
+			o = string.format(e.locale["_PUBLISH_SCORE"], UnitName("player"), n.publishInfo, LEVEL_NAMES[ee]);
 		else
 			o = n.publishInfo
 		end
@@ -5724,7 +5699,7 @@ local function ce()
 	t.gameMenu = n;
 	n:SetScript("OnShow", function(n)
 		d:Hide();
-		if(e[e.newInfo[13]])or(e.extraInfo)or((t.duelStatus == 3)and t.catagoryScreen.frames[2].player1.value ==  - 1)then
+		if(e[e.newInfo[13]])or(e.extraInfo)or((t.duelStatus == 3)and t.catagoryScreen.frames[2].player1.value == -1)then
 			SetDesaturation(n.restart.background, true);
 			n.restart:EnableMouse(false);
 		else
@@ -5742,7 +5717,7 @@ local function ce()
 		if(t.duelStatus == 3)then
 			local n = t.catagoryScreen.frames[2];
 			C_ChatInfo.SendAddonMessage(t.network.prefix, e.commands[6], "WHISPER", n.name2:GetText());
-			n.player1.value =  - 2;
+			n.player1.value = -2;
 			n:UpdateWinners();
 			if(PeggleData.settings.closeDuelChallenge == true)then
 				t.duelStatus = nil;
@@ -5923,7 +5898,7 @@ local function me()
 		t.levelList:Show();
 	end);
 	n.UpdateDisplay = function(n, t)
-		local o = Z[t];
+		local o = levelScoreData[t];
 		if(o == 0)then
 			n.beatLevel:Show();
 			n.best:Hide();
@@ -5937,7 +5912,7 @@ local function me()
 			n.mostRecentFrame:Show();
 			n.mostRecentPoints:SetText(P(PeggleData.recent[t]));
 		end
-		local o = Z[t + 12];
+		local o = levelScoreData[t + #LEVELS];
 		local t;
 		t = n.talent2;
 		if(o == 3)then
@@ -5961,7 +5936,7 @@ local function me()
 		end
 		n.levelImage:SetTexture(e.artPath.."bg"..n.showID.."_thumb");
 	end
-	local l = o:CreateCaption(0, 0, e.locale["QUICK_PLAY"], n, 40, .05, .66, 1, 1, nil)
+	local l = o:CreateCaption(0, 0, e.locale["QUICK_PLAY"], n, 25, .05, .66, 1, 1, nil)
 	l:ClearAllPoints();
 	l:SetPoint("Top", 0,  - 22);
 	local c = CreateFrame("Frame", "", a);
@@ -5970,8 +5945,8 @@ local function me()
 	t.levelList = c;
 	c.UpdateList = function(e)
 		local t, n;
-		for t = 1, 12 do
-			n = Z[t + 12];
+		for t = 1, #LEVELS do
+			n = levelScoreData[t + #LEVELS];
 			if(n == 3)then
 				e["flag"..t.."a"]:Show();
 				e["flag"..t.."b"]:Show();
@@ -5986,12 +5961,12 @@ local function me()
 		end
 		e["highlight"..e:GetParent().showID].tex:SetAlpha(1);
 	end
-	l = o:CreateCaption(0, 0, e.locale["SELECT_LEVEL"], c, 26, 1, .82, 0, 1, nil)
+	l = o:CreateCaption(0, 0, e.locale["SELECT_LEVEL"], c, 20, 1, .82, 0, 1, nil)
 	l:ClearAllPoints();
-	l:SetPoint("Top", c, "Topleft", 170,  - 60);
+	l:SetPoint("Top", c, "Topleft", 170,  -50);
 	local r = CreateFrame("Frame", "", c);
-	r:SetPoint("Topleft", 20,  - 90)
-	r:SetPoint("Bottomleft", 20, 100);
+	r:SetPoint("Topleft", 20,  -70)
+	r:SetPoint("Bottomleft", 20, 70);
 	r:SetWidth(300);
 	d.bgFile = e.artPath.."windowBackground";
 	d.tileSize = 128;
@@ -6020,30 +5995,30 @@ local function me()
 		end
 	end
 	local u, t, u;
-	for a = 1, 12 do
-		l = o:CreateCaption(10, 10 + (a - 1) * 20, a, r, 19, 1, 1, 1, 1, nil)
+	for a = 1, #LEVELS do
+		l = o:CreateCaption(10, 10 + (a - 1) * 14, a, r, 14, 1, 1, 1, 1, nil)
 		l:SetWidth(32);
 		l:SetHeight(14);
 		l:SetJustifyH("LEFT")
-		l = o:CreateCaption(42, 10 + (a - 1) * 20, e.locale["_LEVEL_NAME"..a], r, 19, 1, 1, 1, 1, nil)
+		l = o:CreateCaption(42, 10 + (a - 1) * 14, LEVEL_NAMES[a], r, 12, 1, 1, 1, 1, nil)
 		l:SetWidth(300 - 42 - 42);
 		l:SetHeight(14);
 		t = r:CreateTexture(nil, "Overlay");
-		t:SetWidth(16);
-		t:SetHeight(16);
-		t:SetPoint("Topright",  - 10 - 16,  - 9 - (a - 1) * 20);
+		t:SetWidth(14);
+		t:SetHeight(14);
+		t:SetPoint("Topright",  - 10 - 16,  - 9 - (a - 1) * 14);
 		t:SetTexture(e.artPath.."bannerSmallRed");
 		c["flag"..a.."a"] = t;
 		t = r:CreateTexture(nil, "Overlay");
-		t:SetWidth(16);
-		t:SetHeight(16);
-		t:SetPoint("Topright",  - 10,  - 9 - (a - 1) * 20);
+		t:SetWidth(14);
+		t:SetHeight(14);
+		t:SetPoint("Topright",  - 10,  - 9 - (a - 1) * 14);
 		t:SetTexture(e.artPath.."bannerSmallBlue");
 		c["flag"..a.."b"] = t;
 		n = CreateFrame("Frame", "", r);
 		n:SetWidth(300 - 16);
-		n:SetHeight(20);
-		n:SetPoint("Topleft", 10,  - 6 - (a - 1) * 20);
+		n:SetHeight(16);
+		n:SetPoint("Topleft", 10, -8 - (a - 1) * 14);
 		n:SetScript("OnEnter", s);
 		n:SetScript("OnLeave", S);
 		n:SetScript("OnMouseUp", h);
@@ -6113,16 +6088,16 @@ local function me()
 	a.mostRecentPoints = l;
 	local r = e.artCut["bannerSmall1"];
 	t = a:CreateTexture(nil, "Artwork");
-	t:SetWidth(i((r[2] - r[1]) * 512 + .5));
-	t:SetHeight(i((r[4] - r[3]) * 512 + .5));
-	t:SetPoint("Bottomleft", a, "BottomLeft", 50, 56);
+	t:SetWidth(i((r[2] - r[1]) * 320 + .5));
+	t:SetHeight(i((r[4] - r[3]) * 320 + .5));
+	t:SetPoint("Bottomleft", a, "BottomLeft", 55, 40);
 	t:SetTexture(e.artPath.."banner2");
 	t:SetTexCoord(unpack(r));
 	t.on = r;
 	t.off = e.artCut["bannerSmall3"];
-	l = o:CreateCaption(0, 0, e.locale["BEAT_THIS_LEVEL1"], a.bestFrame, 14, 0, 1, 0, nil, nil)
+	l = o:CreateCaption(0, 0, e.locale["BEAT_THIS_LEVEL1"], a.bestFrame, 11, 0, 1, 0, nil, nil)
 	l:ClearAllPoints();
-	l:SetPoint("Topleft", t, "Topright", 0,  - 8);
+	l:SetPoint("Topleft", t, "Topright", 0, -5);
 	l:SetWidth(220);
 	l.caption1 = e.locale["BEAT_THIS_LEVEL1"]
 	l.caption2 = e.locale["BEAT_THIS_LEVEL3"]
@@ -6130,16 +6105,16 @@ local function me()
 	l.tex = t;
 	r = e.artCut["bannerSmall2"];
 	t = a:CreateTexture(nil, "Artwork");
-	t:SetWidth(i((r[2] - r[1]) * 512 + .5));
-	t:SetHeight(i((r[4] - r[3]) * 512 + .5));
-	t:SetPoint("Bottomleft", a, "BottomLeft", 50, 10);
+	t:SetWidth(i((r[2] - r[1]) * 320 + .5));
+	t:SetHeight(i((r[4] - r[3]) * 320 + .5));
+	t:SetPoint("Bottomleft", a, "BottomLeft", 55, 10);
 	t:SetTexture(e.artPath.."banner2");
 	t:SetTexCoord(unpack(r));
 	t.on = r;
 	t.off = e.artCut["bannerSmall3"];
-	l = o:CreateCaption(0, 0, e.locale["BEAT_THIS_LEVEL2"], a.bestFrame, 14, 0, 1, 0, nil, nil)
+	l = o:CreateCaption(0, 0, e.locale["BEAT_THIS_LEVEL2"], a.bestFrame, 11, 0, 1, 0, nil, nil)
 	l:ClearAllPoints();
-	l:SetPoint("Topleft", t, "Topright", 0,  - 8);
+	l:SetPoint("Topleft", t, "Topright", 0,  -5);
 	l:SetWidth(220);
 	l.caption1 = e.locale["BEAT_THIS_LEVEL2"]
 	l.caption2 = e.locale["BEAT_THIS_LEVEL4"]
@@ -6147,7 +6122,7 @@ local function me()
 	l.tex = t;
 	n = m(0, 0, 64, "buttonGo", nil, "quickPlayGo", a, function(t)
 		e.extraInfo = nil;
-		Ae(ie[t:GetParent().showID]);
+		Ae(t:GetParent().showID);
 		R(true);
 		Q = false;
 	end)
@@ -6212,11 +6187,11 @@ local function oe()
 			else
 				r = 2;
 			end
-		elseif((a == i)and(a ==  - 2))then
+		elseif((a == i)and(a == -2))then
 		r = 3;
-		elseif(a ==  - 2)and(i >= 0)then
+		elseif(a == -2)and(i >= 0)then
 		r = 2;
-		elseif(i ==  - 2)and(a >= 0)then
+		elseif(i == -2)and(a >= 0)then
 		r = 1;
 		end
 		o.player1.results:Hide();
@@ -6226,7 +6201,7 @@ local function oe()
 		o.player2.forfeit:Hide();
 		o.player2.waiting:Hide();
 		local l = o.player1.results;
-		if(a ==  - 1)then
+		if(a == -1)then
 			o.player1.waiting:Show();
 		elseif(a >= 0)then
 			l:Show();
@@ -6241,7 +6216,7 @@ local function oe()
 			o.player1.forfeit:Show();
 		end
 		l = o.player2.results;
-		if(i ==  - 1)then
+		if(i == -1)then
 			o.player2.waiting:Show();
 		elseif(i >= 0)then
 			l:Show();
@@ -6311,7 +6286,7 @@ local function oe()
 		a, i = 0, 0
 		local l, e;
 		local t;
-		for t = 1, 12 do
+		for t = 1, #LEVELS do
 			if PeggleProfile.levelTracking[t]then
 				l, e = strsplit(",", PeggleProfile.levelTracking[t]);
 				a = a + A(l);
@@ -6325,7 +6300,7 @@ local function oe()
 	n:SetWidth(256);
 	n:SetHeight(128);
 	a.duelInfo1 = n;
-	local l = o:CreateCaption(0, 0, e.locale["DUEL"], n, 40, .05, .66, 1, 1, nil)
+	local l = o:CreateCaption(0, 0, e.locale["DUEL"], n, 25, .05, .66, 1, 1, nil)
 	l:ClearAllPoints();
 	l:SetPoint("Top", a, "Top", 0,  - 22);
 	l:SetParent(n);
@@ -6371,44 +6346,44 @@ local function oe()
 	i.names = true;
 	i:DisableDrawLayer("ARTWORK");
 	i:ClearAllPoints();
-	i:SetPoint("Topright", l, "Topright", 18,  - 3);
+	i:SetPoint("Topright", l, "Topright", 18,  -3);
 	a.nameDrop = i;
-	l = o:CreateCaption(0, 0, e.locale["WIN_LOSS_PLAYER"], a.duelInfo1, 18, 1, .82, 0, nil, nil)
+	l = o:CreateCaption(0, 0, e.locale["WIN_LOSS_PLAYER"], a.duelInfo1, 14, 1, .82, 0, nil, nil)
 	l:ClearAllPoints();
-	l:SetPoint("Top", n, "Bottom", 0,  - 62);
+	l:SetPoint("Top", n, "Bottom", 0,  -62);
 	l.caption1 = l:GetText();
 	a.winLossPlayer = l;
 	l:Hide();
-	l = o:CreateCaption(0, 0, e.locale["OPPONENT_NOTE"].." "..e.locale["OPTIONAL"], a.duelInfo1, 20, 1, .82, 0, 1, nil)
+	l = o:CreateCaption(0, 0, e.locale["OPPONENT_NOTE"].." "..e.locale["OPTIONAL"], a.duelInfo1, 14, 1, .82, 0, 1, nil)
 	l:ClearAllPoints();
-	l:SetPoint("Top", n, "Bottom", 0,  - 100);
+	l:SetPoint("Top", n, "Bottom", 0,  -100);
 	l.caption1 = l:GetText();
 	l.caption2 = e.locale["OPPONENT_NOTE"];
 	l.caption3 = e.locale["OPPONENT_NOTE2"];
 	a.note1 = l;
 	l = Je(0, 0, 256, "opponentNote", a.duelInfo1, nil, nil, nil, tooltipText)
 	l:ClearAllPoints();
-	l:SetPoint("Top", n, "Bottom", 0,  - 120);
+	l:SetPoint("Top", n, "Bottom", 0,  -120);
 	l:SetMaxBytes(48);
 	a.note2 = l;
 	l = o:CreateCaption(0, 0, "", a.duelInfo1, 12, 1, 1, 1, nil, "")
 	l:ClearAllPoints();
-	l:SetPoint("Top", n, "Bottom", 0,  - 126);
+	l:SetPoint("Top", n, "Bottom", 0,  -126);
 	l:SetWidth(256);
 	l:SetHeight(14 * 2);
 	l:SetJustifyV("TOP");
 	l:SetFontObject(t.fontObj);
 	l:Hide();
 	a.note2a = l;
-	l = o:CreateCaption(0, 0, e.locale["DUEL_STATUS"], a.duelInfo1, 24, 1, .82, 0, 1, nil)
+	l = o:CreateCaption(0, 0, e.locale["DUEL_STATUS"], a.duelInfo1, 14, 1, .82, 0, 1, nil)
 	l:ClearAllPoints();
-	l:SetPoint("Top", a, "Topleft", 170,  - 120);
+	l:SetPoint("Top", a, "Topleft", 170,  -120);
 	l:SetWidth(256);
 	a.note3Title = l;
 	l:Hide();
-	l = o:CreateCaption(0, 0, "", a.duelInfo1, 18, 1, 1, 1, 1, nil)
+	l = o:CreateCaption(0, 0, "", a.duelInfo1, 14, 1, 1, 1, 1, nil)
 	l:ClearAllPoints();
-	l:SetPoint("Top", a, "Topleft", 170,  - 180);
+	l:SetPoint("Top", a, "Topleft", 170,  -180);
 	l:SetWidth(256);
 	l.status1 = e.locale["DUEL_STATUS1"];
 	l.status2 = e.locale["DUEL_STATUS2"];
@@ -6417,24 +6392,24 @@ local function oe()
 	l.status5 = e.locale["DUEL_STATUS5"];
 	l.status6 = e.locale["DUEL_STATUS6"];
 	a.note3 = l;
-	l = o:CreateCaption(0, 0, e.locale["WIN_LOSS"], n, 20, 0, 1, 0, mil, nil)
+	l = o:CreateCaption(0, 0, e.locale["WIN_LOSS"], n, 12, 0, 1, 0, mil, nil)
 	l:ClearAllPoints();
-	l:SetPoint("Topleft", a, "Bottomleft", 20, 90);
+	l:SetPoint("Topleft", a, "Bottomleft", 20, 60);
 	l:SetWidth(300);
 	a.winLoss = l;
 	l = o:CreateCaption(0, 0, e.locale["WIN_LOSS_LEVEL"], n, 12, 0, 1, 0, nil, nil)
 	l:ClearAllPoints();
-	l:SetPoint("Top", a.winLoss, "Bottom", 0,  - 4);
+	l:SetPoint("Top", a.winLoss, "Bottom", 0,  -4);
 	l:SetWidth(300);
 	a.winLossLevel = l;
-	l = o:CreateCaption(0, 0, "0 - 0", n, 26, 0, 1, 0, nil, nil)
+	l = o:CreateCaption(0, 0, "0 - 0", n, 14, 0, 1, 0, nil, nil)
 	l:ClearAllPoints();
-	l:SetPoint("Top", a.winLossLevel, "Bottom", 0,  - 6);
+	l:SetPoint("Top", a.winLossLevel, "Bottom", 0,  -6);
 	l:SetWidth(300);
 	a.winLossCount = l;
-	l = o:CreateCaption(0, 0, e.locale["DUEL_TIME"], a, 14, 1, .82, 0, nil, nil)
+	l = o:CreateCaption(0, 0, e.locale["DUEL_TIME"], a, 12, 1, .82, 0, nil, nil)
 	l:ClearAllPoints();
-	l:SetPoint("Top", a.winLossCount, "Bottom", 0,  - 6);
+	l:SetPoint("Top", a.winLossCount, "Bottom", 0,  -6);
 	l:SetWidth(300);
 	l.caption1 = l:GetText();
 	l:Hide();
@@ -6447,7 +6422,7 @@ local function oe()
 			ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", M)
 			t.levelList:Hide();
 			n.winLoss:ClearAllPoints();
-			n.winLoss:SetPoint("Topleft", n, "Bottomleft", 20, 190);
+			n.winLoss:SetPoint("Topleft", n, "Bottomleft", 14, 190);
 			n.nameDrop:Hide();
 			n.name2:DisableDrawLayer("BACKGROUND");
 			n.name2:SetJustifyH("CENTER")
@@ -6461,7 +6436,7 @@ local function oe()
 			n.note3:SetText(n.note3.status1);
 			n.note3Title:Show();
 			n.decline1:Show();
-			Fe(ie[n.showID]);
+			Fe(n.showID);
 			local i = #B;
 			local o = {};
 			local a, l;
@@ -6545,7 +6520,7 @@ local function oe()
 		local e = e:GetParent():GetParent();
 		t.levelList:Show();
 		e.winLoss:ClearAllPoints();
-		e.winLoss:SetPoint("Topleft", e, "Bottomleft", 20, 90);
+		e.winLoss:SetPoint("Topleft", e, "Bottomleft", 20, 70);
 		e.winLoss:Show();
 		e.winLossLevel:Show();
 		e.winLossCount:Show();
@@ -6598,10 +6573,10 @@ local function oe()
 			n.player1["value"..e] = 0;
 			n.player2["value"..e] = 0;
 		end
-		n.player1.value =  - 1;
-		n.player2.value =  - 1;
+		n.player1.value = -1;
+		n.player2.value = -1;
 		t.duelTab.sparks:Hide();
-		Ae(ie[n.showID], nil, n.levelInfo);
+		Ae(n.showID, nil, n.levelInfo);
 		R(true);
 		Q = false;
 		t.duelStatus = 3;
@@ -6690,7 +6665,7 @@ local function oe()
 	n:SetBackdrop(r);
 	n:SetBackdropColor(0, 0, 0, .5);
 	n:SetBackdropBorderColor(1, 1, 1);
-	n.value =  - 1;
+	n.value = -1;
 	n.value1 = 0;
 	n.value2 = 0;
 	n.value3 = 0;
@@ -6752,7 +6727,7 @@ local function oe()
 	n:SetBackdrop(r);
 	n:SetBackdropColor(0, 0, 0, .5);
 	n:SetBackdropBorderColor(1, 1, 1);
-	n.value =  - 1;
+	n.value = -1;
 	n.value1 = 0;
 	n.value2 = 0;
 	n.value3 = 0;
@@ -6833,7 +6808,7 @@ local function oe()
 		t.summaryScreen.bragScreen:Show();
 	end, nil, true)
 	n:ClearAllPoints();
-	n:SetPoint("Bottomright", a, "Bottomright",  - 16, 16);
+	n:SetPoint("Bottomright", a, "Bottomright",  -16, 16);
 	n:Hide();
 	a.publish = n;
 	n = CreateFrame("Frame", "", UIParent);
@@ -6847,7 +6822,7 @@ local function oe()
 		local t = t.catagoryScreen.frames[2];
 		local e = t.timeRemaining;
 		e:ClearAllPoints();
-		e:SetPoint("Top", t.winLossCount, "Bottom", 0,  - 6);
+		e:SetPoint("Top", t.winLossCount, "Bottom", 0,  0);
 		e:SetFormattedText(e.caption1, "5m 0s");
 		e:Show()
 		e:SetParent(t);
@@ -6891,7 +6866,7 @@ local function oe()
 				else
 					n = ""
 				end
-				if(t.duelStatus == 3)and(t.catagoryScreen.frames[2].player1.value ==  - 1)then
+				if(t.duelStatus == 3)and(t.catagoryScreen.frames[2].player1.value == -1)then
 					t.bestScoreCaption:SetFormattedText(t.bestScoreCaption.caption2, e..n);
 				end
 				local t = t.catagoryScreen.frames[2];
@@ -7161,7 +7136,7 @@ local function ee()
 				end
 			end
 			t = l - t;
-			if(r ==  - 1)then
+			if(r == -1)then
 				n.stageDetails6a:SetText(n.stageDetails6a.caption1);
 				SetDesaturation(n.startChallenge1.background, false);
 				n.startChallenge1:EnableMouse(true);
@@ -7421,7 +7396,7 @@ local function ee()
 		t.content1.state = 2;
 		t.content1:Hide();
 		t.content1:Show();
-		Ae(ie[n], e);
+		Ae(n, e);
 		R(true);
 		Q = false;
 	end)
@@ -7905,7 +7880,7 @@ local function ee()
 		end
 		if(#n.grabNames > 0)then
 			ChatFrame_AddMessageEventFilter("CHAT_MSG_CHANNEL_LIST", X);
-			n.nameGrabber.elapsed =  - 1;
+			n.nameGrabber.elapsed = -1;
 			n.nameGrabber:Show();
 			return;
 		end
@@ -7953,18 +7928,18 @@ local function ee()
 	l:SetAllPoints(t);
 	l:EnableMouse(true);
 	l:SetFrameLevel(l:GetFrameLevel() + 70);
-	l.elapsed =  - 1;
+	l.elapsed = -1;
 	l.content = a;
 	l:Hide();
 	l:SetScript("OnUpdate", function(e, t)
-		if(e.elapsed ==  - 1)then
+		if(e.elapsed == -1)then
 			ListChannelByName(u(e.content.grabNames));
 			e.elapsed = 0;
 		end
 		e.elapsed = e.elapsed + t;
 		if(e.elapsed > 1)then
 			if(#e.content.grabNames > 0)then
-				e.elapsed =  - 1;
+				e.elapsed = -1;
 			else
 				e:Hide();
 				ChatFrame_RemoveMessageEventFilter("CHAT_MSG_CHANNEL_LIST", X);
@@ -8147,17 +8122,11 @@ local function G()
 	n:SetWidth(l:GetWidth() - 20);
 	l.pointsLeft = n;
 	l = m(0, 0, 50, "buttonResetTalents", true, "talentReset", r, function(e)
-		local e = L(V[g], p(H))
-		if not e then
-			e = Be();
-		else
-			e = string.sub(e, 1, 7 + 12 * 4)..h(1e11, 7)..string.sub(e, 6 + 12 * 4 + 8);
-		end
-		V[g] = U(e, p(H));
 		local e;
 		for e = 1, 11 do
 			b[33 + e] = 0;
 		end
+		PeggleData.newData.talentData = { ["activated"] = {0,0,0,0,0,0,0,0,0,0,0} }
 		Ve();
 	end)
 	l:ClearAllPoints();
@@ -8183,7 +8152,7 @@ local function G()
 	local S = 26 + 25;
 	local u = 26 + (80 * 1) + 25;
 	local h = 26 + (80 * 2) + 25;
-	local o =  - 21 - 60;
+	local o = -21 - 60;
 	n.node = {};
 	local a = function(n)
 		local n = n:GetID();
@@ -8497,15 +8466,15 @@ local function _()
 	n:ClearAllPoints();
 	n:SetPoint("Top", 0,  - 70);
 	n = x(a, l, e.locale["OPT_MINIMAP"], "showMinimapIcon", true, d, function(e)
-		PeggleData.settings[e.key] = (e:GetChecked() == 1);
-		if(e:GetChecked() == 1)then
+		PeggleData.settings[e.key] = (e:GetChecked());
+		if(e:GetChecked())then
 			t.minimap:Show();
 		else
 			t.minimap:Hide();
 		end
 	end, 1, .82, 0);
 	local r = function(e)
-		PeggleData.settings[e.key] = (e:GetChecked() == 1);
+		PeggleData.settings[e.key] = (e:GetChecked());
 	end;
 	n = x(a, l + 20, e.locale["OPT_COLORBLIND"], "colorBlindMode", true, d, r, 1, .82, 0);
 	n = x(a, l + 40, e.locale["OPT_HIDEOUTDATED"], "hideOutdated", true, d, r, 1, .82, 0);
@@ -8856,12 +8825,13 @@ local function K()
 end
 local function w(n, l, ...)
 	w = nil;
-	if(PeggleData.version and(PeggleData.version < 1))then
+	if(PeggleData.version and(PeggleData.version < 2.0))then
 		PeggleData.version = nil;
 	end
 	if not PeggleData.version then
 		PeggleData = {};
-		PeggleData.data = "i4g`Z@ah38hdf8j387r6hfedh7FHJKEFH3y89hfjiofdHUUEBUnudy73P7Vmr=h7ZuSBG";
+		PeggleData.newData = {};
+		PeggleData.newData = {["levelScores"] = {}, ["talentData"] = {["points"] = 0, ["activated"] = {0,0,0,0,0,0,0,0,0,0,0} }}
 		PeggleData.settings = {mouseOnTrans = 1, mouseOffTrans = .6, showMinimapIcon = true, openFlightStart = true, openDeath = true, openLogIn = true, openDuel = true, closeFlightEnd = false, closeReadyCheck = true, closeCombat = true, closeDuelComplete = false, closePeggleLoot = false, inviteChat = true, inviteRaid = false, inviteMinimap = true, inviteDecline = false, hideOutdated = false;
 		soundVolume = 0, minimapAngle = 270, defaultPublish = "GUILD", };
 		PeggleData.version = e.versionID;
@@ -8898,26 +8868,29 @@ local function w(n, l, ...)
 	Y = PeggleProfile.challenges;
 	H = PeggleData.loggedIn;
 	De(t.catagoryScreen.tabFrame.currentX, 0, t.catagoryScreen.tabFrame, _(), "tabOptions", nil);
-	local l = L(V[g], p(H))
-	if not l then
-		l = Be()
-	end
 	et();
 	local a = V.recent;
-	local r = c(l, 8);
-	local d = D(S(c(l, 1, 7)));
-	local s, l;
-	for e = 1, 12 do
-		l = W(d, e + 1) - 48;
+
+	--fill config with initial score data
+	for e = 1, #LEVELS do
+		if not PeggleData.newData.levelScores[e] then
+			PeggleData.newData.levelScores[e] = {['score'] =  0, ['progress'] =  0}
+		end
+	end
+
+	local l;
+	for e = 1, #LEVELS do
+		l = PeggleData.newData.levelScores[e]['progress'];
 		if(l == 0)then
-			Z[e] = 0;
+			levelScoreData[e] = 0;
 		else
-			Z[e] = S(c(r, (e - 1) * 4 + 1, e * 4));
+			levelScoreData[e] = PeggleData.newData.levelScores[e]['score'];
+
 			if not a[e]then
-				a[e] = Z[e];
+				a[e] = levelScoreData[e];
 			end
 		end
-		Z[e + 12] = l
+		levelScoreData[e + #LEVELS] = l
 	end
 	local l = t.catagoryScreen.frames[1];
 	l:UpdateDisplay(1);
@@ -9066,14 +9039,10 @@ local function w(n, l, ...)
 	end
 	local o = p(e.addonName);
 	local n;
-	for e = 1, 12 do
-		ie[e] = L(ie[e], o);
-		if not ie[e]then
-			n = true;
-		end
+	local a;
+	if not disableSplashScreen then
+		t.splash:Show();
 	end
-	local a = n;
-	t.splash:Show();
 	if not t.legal then
 		t.splash.elapsed = 0;
 		t.splash.background:SetAlpha(1);
@@ -9404,9 +9373,6 @@ local function W()
 		t.catagoryScreen:SetScale(n);
 		t.logoFrame:SetScale(n);
 		t.charPortrait:SetScale(n);
-		if(PeggleEditWindow)then
-			PeggleEditWindow:SetScale(n);
-		end
 		local e = e.windowHeight * n;
 		o:SetHeight(e);
 		t.coverUp:SetHeight(26.5 * n);
@@ -10206,12 +10172,12 @@ local function N()
 			n.remaining = n.remaining - o;
 			if(n.remaining >  - 100)then
 				if(n.remaining <= 0)then
-					n.remaining =  - 100;
+					n.remaining = -100;
 					t.peggleLootDialog:Hide();
 					if(e[e.newInfo[11]])and Q == false then
 						local e = d.activeBallStack[1];
 						if(e)then
-							e.y =  - 100;
+							e.y = -100;
 							e.x = 0;
 							e.xVel = 0;
 							e.yVel = 0;
@@ -10335,11 +10301,11 @@ local function N()
 		if(t.duelStatus == 3)then
 			local n = t.catagoryScreen.frames[2];
 			C_ChatInfo.SendAddonMessage(t.network.prefix, e.commands[6], "WHISPER", n.name2:GetText());
-			n.player1.value =  - 2;
+			n.player1.value = -2;
 			n:UpdateWinners();
 			t.duelStatus = nil;
 		end
-		Ae(ie[o], nil, l, true);
+		Ae(o, nil, l, true);
 		R(true);
 		Q = false;
 	end)
@@ -10419,6 +10385,7 @@ local function k()
 		end
 	end);
 	i:SetScript("OnEvent", function(m, n, C, i, l, a)
+		a = string.match(a, "(.*)%-(.*)") or a
 		if(n == "CHAT_MSG_SYSTEM")and(m.watchError)then
 			if(string.find(C, m.watchError))then
 				m.watchError = nil;
@@ -10751,7 +10718,7 @@ local function k()
 								d = L(d, p(a))
 								e[a] = S(d);
 							else
-								e[a] =  - 1;
+								e[a] = -1;
 							end
 						end
 					end
@@ -10872,9 +10839,9 @@ local function k()
 							n.player1["value"..e] = 0;
 							n.player2["value"..e] = 0;
 						end
-						n.player1.value =  - 1;
-						n.player2.value =  - 1;
-						Ae(ie[n.showID], nil, n.levelInfo);
+						n.player1.value = -1;
+						n.player2.value = -1;
+						Ae(n.showID, nil, n.levelInfo);
 						R(true);
 						Q = false;
 						t.duelStatus = 3;
@@ -10907,7 +10874,7 @@ local function k()
 				end
 				if(h == r[6])then
 					if(i == nil)then
-						n.player2.value =  - 2;
+						n.player2.value = -2;
 					else
 						i = L(i, p(a));
 						if(i)then
@@ -10949,7 +10916,7 @@ local function k()
 	i:SetScript("OnUpdate", function(t, n)
 		local e = e.sentList;
 		if t.lastIndex then
-			if(t.lastIndex ==  - 1)then
+			if(t.lastIndex == -1)then
 				t.lastIndex = next(e);
 			else
 				t.lastIndex = next(e, t.lastIndex);
@@ -11222,7 +11189,7 @@ local function T()
 				end
 				local c = string.format(e.locale["_PEGGLELOOT_NOTIFY"], l)
 				local S = C(3 - 2, 5 + 7);
-				Fe(ie[S]);
+				Fe(S);
 				local r = #B;
 				local o = {};
 				local a, n;
@@ -11319,46 +11286,6 @@ local function T()
 		end
 	end
 	hooksecurefunc("ToggleDropDownMenu", o.SkinDropdown);
-	if PeggleEditWindow then
-		SLASH_PEGGLEEDIT1 = "/peggleedit";
-		SlashCmdList["PEGGLEEDIT"] = function()
-			t:SetAlpha(1);
-			PeggleEditWindow.levelString = Qe;
-			PeggleEditWindow:Show();
-		end
-		t.gameBoard = r;
-		t.Generate = Ae;
-		t.extraData = ie;
-		r.updateFunc = r:GetScript("OnUpdate");
-		r.emptyFunc = function()end;
-		r.Disable = function(n, e)
-			n.disabled = e;
-			local n;
-			if(e == true)then
-				d:Hide();
-				r.foreground:Hide();
-				t.catcher:Hide();
-				r:SetScript("OnUpdate", r.emptyFunc);
-				for e = 1, 10 do
-					r.trail[e]:SetAlpha(0);
-				end
-			else
-				d:Show();
-				r.foreground:Show();
-				t.catcher:Show();
-				r:SetScript("OnUpdate", r.updateFunc);
-				for e = 1, 10 do
-					r.trail[e]:SetAlpha(.6);
-				end
-			end
-		end
-		PeggleEditWindow:SetWidth(e.boardWidth + 360);
-		PeggleEditWindow:SetHeight(e.boardHeight + 240);
-		PeggleEditWindow:ClearAllPoints();
-		PeggleEditWindow:SetPoint("Center", r);
-	end
 end
 T();
-local e;
-local e;
 local e;

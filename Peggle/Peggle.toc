@@ -1,9 +1,10 @@
-## Interface: 80501
+## Interface: 80100
 ## Title: Peggle (Unofficial)
-## Version: 1.04
+## Version: 2.0
 ## Notes: The popular game Peggle, now for World of Warcraft!
 ## Author: PopCap Games Inc.
 ## SavedVariables: PeggleData
 ## SavedVariablesPerCharacter: PeggleProfile
 
+Levels.lua
 Peggle.lua
