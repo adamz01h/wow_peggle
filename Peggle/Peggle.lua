@@ -2315,38 +2315,6 @@ function o:CreateCaption(i, r, s, t, n, S, d, c, l, a, o)
 	t:Show();
 	return t;
 end
-function o:SkinDropdown(t, t, t, t, t, t, t)
-	local t = getglobal("DropDownList"..UIDROPDOWNMENU_MENU_LEVEL.."MenuBackdrop");
-	if not o.dropdownSkin then
-		o.dropdownSkin = t:GetBackdrop()
-		o.dropdownSkinPeggle = t:GetBackdrop();
-		o.dropdownSkinPeggle.bgFile = e.artPath.."windowBackground";
-		o.dropdownSkinPeggle.tileSize = 64;
-		o.dropdownSkinPeggle.insets.right = 3;
-		o.dropdownSkinPeggle.insets.left = 3;
-		o.dropdownSkinPeggle.insets.top = 3;
-		o.dropdownSkinPeggle.insets.bottom = 3;
-		o.dropdownSkinColor = {t:GetBackdropColor()};
-	end
-	local e;
-	if(type(UIDropDownMenu_GetCurrentDropDown()) == "table")then
-		e = UIDropDownMenu_GetCurrentDropDown()
-	elseif(type(UIDropDownMenu_GetCurrentDropDown()) == "string")then
-		e = getglobal(UIDropDownMenu_GetCurrentDropDown());
-	else
-		e = nil;
-	end
-	if(e)then
-		if(e.peggleMenu)then
-			t:SetBackdrop(o.dropdownSkinPeggle);
-			t:SetBackdropColor(.1, .1, .1, 1);
-			t:SetFrameLevel(0);
-		else
-			t:SetBackdrop(o.dropdownSkin);
-			t:SetBackdropColor(unpack(o.dropdownSkinColor));
-		end
-	end
-end
 local function l(n, l)
 	local o
 	if(l == 1)then
@@ -11285,7 +11253,6 @@ local function T()
 			e.polygon[t][n] = e.polygon[t][n] * .85;
 		end
 	end
-	hooksecurefunc("ToggleDropDownMenu", o.SkinDropdown);
 end
 T();
 local e;
