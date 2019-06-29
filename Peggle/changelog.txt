@@ -1,5 +1,19 @@
 Changelog
 
+v2.2
+- Fixed /peggleloot
+
+v2.1
+- Use Blank sound file instead of empty path
+- Fixed Background Textures
+- Patch 8.2.0 support
+
+v2.0
+- Fixed Duel and and Battle
+- Decoded Levels and save game config
+- Added level 13 (Sulfuron Spire)
+- Patch 8.1.5 Support
+
 v1.04
 - Fixed the "Super Guide" powerup by Nimos 
 - Fix indentation by ZombieProtectionAgency
