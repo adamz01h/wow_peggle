@@ -63,8 +63,8 @@ TALENT_ARROW_TEXTURECOORDS = {
 };
 
 local e = {};
-e.versionString = "2.0";
-e.versionID = 2.0;
+e.versionString = "2.1";
+e.versionID = 2.1;
 e.addonName = "PEGGLE";
 e.temp = {};
 e.seconds = 60;
@@ -5449,6 +5449,7 @@ local function he()
 	c.bgFile = e.artPath.."windowBackground";
 	c.edgeSize = 32;
 	c.tileSize = 64;
+	c.tile = false;
 	c.insets.right = 8;
 	c.insets.left = 8;
 	c.insets.top = 8;
@@ -5657,6 +5658,7 @@ local function ce()
 	n:SetFrameLevel(n:GetFrameLevel() + 4);
 	local l = e.GetBackdrop();
 	l.tileSize = 128;
+	l.tile = false;
 	l.edgeFile = "Interface\\Glues\\Common\\TextPanel-Border"l.edgeSize = 32;
 	l.bgFile = e.artPath.."windowBackground";
 	n:SetBackdrop(l);
@@ -5729,6 +5731,7 @@ local function fe()
 	end);
 	local l = e.GetBackdrop();
 	l.tileSize = 128;
+	l.tile = false;
 	l.edgeFile = "Interface\\Glues\\Common\\TextPanel-Border"l.edgeSize = 32;
 	l.bgFile = e.artPath.."windowBackground";
 	n:SetBackdrop(l);
@@ -5938,6 +5941,7 @@ local function me()
 	r:SetWidth(300);
 	d.bgFile = e.artPath.."windowBackground";
 	d.tileSize = 128;
+	d.tile = false;
 	r:SetBackdrop(d);
 	r:SetBackdropColor(0, 0, 0, .5);
 	r:SetBackdropBorderColor(1, .8, .45);
@@ -7127,6 +7131,7 @@ local function ee()
 	i:SetWidth(200);
 	d.bgFile = e.artPath.."windowBackground";
 	d.tileSize = 128;
+	d.tile = false;
 	i:SetBackdrop(d);
 	i:SetBackdropColor(.4, .4, .4, 1);
 	i:SetBackdropBorderColor(1, 1, 1);
@@ -7135,6 +7140,7 @@ local function ee()
 	i:SetPoint("Bottomright",  - 6, 6 + 66);
 	d.bgFile = e.artPath.."windowBackground";
 	d.tileSize = 128;
+	d.tile = false;
 	i:SetBackdrop(d);
 	i:SetBackdropColor(.2, .2, .2, 1);
 	i:SetBackdropBorderColor(1, 1, 1);
@@ -7283,6 +7289,7 @@ local function ee()
 	i:SetWidth(200);
 	d.bgFile = e.artPath.."windowBackground";
 	d.tileSize = 128;
+	d.tile = false;
 	i:SetBackdrop(d);
 	i:SetBackdropColor(.4, .4, .4, 1);
 	i:SetBackdropBorderColor(1, 1, 1);
@@ -7386,6 +7393,7 @@ local function ee()
 	i:SetWidth(270);
 	d.bgFile = e.artPath.."windowBackground";
 	d.tileSize = 128;
+	d.tile = false;
 	i:SetBackdrop(d);
 	i:SetBackdropColor(.2, .2, .2, 1);
 	i:SetBackdropBorderColor(1, 1, 1);
@@ -8691,14 +8699,17 @@ local function K()
 	e.outdatedText:SetPoint("Bottom", 0, 0);
 	e.outdatedText:Hide();
 	e.outdatedText:SetAlpha(1);
+	
 	local l = e.GetBackdrop();
 	l.bgFile = e.artPath.."windowBackground";
 	l.tileSize = 128;
+	l.tile = false;
 	l.edgeFile = "Interface\\Glues\\Common\\TextPanel-Border"l.edgeSize = 32;
 	n:SetBackdrop(l);
 	n:SetBackdropColor(.43, .43, .43, 1);
 	n:SetBackdropBorderColor(1, .8, .45);
 	n:SetFrameLevel(t:GetFrameLevel() + 1);
+
 	t.catagoryScreen = n;
 	n.frames = {};
 	n:Hide();
@@ -8932,6 +8943,7 @@ local function w(n, l, ...)
 		n.bgFile = e.artPath.."windowBackground";
 		n.edgeSize = 32;
 		n.tileSize = 64;
+		n.tile = false;
 		n.insets.right = 3;
 		l:SetBackdrop(n);
 		l:SetBackdropColor(.43, .43, .43, 1);
@@ -8980,6 +8992,7 @@ local function w(n, l, ...)
 	o.bgFile = e.artPath.."windowBackground";
 	o.edgeSize = 32;
 	o.tileSize = 64;
+	o.tile = false;
 	o.insets.right = 3;
 	n:SetBackdrop(o);
 	n:SetBackdropColor(.43, .43, .43, 1);
@@ -9116,6 +9129,7 @@ local function W()
 	n.bgFile = e.artPath.."windowBackground";
 	n.edgeSize = 32;
 	n.tileSize = 64;
+	n.tile = false;
 	n.insets.right = 3;
 	t:SetBackdrop(n);
 	t:SetBackdropColor(.7, .7, .7, 1);
@@ -10220,6 +10234,7 @@ local function N()
 	n:SetFrameStrata("DIALOG");
 	local l = e.GetBackdrop();
 	l.tileSize = 128;
+	l.tile = false;
 	l.edgeFile = "Interface\\Glues\\Common\\TextPanel-Border"l.edgeSize = 32;
 	l.bgFile = e.artPath.."windowBackground";
 	n:SetBackdrop(l);
