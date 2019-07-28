@@ -63,8 +63,8 @@ TALENT_ARROW_TEXTURECOORDS = {
 };
 
 local e = {};
-e.versionString = "2.0";
-e.versionID = 2.0;
+e.versionString = "2.2";
+e.versionID = 2.2;
 e.addonName = "PEGGLE";
 e.temp = {};
 e.seconds = 60;
@@ -187,8 +187,8 @@ e.locale = {
 	["HOW_TO_PLAY3a"] = "Battle Mode lets you set up special multiplayer contests with your friends ".."and guildmates. You can pick the level, adjust how many shots each person is ".."allowed, and how long the battle will be active for. Then send out invitations ".."to your friends!\n\n".."When you click the Battle Mode tab you can either select an existing ".."Battle that you've entered, or create a new one. If you select one that ".."you've already played, you can see the current leaderboard.\n\n".."The leaderboard also shows icons to indicate which character the player used ".."as well as the number of levels they've beaten and how many 100% clears they've ".."achieved.",
 	["HOW_TO_PLAY3b"] = "Battles that have run out of time will eventually decay off your list.",
 	["HOW_TO_PLAY4"] = "Peggle Loot",
-	["HOW_TO_PLAY4a"] = "Peggle Loot is a fun way to distribute loot in a Master Looter party or raid. ".."When activated, all players in the party or raid with the add-on will get the ".."option to play a single shot high score challenge for the item. Whoever scores ".."the highest wins the right to the item!\n\n".."If you are the Loot Master in a party or raid, simply type |cFFFFFF00/peggleloot|r to ".."initiate the challenge. Optionally, you can also shift-click the item to add ".."an item link after the peggleloot command.",
-	["HOW_TO_PLAY4b"] = "The addon will pick a random level, and then send that challenge to all members ".."of the party or raid. They will have the option to play or pass. If they play, ".."they get a single shot to score as many points as possible.\n\n".."To make it fair, talents are disabled for the shot and all users are defaulted ".."to Splork. Players have 30 seconds to complete their shots from when the Peggle ".."Loot challenge is activated.\n\n".."Once all players have competed, their scores are shown and the winner declared! ".."The Loot Master should then assign the loot to the winner of the challenge.",
+	["HOW_TO_PLAY4a"] = "Peggle Loot is a fun way to distribute loot in party or raid. ".."When activated, all players in the party or raid with the add-on will get the ".."option to play a single shot high score challenge for the item. Whoever scores ".."the highest wins the right to the item!\n\n".."Simply type |cFFFFFF00/peggleloot|r to ".."initiate the challenge. Optionally, you can also shift-click the item to add ".."an item link after the peggleloot command.",
+	["HOW_TO_PLAY4b"] = "The addon will pick a random level, and then send that challenge to all members ".."of the party or raid. They will have the option to play or pass. If they play, ".."they get a single shot to score as many points as possible.\n\n".."To make it fair, talents are disabled for the shot and all users are defaulted ".."to Splork. Players have 30 seconds to complete their shots from when the Peggle ".."Loot challenge is activated.\n\n".."Once all players have competed, their scores are shown and the winner declared! ",
 	["INVITEES"] = "INVITEES",
 	["INVITED"] = "|cFFFF8C00(%d INVITED)",
 	["INVITE_PERSON"] = "INVITE INDIVIDUAL:",
@@ -244,13 +244,11 @@ e.locale = {
 	["_PEGGLELOOT_ISACTIVE"] = "Peggle Loot is already active! %d seconds remain in current challenge.",
 	["_PEGGLELOOT_NOTIFY"] = "Peggle One-Shot Loot System Initialized for %s! Results released in 40 seconds. If you do not have the Peggle Addon, you're missing out!",
 	["_PEGGLELOOT_CHAT_REMAINING"] = "Peggle Loot results in %d seconds!",
-	["_PEGGLELOOT_NOTMASTERLOOTER"] = "PeggleLoot requires you to be the Master Looter.",
 	["_PEGGLELOOT_NOWINNER"] = "*** No winner found! ***",
 	["PEGGLELOOT_REMAINING"] = "Time remaining: %d sec",
 	["_PEGGLELOOT_RESULTS"] = "Peggle Loot Results:",
 	["PEGGLELOOT_TITLE"] = "Peggle Loot Challenge",
 	["_PEGGLELOOT_WINNER"] = "*** Winner: %s ***",
-	["_PEGGLELOOT_WRONGMETHOD"] = "Peggle Loot requires the loot mode to be Master Looter.",
 	["PERSONAL_BEST"] = "PERSONAL BEST:",
 	["PERSONAL_BEST_PTS"] = "%s PTS",
 	["_PUBLISH_SCORE"] = "[Peggle]: %s just scored %s points on %s! Download the Peggle Addon for Wow to defeat their score! https://github.com/adamz01h/wow_peggle",
@@ -525,7 +523,7 @@ e.stats = {0, 0, 0, 0, 0, 0, 0};
 e.oldUsers = {};
 local b = {0, 5, 0, 0, 5, 0, 1, 2, 0, 1, 5, 0, 1, 3, 0, 2, 5, 0, 2, 5, 0, 3, 5, 0, 3, 5, 0, 4, 1, 8, 4, 1, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 e.commands = {"di", "dr", "dd", "da", "db", "df", "dc", "ping", "pong", "ccs", "csu", "csn", "cqr", "cqa", "cgc", "cnc", "cdn", "cdh", "cgs", "plg", "pls", "plp", };
-e.sounds = {"applause.ogg", "", "ball_add.ogg", "", "cannonshot.ogg", "coin_spin.ogg", "coin_freeball_denied.ogg", "extraball.ogg", "extraball2.ogg", "extraball3.ogg", "extremefever2.ogg", "feverhit.ogg", "", "fireworks2.ogg", "gapbonus1.ogg", "gong.ogg", "odetojoy.ogg", "peghit", "pegpop.ogg", "", "aah.ogg", "powerup_guide.ogg", "powerup_spaceblast.ogg", "rainbow.ogg", "scorecounter.ogg", "sigh.ogg", "timpaniroll.ogg", "xbump_mod2.ogg", "aah.ogg", };
+e.sounds = {"applause.ogg", "blank.ogg", "ball_add.ogg", "blank.ogg", "cannonshot.ogg", "coin_spin.ogg", "coin_freeball_denied.ogg", "extraball.ogg", "extraball2.ogg", "extraball3.ogg", "extremefever2.ogg", "feverhit.ogg", "blank.ogg", "fireworks2.ogg", "gapbonus1.ogg", "gong.ogg", "odetojoy.ogg", "peghit", "pegpop.ogg", "blank.ogg", "aah.ogg", "powerup_guide.ogg", "powerup_spaceblast.ogg", "rainbow.ogg", "scorecounter.ogg", "sigh.ogg", "timpaniroll.ogg", "xbump_mod2.ogg", "aah.ogg", };
 e.SOUND_APPLAUSE = 1;
 e.SOUND_AWARD = 2;
 e.SOUND_BALL_ADD = 3;
@@ -5449,6 +5447,7 @@ local function he()
 	c.bgFile = e.artPath.."windowBackground";
 	c.edgeSize = 32;
 	c.tileSize = 64;
+	c.tile = false;
 	c.insets.right = 8;
 	c.insets.left = 8;
 	c.insets.top = 8;
@@ -5657,6 +5656,7 @@ local function ce()
 	n:SetFrameLevel(n:GetFrameLevel() + 4);
 	local l = e.GetBackdrop();
 	l.tileSize = 128;
+	l.tile = false;
 	l.edgeFile = "Interface\\Glues\\Common\\TextPanel-Border"l.edgeSize = 32;
 	l.bgFile = e.artPath.."windowBackground";
 	n:SetBackdrop(l);
@@ -5729,6 +5729,7 @@ local function fe()
 	end);
 	local l = e.GetBackdrop();
 	l.tileSize = 128;
+	l.tile = false;
 	l.edgeFile = "Interface\\Glues\\Common\\TextPanel-Border"l.edgeSize = 32;
 	l.bgFile = e.artPath.."windowBackground";
 	n:SetBackdrop(l);
@@ -5938,6 +5939,7 @@ local function me()
 	r:SetWidth(300);
 	d.bgFile = e.artPath.."windowBackground";
 	d.tileSize = 128;
+	d.tile = false;
 	r:SetBackdrop(d);
 	r:SetBackdropColor(0, 0, 0, .5);
 	r:SetBackdropBorderColor(1, .8, .45);
@@ -7127,6 +7129,7 @@ local function ee()
 	i:SetWidth(200);
 	d.bgFile = e.artPath.."windowBackground";
 	d.tileSize = 128;
+	d.tile = false;
 	i:SetBackdrop(d);
 	i:SetBackdropColor(.4, .4, .4, 1);
 	i:SetBackdropBorderColor(1, 1, 1);
@@ -7135,6 +7138,7 @@ local function ee()
 	i:SetPoint("Bottomright",  - 6, 6 + 66);
 	d.bgFile = e.artPath.."windowBackground";
 	d.tileSize = 128;
+	d.tile = false;
 	i:SetBackdrop(d);
 	i:SetBackdropColor(.2, .2, .2, 1);
 	i:SetBackdropBorderColor(1, 1, 1);
@@ -7283,6 +7287,7 @@ local function ee()
 	i:SetWidth(200);
 	d.bgFile = e.artPath.."windowBackground";
 	d.tileSize = 128;
+	d.tile = false;
 	i:SetBackdrop(d);
 	i:SetBackdropColor(.4, .4, .4, 1);
 	i:SetBackdropBorderColor(1, 1, 1);
@@ -7386,6 +7391,7 @@ local function ee()
 	i:SetWidth(270);
 	d.bgFile = e.artPath.."windowBackground";
 	d.tileSize = 128;
+	d.tile = false;
 	i:SetBackdrop(d);
 	i:SetBackdropColor(.2, .2, .2, 1);
 	i:SetBackdropBorderColor(1, 1, 1);
@@ -8691,14 +8697,17 @@ local function K()
 	e.outdatedText:SetPoint("Bottom", 0, 0);
 	e.outdatedText:Hide();
 	e.outdatedText:SetAlpha(1);
+	
 	local l = e.GetBackdrop();
 	l.bgFile = e.artPath.."windowBackground";
 	l.tileSize = 128;
+	l.tile = false;
 	l.edgeFile = "Interface\\Glues\\Common\\TextPanel-Border"l.edgeSize = 32;
 	n:SetBackdrop(l);
 	n:SetBackdropColor(.43, .43, .43, 1);
 	n:SetBackdropBorderColor(1, .8, .45);
 	n:SetFrameLevel(t:GetFrameLevel() + 1);
+
 	t.catagoryScreen = n;
 	n.frames = {};
 	n:Hide();
@@ -8932,6 +8941,7 @@ local function w(n, l, ...)
 		n.bgFile = e.artPath.."windowBackground";
 		n.edgeSize = 32;
 		n.tileSize = 64;
+		n.tile = false;
 		n.insets.right = 3;
 		l:SetBackdrop(n);
 		l:SetBackdropColor(.43, .43, .43, 1);
@@ -8980,6 +8990,7 @@ local function w(n, l, ...)
 	o.bgFile = e.artPath.."windowBackground";
 	o.edgeSize = 32;
 	o.tileSize = 64;
+	o.tile = false;
 	o.insets.right = 3;
 	n:SetBackdrop(o);
 	n:SetBackdropColor(.43, .43, .43, 1);
@@ -9116,6 +9127,7 @@ local function W()
 	n.bgFile = e.artPath.."windowBackground";
 	n.edgeSize = 32;
 	n.tileSize = 64;
+	n.tile = false;
 	n.insets.right = 3;
 	t:SetBackdrop(n);
 	t:SetBackdropColor(.7, .7, .7, 1);
@@ -10189,7 +10201,7 @@ local function N()
 				end
 				table.sort(o, n.compare);
 				local l = "PARTY";
-				if GetNumRaidMembers() > 0 then
+				if GetNumGroupMembers() > 5 then
 					l = "RAID";
 				end
 				t.network:Chat(e.locale["_PEGGLELOOT_RESULTS"], l);
@@ -10220,6 +10232,7 @@ local function N()
 	n:SetFrameStrata("DIALOG");
 	local l = e.GetBackdrop();
 	l.tileSize = 128;
+	l.tile = false;
 	l.edgeFile = "Interface\\Glues\\Common\\TextPanel-Border"l.edgeSize = 32;
 	l.bgFile = e.artPath.."windowBackground";
 	n:SetBackdrop(l);
@@ -11144,95 +11157,82 @@ local function T()
 		if not l or(l == "")then
 			l = e.locale["_THE_ITEM"];
 		end
-		lootMethod, masterLooterGroupID = GetLootMethod();
-		if(lootMethod == "master")then
-			if(masterLooterGroupID == 0)then
-				if(e[e.newInfo[11]])then
-					print("|CFFFFDD00Peggle: "..string.format(e.locale["_PEGGLELOOT_ISACTIVE"], ceil(t.peggleLootTimer.serverRemaining)));
-					return;
-				end
-				if(de ~= true)then
-					local e = getglobal("PeggleButton_menuAbandon");
-					e:GetScript("OnClick")(e);
-				end
-				local c = string.format(e.locale["_PEGGLELOOT_NOTIFY"], l)
-				local S = C(3 - 2, 5 + 7);
-				Fe(S);
-				local r = #B;
-				local o = {};
-				local a, n;
-				local a = "";
-				for e = 1, r do
-					s(o, e);
-				end
-				for e = 1, 25 do
-					n = C(1, #o);
-					a = a..h(u(o, n), 2);
-				end
-				local s = (ae * 9) ^ 2;
-				local d;
-				local r;
-				for e = 1, 2 do
-					n = C(1, #o);
-					d = nil;
-					while(d == nil)do
-						if(r)then
-							if(((B[o[n]].x - B[o[r]].x) ^ 2) + ((B[o[n]].y - B[o[r]].y) ^ 2)) < s then
-								if(#o > 0)then
-									n = C(1, #o);
-								end
-							else
-								d = true;
-							end
-						else
-							r = n;
-							d = true;
-						end
-					end
-					a = a..h(u(o, n), 2);
-				end
+			if(e[e.newInfo[11]])then
+				print("|CFFFFDD00Peggle: "..string.format(e.locale["_PEGGLELOOT_ISACTIVE"], ceil(t.peggleLootTimer.serverRemaining)));
+				return;
+			end
+			if(de ~= true)then
+				local e = getglobal("PeggleButton_menuAbandon");
+				e:GetScript("OnClick")(e);
+			end
+			local c = string.format(e.locale["_PEGGLELOOT_NOTIFY"], l)
+			local S = C(3 - 2, 5 + 7);
+			Fe(S);
+			local r = #B;
+			local o = {};
+			local a, n;
+			local a = "";
+			for e = 1, r do
+				s(o, e);
+			end
+			for e = 1, 25 do
 				n = C(1, #o);
 				a = a..h(u(o, n), 2);
-				a = U(a, p(e.name));
-				local i = h(time() * 100 + i((p(e.name) % 100)), 7);
-				e[e.newInfo[12]] = {};
-				l = i.."+"..l.."+"..S.."+"..a
-				a = nil;
-				o = nil;
-				collectgarbage();
-				local o = e.newInfo;
-				n = GetNumRaidMembers();
-				t.peggleLootTimer.serverRemaining = 40;
-				t.peggleLootTimer:Show();
-				if(n > 0)then
-					if(IsRaidOfficer())then
-						SendChatMessage(c, "RAID_WARNING")
+			end
+			local s = (ae * 9) ^ 2;
+			local d;
+			local r;
+			for e = 1, 2 do
+				n = C(1, #o);
+				d = nil;
+				while(d == nil)do
+					if(r)then
+						if(((B[o[n]].x - B[o[r]].x) ^ 2) + ((B[o[n]].y - B[o[r]].y) ^ 2)) < s then
+							if(#o > 0)then
+								n = C(1, #o);
+							end
+						else
+							d = true;
+						end
 					else
-						SendChatMessage(c, "RAID")
+						r = n;
+						d = true;
 					end
-					for n = 1, n do
-						name = GetRaidRosterInfo(n);
-						if(name)then
-							t.network:Send(e.commands[20], l, "WHISPER", name);
-						end
-					end
-				else
-					SendChatMessage(c, "RAID_WARNING")
-					t.network:Send(e.commands[20], l, "WHISPER", e.name);
-					n = 4
-					for n = 1, n do
-						name = UnitName("party"..n);
-						if(name)then
-							t.network:Send(e.commands[20], l, "WHISPER", name);
-						end
+				end
+				a = a..h(u(o, n), 2);
+			end
+			n = C(1, #o);
+			a = a..h(u(o, n), 2);
+			a = U(a, p(e.name));
+			local i = h(time() * 100 + i((p(e.name) % 100)), 7);
+			e[e.newInfo[12]] = {};
+			l = i.."+"..l.."+"..S.."+"..a
+			a = nil;
+			o = nil;
+			collectgarbage();
+			local o = e.newInfo;
+			n = GetNumGroupMembers();
+			t.peggleLootTimer.serverRemaining = 40;
+			t.peggleLootTimer:Show();
+			if(n > 5)then
+					SendChatMessage(c, "RAID")
+				for n = 1, n do
+					name = GetRaidRosterInfo(n);
+					if(name)then
+						t.network:Send(e.commands[20], l, "WHISPER", name);
 					end
 				end
 			else
-				print("|CFFFFDD00Peggle: "..e.locale["_PEGGLELOOT_NOTMASTERLOOTER"]);
+				SendChatMessage(c, "PARTY")
+				t.network:Send(e.commands[20], l, "WHISPER", e.name);
+				n = 4
+				for n = 1, n do
+					name = UnitName("party"..n);
+					if(name)then
+						t.network:Send(e.commands[20], l, "WHISPER", name);
+					end
+				end
 			end
-		else
-			print("|CFFFFDD00Peggle: "..e.locale["_PEGGLELOOT_WRONGMETHOD"]);
-		end
 	end
 	local l, l, n
 	for t = 1, #e.polygon - 1 do
