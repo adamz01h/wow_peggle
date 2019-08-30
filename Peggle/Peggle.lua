@@ -63,6 +63,7 @@ TALENT_ARROW_TEXTURECOORDS = {
 };
 
 local e = {};
+interfaceVersion = select(4, GetBuildInfo());
 e.versionString = "2.2";
 e.versionID = 2.2;
 e.addonName = "PEGGLE";
@@ -994,7 +995,7 @@ local function Ve()
 		else
 			t, o, n = .5, .5, .5;
 		end
-		if(l > 0)then
+		if(l > 0)and(interfaceVersion>20000)then
 			if(b[33 + l] > 4)and(((c >= d * 5)and(r > 0))or(a > 0))then
 				i[l].arrow:SetTexCoord(unpack(TALENT_BRANCH_TEXTURECOORDS.down[1]));
 				e.arrow:SetTexCoord(unpack(TALENT_ARROW_TEXTURECOORDS.top[1]));
@@ -8192,11 +8193,11 @@ local function G()
 		t:SetScript("OnClick", xt);
 		t:SetScript("OnEnter", c);
 		t:SetScript("OnLeave", r);
-		if(o)then
+		if(o)and(interfaceVersion>20000)then
 			t.arrow = t:CreateTexture(nil, "Background", "TalentBranchTemplate");
 			t.arrow:SetTexCoord(unpack(TALENT_BRANCH_TEXTURECOORDS.down[ - 1]));
 			t.arrow:SetPoint("Topleft", t, "Bottomleft", 2,  - 1);
-		elseif(l)then
+		elseif(l)and(interfaceVersion>20000)then
 			t.arrow = t:CreateTexture(nil, "Overlay", "TalentArrowTemplate");
 			t.arrow:SetTexCoord(unpack(TALENT_ARROW_TEXTURECOORDS.top[ - 1]));
 			t.arrow:SetPoint("Topleft", 2, 17);
@@ -9027,61 +9028,66 @@ local function w(n, l, ...)
 		t.splash.background:SetAlpha(1);
 		t.splash.foreground:SetAlpha(1);
 	end
-	if(not AchievementFrame)then
-		AchievementFrame_LoadUI();
-	end
-	local n = CreateFrame("Button", "exhibitA", UIParent, "AchievementAlertFrameTemplate");
-	n:Hide();
-	n:ClearAllPoints();
-	n:SetPoint("BOTTOM", 0, 128);
-	n:SetWidth(526);
-	n:SetHeight(160);
-	n.glow:SetWidth(680);
-	n.glow:SetHeight(270);
-	n:EnableMouse(false)
-	n.shine:SetTexCoord(0, .001, 0, .001);
-	n.holdDuration = 5;
-	t.achieve = n;
-	n:RegisterEvent("DUEL_FINISHED");
-	n:SetScript("OnEvent", function(e)
-		if(t.duelStatus == 3)and not PeggleData.exhibitA then
-			PeggleData.exhibitA = true;
-			if(not AchievementFrame)then
-				AchievementFrame_LoadUI();
-			end
-			e.elapsed = 0;
-			e.state = nil;
-			e:SetAlpha(0);
-			e.id = 0;
-			e:SetScript("OnUpdate", AchievementAlertFrame_OnUpdate);
-			e:UnregisterAllEvents();
-			e:Show();
+	if(interfaceVersion>20000) then
+		if(not AchievementFrame)then
+			AchievementFrame_LoadUI();
 		end
-	end);
-	local o = e.artCut["exhibitA"];
-	local l = n:CreateTexture(nil, "Artwork");
-	l:SetWidth(i((o[4] - o[3]) * 512 + .5));
-	l:SetHeight(i((o[2] - o[1]) * 512 + .5));
-	l:SetTexture(e.artPath.."howtoplay");
-	l:SetPoint("Top", 0,  - 50);
-	l:SetTexCoord(o[2], o[3], o[1], o[3], o[2], o[4], o[1], o[4]);
-	n.tex = l;
-	o = e.artCut["exhibitA2"];
-	--getglobal(n:GetName().."IconTexture"):SetTexture(e.artPath.."howtoplay");
-	--getglobal(n:GetName().."IconTexture"):SetTexCoord(unpack(o));
-	--getglobal(n:GetName().."Name"):SetText("");
-	--local l = getglobal(n:GetName().."Shield");
-	if(l.points)then
-		AchievementShield_SetPoints(10, l.points, GameFontNormal, GameFontNormalSmall);
-	end
-	if(l.icon)then
-		l.icon:SetTexture("Interface\\AchievementFrame\\UI-Achievement-Shields");
-	end
-	--getglobal(n:GetName().."Unlocked"):ClearAllPoints();
-	--getglobal(n:GetName().."Unlocked"):SetPoint("Top", 0,  - 39)o = e.artCut["exhibitA2"];
-	--getglobal(n:GetName().."IconTexture"):SetTexture(e.artPath.."howtoplay");
-	--getglobal(n:GetName().."IconTexture"):SetTexCoord(unpack(o));
-	e.artCut = nil;
+
+		local n = CreateFrame("Button", "exhibitA", UIParent, "AchievementAlertFrameTemplate");
+		n:Hide();
+		n:ClearAllPoints();
+		n:SetPoint("BOTTOM", 0, 128);
+		n:SetWidth(526);
+		n:SetHeight(160);
+		n.glow:SetWidth(680);
+		n.glow:SetHeight(270);
+		n:EnableMouse(false)
+		n.shine:SetTexCoord(0, .001, 0, .001);
+		n.holdDuration = 5;
+		t.achieve = n;
+		n:RegisterEvent("DUEL_FINISHED");
+		n:SetScript("OnEvent", function(e)
+			if(t.duelStatus == 3)and not PeggleData.exhibitA then
+				PeggleData.exhibitA = true;
+				if(not AchievementFrame)then
+					AchievementFrame_LoadUI();
+				end
+				e.elapsed = 0;
+				e.state = nil;
+				e:SetAlpha(0);
+				e.id = 0;
+				e:SetScript("OnUpdate", AchievementAlertFrame_OnUpdate);
+				e:UnregisterAllEvents();
+				e:Show();
+			end
+		end);
+
+		local o = e.artCut["exhibitA"];
+		local l = n:CreateTexture(nil, "Artwork");
+		l:SetWidth(i((o[4] - o[3]) * 512 + .5));
+		l:SetHeight(i((o[2] - o[1]) * 512 + .5));
+		l:SetTexture(e.artPath.."howtoplay");
+		l:SetPoint("Top", 0,  - 50);
+		l:SetTexCoord(o[2], o[3], o[1], o[3], o[2], o[4], o[1], o[4]);
+		n.tex = l;
+		o = e.artCut["exhibitA2"];
+		--getglobal(n:GetName().."IconTexture"):SetTexture(e.artPath.."howtoplay");
+		--getglobal(n:GetName().."IconTexture"):SetTexCoord(unpack(o));
+		--getglobal(n:GetName().."Name"):SetText("");
+		--local l = getglobal(n:GetName().."Shield");
+		if(l.points)then
+			AchievementShield_SetPoints(10, l.points, GameFontNormal, GameFontNormalSmall);
+		end
+		if(l.icon)then
+			l.icon:SetTexture("Interface\\AchievementFrame\\UI-Achievement-Shields");
+		end
+		--getglobal(n:GetName().."Unlocked"):ClearAllPoints();
+		--getglobal(n:GetName().."Unlocked"):SetPoint("Top", 0,  - 39)o = e.artCut["exhibitA2"];
+		--getglobal(n:GetName().."IconTexture"):SetTexture(e.artPath.."howtoplay");
+		--getglobal(n:GetName().."IconTexture"):SetTexCoord(unpack(o));
+		e.artCut = nil;
+	end;
+
 	if(a)then
 		message(e.locale["PEGGLE_ISSUE2"])
 		t:Hide();
@@ -11129,7 +11135,7 @@ local function T()
 			t:SetPoint("Center");
 			t:SetWidth(e.windowWidth);
 			t:SetHeight(e.windowHeight);
-		elseif(n == "achievement")then
+		elseif(n == "achievement")and(interfaceVersion>20000)then
 			if(PeggleData.exhibitA)then
 				if(not AchievementFrame)then
 					AchievementFrame_LoadUI();
